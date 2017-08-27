@@ -1,0 +1,11 @@
+.clear {
+    @include cf;
+}
+
+.v-hidden {
+    @include hide-visually;
+}
+
+.is-hidden {
+    display: none;
+}

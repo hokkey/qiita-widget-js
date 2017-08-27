@@ -1,0 +1,25 @@
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title><%= data.pageSettings.title %> | <%= metadata.siteName %></title>
+<meta name="description" content="<%= data.pageSettings.description %>">
+<meta name="keywords" content="<%= metadata.keywords %>">
+<meta name="viewport" content="<%= metadata.viewport %>">
+<!-- OGP --><%# https://developers.facebook.com/docs/sharing/webmasters#markup %>
+<meta property="og:locale" content="<%= metadata.ogLocale %>">
+<meta property="og:title" content="<%= data.pageSettings.title %>">
+<meta property="og:description" content="<%= data.pageSettings.description %>">
+<meta property="og:url" content=""><!-- Insert a permalink here! -->
+<meta property="og:site_name" content="<%= metadata.siteName %>">
+<meta property="og:type" content="<%= data.pageSettings.ogType %>">
+<meta property="og:image" content="<%= metadata.ogImage %>">
+<meta property="fb:app_id" content="<%= metadata.ogAppId %>">
+<!-- Twitter Card --><%# https://dev.twitter.com/ja/cards/overview %>
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="<%= metadata.siteName %>">
+<meta name="twitter:title" content="<%= data.pageSettings.title %>">
+<meta name="twitter:description" content="<%= data.pageSettings.description %>">
+<meta name="twitter:image:src" content="<%= metadata.ogImage %>">
+<!-- Links -->
+<link rel="apple-touch-icon" href="<%= data.root %>assets/images/apple-touch-icon-precomposed.png"/>
+<link rel="shortcut icon" href="<%= data.root %>assets/images/favicon.png"/>
+<link rel="stylesheet" href="<%= data.root %>assets/css/style.css"/>

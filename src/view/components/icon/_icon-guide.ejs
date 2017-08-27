@@ -1,0 +1,20 @@
+<%
+// icon/_icon-guide.ejs
+// A styleguide document of "icon" component
+  this.ejsRoot = '../../';
+  this.name = 'icon'; var name = this.name;
+  if (typeof util === 'undefined') { include(this.ejsRoot + 'util/_util'); util = getUtil(); }
+  if (typeof data === 'undefined') { include(this.ejsRoot + 'data/_data'); data = getData(); }
+  data.root = '../../pc/';
+%>
+/*
+#overview
+icon
+*/
+/*
+#styleguide
+.icon
+```
+<%- include(ejsRoot + 'components/icon/_icon-preview', {data:data}); 
+```
+*/

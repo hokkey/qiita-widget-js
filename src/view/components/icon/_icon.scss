@@ -1,0 +1,122 @@
+// icon/_icon.scss
+
+// publish for reuse
+@mixin arrow-long-r {
+  width: (39px / 2);
+  height: 9px;
+
+  @include media('tb') {
+    width: 30px;
+    height: 15px;
+  }
+}
+
+@mixin arrow-middle-u {
+  width: 13px;
+  height: 13px;
+
+  @include media('tb') {
+    width: 18px;
+    height: 19px;
+  }
+}
+
+@mixin icon-external {
+  width: (17px / 2);
+  height: (17px / 2);
+
+  @include media('tb') {
+    width: 11px;
+    height: 11px;
+  }
+}
+
+.icon {
+  $this: &;
+
+  &--external {
+    @include icon-external;
+  }
+
+  &--arrow-r {
+    transform: rotate(180deg);
+  }
+
+  &--arrow-r, &--arrow-l {
+    width: (9px / 2);
+    height: (17px / 2);
+
+    @include media('tb') {
+      width: 6px;
+      height: 11px;
+    }
+  }
+
+  &--arrow-d {
+    width: (15px / 2);
+    height: (8px / 2);
+
+    @include media('tb') {
+      width: 11px;
+      height: 6px;
+    }
+  }
+
+  &--arrow-middle-u {
+    @include arrow-middle-u;
+  }
+
+  &--arrow-long-r {
+    @include arrow-long-r;
+  }
+
+  &--file {
+    width: (18px / 2);
+    height: (25px / 2);
+
+    @include media('tb') {
+      width: 13px;
+      height: 18px;
+    }
+  }
+
+  &--cal {
+    width: (23px / 2);
+    height: (28px / 2);
+
+    @include media('tb') {
+      width: 15px;
+      height: 18px;
+    }
+  }
+
+  &--minus {
+    width: (24px / 2);
+    height: 3px;
+  }
+
+  &--plus {
+    width: (24px / 2);
+    height: (24px / 2);
+  }
+
+  &--cross {
+    width: (34px / 2);
+    height: (34px / 2);
+  }
+
+  &--menu {
+    width: (44px / 2);
+    height: (26px / 2);
+  }
+
+  &--corporate-title-sp {
+    width: 100%;
+    height: auto;
+  }
+
+  &--corporate-title-pc {
+    width: 621px;
+    height: 69px;
+  }
+}

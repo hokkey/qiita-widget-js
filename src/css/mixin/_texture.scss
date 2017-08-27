@@ -1,0 +1,13 @@
+// square grid
+@mixin background-square-mesh($color:rgba($color-white, .05)) {
+  background-image: linear-gradient(transparent 95%, $color 5%),
+  linear-gradient(90deg, transparent 95%, $color 5%);
+  background-size: 10px 10px;
+  background-repeat: repeat;
+  background-position: top center;
+  background-attachment: fixed;
+
+  @include media('tb') {
+    background-size: 15px 15px;
+  }
+}

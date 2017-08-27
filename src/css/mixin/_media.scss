@@ -1,0 +1,149 @@
+// メディアクエリ関係
+
+$break-point-sp-max: 719px !default;
+$break-point-tb-min: 720px !default;
+$break-point-tb-max: 1119px !default;
+$break-point-pc-min: 1120px !default;
+$break-point-pc-max: 1200px !default;
+
+@mixin media-min($break-point) {
+  @media all and (min-width: $break-point) {
+    @content;
+  }
+}
+
+@mixin media-max($break-point) {
+  @media all and (max-width: $break-point) {
+    @content;
+  }
+}
+
+@mixin media-min-and-max($min-break-point, $max-break-point) {
+  @media all and (min-width: $min-break-point) and (max-width: $max-break-point) {
+    @content;
+  }
+}
+
+// すべてのサイズで有効
+@mixin media-all($this) {
+  @content;
+}
+
+// SPでのみ有効
+@mixin media-sp-only($bp:$break-point-sp-max) {
+  @include media-max($bp) {
+    @content;
+  }
+}
+
+// SPサイズ以上で有効
+@mixin media-larger-than-sp-only($bp:$break-point-tb-min) {
+  @include media-min($bp) {
+    @content;
+  }
+}
+
+// タブレッドサイズでのみ有効
+@mixin media-tb-only($bpmin:$break-point-tb-min, $bpmax:$break-point-tb-max) {
+  @include media-min-and-max($bpmin, $bpmax) {
+    @content;
+  }
+}
+
+// PCサイズ以下でのみ有効
+@mixin media-not-pc-only($bp) {
+  @include media-max($break-point-tb-max) {
+    @content;
+  }
+}
+
+// PCサイズでのみ有効
+@mixin media-pc-only($bp:$break-point-pc-min) {
+  @include media-min($bp) {
+    @content;
+  }
+}
+
+// PCサイズ上限以上でのみ有効
+@mixin media-pc-over($bp:$break-point-pc-max) {
+  @include media-min($bp) {
+    @content;
+  }
+}
+
+// 便利バージョン
+@mixin media($type, $bp:0) {
+  @if $type == 'sp' {
+    @if $bp == 0 {
+      @include media-sp-only {
+        @content;
+      }
+    }
+    @else {
+      @include media-sp-only($bp) {
+        @content;
+      }
+    }
+  } @else if $type == 'tb' {
+    @if $bp == 0 {
+      @include media-larger-than-sp-only {
+        @content;
+      }
+    } @else {
+      @include media-larger-than-sp-only($bp) {
+        @content;
+      }
+    }
+  } @else if $type == 'tb-only' {
+    @if $bp == 0 {
+      @include media-tb-only {
+        @content;
+      }
+    } @else {
+      @include media-tb-only($bp) {
+        @content;
+      }
+    }
+  } @else if $type == 'not-pc' {
+    @if $bp == 0 {
+      @include media-not-pc-only {
+        @content;
+      }
+    } @else {
+      @include media-not-pc-only($bp) {
+        @content;
+      }
+    }
+  } @else if $type == 'pc' {
+    @if $bp == 0 {
+      @include media-pc-only {
+        @content;
+      }
+    } @else {
+      @include media-pc-only($bp) {
+        @content;
+      }
+    }
+  } @else if $type == 'pc-over' {
+    @if $bp == 0 {
+      @include media-pc-over {
+        @content;
+      }
+    } @else {
+      @include media-pc-over($bp) {
+        @content;
+      }
+    }
+  } @else if $type == 'all' {
+    @content;
+  } @else {
+    @debug 'Invalid $type string. It must be set "sp", "larger-than-sp", "not-pc", "pc", "tb" or "all".'
+  }
+}
+
+// 表示・非表示系クラス
+.media-sp-only {
+    @include media('tb') {
+        display: none;
+    }
+}

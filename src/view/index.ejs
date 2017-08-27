@@ -1,0 +1,10 @@
+<%
+const ejsRoot = './';
+include(ejsRoot + 'data/_data'); data = getData();
+// Replace pageSettings
+data.pageSetting = sitePages['top'];
+data.root = './';
+%>
+<%- include(ejsRoot + 'parts/_header'); %>
+
+<%- include(ejsRoot + 'parts/_footer'); %>

@@ -1,0 +1,73 @@
+// clearfix
+@mixin cf() {
+  *zoom: 1;
+
+  &:before, &:after {
+    content: ' ';
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+// hide visually
+@mixin hide-visually() {
+  display: block;
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
+
+// use icon font
+@mixin icon($font-name) {
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  display: inline-block;
+  line-height: 1;
+  font-family: $font-name !important;
+}
+
+// 色彩濃度を薄くする
+@function tint($color, $percent) {
+  @return mix(white, $color, $percent);
+}
+
+@mixin style-input-placeholder() {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+
+  &::-moz-placeholder {
+    @content;
+  }
+
+  &:-ms-input-placeholder {
+    @content;
+  }
+
+  &:placeholder-shown {
+    @content;
+  }
+}
+
+@function to-string($value) {
+  @return inspect($value);
+}
+
+
+@function gap($target-px, $actual-px:0 ) {
+  @if $actual-px == 0 {
+    @return $target-px;
+  }
+  @return $target-px - ($actual-px - $target-px);
+}

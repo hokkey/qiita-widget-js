@@ -1,0 +1,14 @@
+{
+  "top": {
+    "name": "top",
+    "path": "/",
+    "title": "INSERT_TITLE",
+    "description": "INSERT_DESCRIPTION",
+    "keywords": "INSERT_KEYWORDS",
+    "ogType": "website",
+    "modifier": "",
+    "mode": "page",
+    "header": { "modifier": "" },
+    "footer": { "modifier": "" }
+  }
+}

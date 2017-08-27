@@ -1,0 +1,17 @@
+<%
+  const ejsRoot = '../';
+  include(ejsRoot + 'data/_data'); data = getData();
+  data.root = '../';
+
+  const items = siteComponents.map((item) => {
+    return {
+      modifier: '',
+      text: item,
+      href: `${item}/index.html`,
+      icon: '',
+      target: ''
+    }
+  });
+%>
+<%- include(ejsRoot + 'parts/_header'); %>
+<%- include(ejsRoot + 'parts/_footer'); %>

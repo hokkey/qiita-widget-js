@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "module": "es6",
+    "target": "es5",
+    "outDir": "public/assets/js",
+    "rootDir": ".",
+    "sourceMap": false,
+    "lib": ["dom", "es6"],
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "types": [
+      "jquery"
+    ]
+  },
+  "include": [
+    "./src/"
+  ],
+  "exclude": ["node_modules"],
+  "files": [
+    "app.ts"
+  ]
+}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<% this.ejsRoot = '../'; const ejsRoot = this.ejsRoot; %>
+<html lang="ja" class="no-js">
+
+<head>
+  <%- include('_head', { data:data }); %>
+  <script src="<%= data.root %>assets/js/head.js"></script>
+</head>
+
+<body id="top">
+  <%- include('_fbsdk', { data:data }); %>
+
+  <div class="page <%= data.pageSettings.modifier %>">
+
+    <div class="page__header">
+      <%- include(ejsRoot + 'components/site-header/_site-header', data.pageSettings.header ); %>
+    </div>
+
+    <div class="page__content">
