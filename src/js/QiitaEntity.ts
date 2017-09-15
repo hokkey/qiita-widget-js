@@ -17,15 +17,6 @@ interface UserEntityInterface {
   htmlDest?: HTMLElement
 }
 
-class CachedApi implements CachedApiInterface {
-  constructor(public cacheExpiration: number) {}
-
-  public fetch(endpoint: string): Promise<any> {
-    return new Promise((resolve) => {
-
-    });
-  }
-}
 
 class QiitaUser implements UserEntityInterface {
 
