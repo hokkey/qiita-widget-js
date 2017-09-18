@@ -1,10 +1,34 @@
-<%
-const ejsRoot = './';
-include(ejsRoot + 'data/_data'); data = getData();
-// Replace pageSettings
-data.pageSetting = sitePages['top'];
-data.root = './';
-%>
-<%- include(ejsRoot + 'parts/_header'); %>
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>tstest</title>
+</head>
+<body>
 
-<%- include(ejsRoot + 'parts/_footer'); %>
+<template id="qiita-user-tmpl">
+  <p class="qiita-user__contribution">
+    <a class="js-url" target="_blank">
+      <span class="js-likes-count"></span>
+      <span class="qiita-user__contribution-unit">LIKE</span>
+    </a>
+  </p>
+</template>
+
+<template id="qiita-article-tmpl">
+  <a class="qiita-tl__link js-url" target="_blank">
+
+    <p class="qiita-tl__stock">
+      <span class="js-likes-count"></span>
+      <span class="qiita-tl__stock-unit">LIKE</span>
+    </p>
+
+    <h3 class="qiita-tl__title js-title"></h3>
+
+    <ul class="qiita-tl__tags js-tags"></ul>
+  </a>
+</template>
+
+<script src="./assets/js/app.js"></script>
+</body>
+</html>

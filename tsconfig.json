@@ -3,21 +3,35 @@
     "module": "es6",
     "target": "es5",
     "outDir": "public/assets/js",
-    "rootDir": ".",
     "sourceMap": false,
-    "lib": ["dom", "es6"],
+    "lib": [
+      "dom",
+      "es6",
+      "es2015",
+      "es2017"
+    ],
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,
-    "types": [
-      "jquery"
-    ]
+    "baseUrl": ".",
+    "rootDirs": [
+      "./src/js",
+    ],
+    "paths": {
+      "axios": [
+        "node_modules/axios/dist/axios",
+        "node_modules/axios/index.d.ts"
+      ]
+    }
   },
   "include": [
-    "./src/"
+    "./src/js/**/*"
   ],
-  "exclude": ["node_modules"],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ],
   "files": [
-    "app.ts"
+    "src/js/app.ts"
   ]
 }
