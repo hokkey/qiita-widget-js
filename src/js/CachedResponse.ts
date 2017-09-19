@@ -1,44 +1,54 @@
-import CachedResponseInterface from './CachedResponseInterface';
+export interface CachedResponseStorageData<T> {
+  id: string;
+  data: T;
+  timestamp: Date;
+}
 
-export default class CachedResponse implements CachedResponseInterface {
-  res: any;
+export default class CachedResponse<T> implements CachedResponseStorageData<T> {
+  id: string;
+  data: T;
   timestamp: Date;
 
-  constructor(public id: string) {
-    this.res = null;
+  constructor(id: string) {
+    this.id = id;
+    this.data = null;
     this.timestamp = null;
   }
 
   public validateDate(expiration: number): boolean {
-    if (this.timestamp === null || expiration === 0) return false;
-    if (this.res === null) return false;
+    if (this.timestamp === null || expiration === 0) {
+      console.log(`timestamp is null!`);
+      return false;
+    }
+    if (this.data === null) {
+      console.log(`data is null!`);
+      return false;
+    }
 
     const diff: number = +(this.timestamp) - +(new Date());
+
+    if (Number.isNaN(diff)) {
+      throw new Error('unexpected NaN value!');
+    }
+
     return (diff / 86400000) <= expiration;
   }
 
   public getCache(): boolean {
-    const cache: any = localStorage.getItem(this.id);
+    const cache: string = localStorage.getItem(this.id);
     if (cache === null) return false;
 
-    const parsedCache = JSON.parse(cache);
-    this.res = parsedCache.res;
-    this.timestamp = (() => {
-      if (parsedCache.timestamp === null) return null;
-      return new Date(parsedCache.timestamp);
-    })();
+    const parsedCache: CachedResponse<T> = JSON.parse(cache);
+    this.data = parsedCache.data;
+    this.timestamp = new Date(parsedCache.timestamp);
     return true;
   }
 
-  public getResponse(): any {
-    return this.res;
-  }
-
   public saveCache(): boolean {
-    if (this.res === null) return false;
+    if (this.data === null) return false;
 
     localStorage.setItem(this.id, JSON.stringify({
-      res: this.res,
+      data: this.data,
       timestamp: this.timestamp
     }));
     return true;

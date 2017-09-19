@@ -1,24 +1,34 @@
-import axios from 'axios';
+import axios, {AxiosRequestConfig} from 'axios';
 import CachedResponse from './CachedResponse';
 
-export default class CachedApi {
-  static async get(endpoint: string, expiration: number = 1): Promise<CachedResponse> {
-    const responseCache: CachedResponse = new CachedResponse(endpoint);
+export interface CachedApiConf {
+  id: string;
+  endpoint: string;
+  expiration: number;
+  axiosRequestConfig: AxiosRequestConfig
+}
+
+export class CachedApi {
+  static async get<T>(conf:CachedApiConf): Promise<CachedResponse<T>> {
+    const responseCache: CachedResponse<T> = new CachedResponse<T>(conf.id);
 
     const isCacheAvailable: boolean = responseCache.getCache();
-    if (!isCacheAvailable) return CachedApi.fetch(endpoint);
+    console.log('Checking availability!');
+    if (!isCacheAvailable) return CachedApi.fetch<T>(conf);
 
-    const isCacheNotExpired: boolean = responseCache.validateDate(expiration);
-    if (!isCacheNotExpired) return CachedApi.fetch(endpoint);
+    const isCacheNotExpired: boolean = responseCache.validateDate(conf.expiration);
+    console.log('Checking expires!');
+    if (!isCacheNotExpired) return CachedApi.fetch<T>(conf);
 
+    console.log('Cache used!');
     return responseCache;
   }
 
-  static async fetch(endpoint: string, params: any = {}): Promise<CachedResponse> {
-    const cr: CachedResponse = new CachedResponse(endpoint);
-    const result = await axios.get(endpoint, params);
+  static async fetch<T>(conf: CachedApiConf): Promise<CachedResponse<T>> {
+    const cr: CachedResponse<T> = new CachedResponse<T>(conf.id);
+    const result = await axios.get(conf.endpoint, conf.axiosRequestConfig);
 
-    cr.res = result.data;
+    cr.data = result.data;
     cr.setTimestamp(new Date());
     cr.saveCache();
 

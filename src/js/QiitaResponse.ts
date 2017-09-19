@@ -1,5 +1,4 @@
 export interface Article {
-  rendered_body: string;
   body: string;
   coediting: boolean;
   comments_count: number;
@@ -9,6 +8,7 @@ export interface Article {
   likes_count: number;
   private: boolean;
   reactions_count: number;
+  rendered_body: string;
   tags: Tag[];
   title: string;
   updated_at: Date;
@@ -24,9 +24,9 @@ export interface Tag {
 export interface User {
   description: string;
   facebook_id: string;
-  followees_count: number;
   followers_count: number;
   likes_count?: number;
+  url?: string;
   github_login_name: string;
   id: string;
   items_count: number;
