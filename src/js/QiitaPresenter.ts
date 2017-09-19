@@ -86,34 +86,55 @@ export class QiitaPresenter {
 
   renderArticles(): void {
     const callback: FragmentCreator = (template) => {
-      const fragment = document.createDocumentFragment();
-
-      // Shuffle articles
-      let list = this.conf.useShuffle ?
-        Util.shuffleArray<QiitaResponse.Article>(this.articles) :
-        this.articles.concat()
-      ;
-
-      // Slice articles
-      list = list.slice(0, this.conf.max);
-
-      // Sort articles
-      list = this.conf.sortByLike ?
-        Util.sortArray(list, 'likes_count') :
-        list
-      ;
-
-      list.forEach((item: QiitaResponse.Article) => {
-        // Except privates
-        if (item.private) return;
-
-        fragment.appendChild(this.createArticleFragment(template, item));
-      });
-
-      return fragment;
+      const orders =
+        this.createArticleOrderList<QiitaResponse.Article>(this.articles);
+      const articles =
+        this.createTargetArticleList<QiitaResponse.Article>(this.articles, orders);
+      return this.genArticleFragment(template, articles);
     };
 
     this.renderView(this.articleTemplate, this.articleDest, callback);
+  }
+
+  private genArticleFragment(template: HTMLTemplateElement, articles: QiitaResponse.Article[]): DocumentFragment {
+    const fragment = document.createDocumentFragment();
+
+    articles.forEach((item: QiitaResponse.Article) => {
+      // Except privates
+      if (item.private) return;
+      fragment.appendChild(this.createArticleFragment(template, item));
+    });
+
+    return fragment;
+  }
+
+  private createTargetArticleList<T>(source: T[], orders: number[]): T[] {
+    // Create a list of required articles
+    const articles = orders.map((val) => {
+      return source[val];
+    });
+
+    // Sort the list
+    if (this.conf.sortByLike) {
+      return Util.sortArray(articles, 'likes_count');
+    }
+
+    return articles;
+  }
+
+  private createArticleOrderList<T>(ary: T[]): number[] {
+    const makeOrder = () => {
+      return Array(ary.length).fill(0).map((v:number, i:number) => i);
+    };
+
+    // Shuffle article orders
+    const orders = this.conf.useShuffle ?
+      Util.shuffleArray<number>(makeOrder()) :
+      makeOrder()
+    ;
+
+    // Slice article orders
+    return orders.slice(0, this.conf.max);
   }
 
   private renderView(template: HTMLTemplateElement, dest: HTMLElement, callback: FragmentCreator):void {
