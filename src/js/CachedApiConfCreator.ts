@@ -1,23 +1,25 @@
 import {CachedApiConf} from "./CachedApi";
+import {QiitaWidgetConf} from "./QiitaWidget";
 
 export class CachedApiConfCreator {
 
   private conf: CachedApiConf;
 
-  constructor(endpoint: string, expiration: number, perPage: number = 0, page: number = 0) {
+  constructor(endpoint: string, conf: QiitaWidgetConf) {
     this.conf = {
       id: `${endpoint}?page=0`,
       endpoint: endpoint,
-      expiration: expiration,
+      expirationDay: conf.expirationDay,
       axiosRequestConfig: {
         params: {
           page: 0,
-          per_page: perPage
+          per_page: conf.perPage
         }
       }
     }
   }
 
+  // Return conf of a request for the next page
   getNextConf(): CachedApiConf {
     this.conf = this.countUp(this.conf);
     return this.conf;

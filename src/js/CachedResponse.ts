@@ -15,13 +15,11 @@ export default class CachedResponse<T> implements CachedResponseStorageData<T> {
     this.timestamp = null;
   }
 
-  public validateDate(expiration: number): boolean {
-    if (this.timestamp === null || expiration === 0) {
-      console.log(`timestamp is null!`);
+  validateDate(expirationDay: number): boolean {
+    if (this.timestamp === null || expirationDay === 0) {
       return false;
     }
     if (this.data === null) {
-      console.log(`data is null!`);
       return false;
     }
 
@@ -31,10 +29,10 @@ export default class CachedResponse<T> implements CachedResponseStorageData<T> {
       throw new Error('unexpected NaN value!');
     }
 
-    return (diff / 86400000) <= expiration;
+    return (diff / 86400000) <= expirationDay;
   }
 
-  public getCache(): boolean {
+  getCache(): boolean {
     const cache: string = localStorage.getItem(this.id);
     if (cache === null) return false;
 
@@ -44,7 +42,7 @@ export default class CachedResponse<T> implements CachedResponseStorageData<T> {
     return true;
   }
 
-  public saveCache(): boolean {
+  saveCache(): boolean {
     if (this.data === null) return false;
 
     localStorage.setItem(this.id, JSON.stringify({
@@ -54,7 +52,7 @@ export default class CachedResponse<T> implements CachedResponseStorageData<T> {
     return true;
   }
 
-  public setTimestamp(date: Date): void {
+  setTimestamp(date: Date): void {
     this.timestamp = date;
   }
 }

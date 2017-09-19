@@ -1,22 +1,52 @@
-import * as QiitaResponse from "./QiitaResponse";
+import * as QiitaResponse from './QiitaResponse';
+import * as Util from './Util';
 
-interface QiitaPresenterConfig {
+export interface QiitaPresenterParam {
+  useShuffle?: boolean;
+  sortByLike?: boolean;
+
+  userTemplate?: string;
+  userDest?: string;
+  articleTemplate?: string;
+  articleDest?: string;
+
+  max?: number;
+}
+
+interface QiitaPresenterConf {
+  useShuffle: boolean;
+  sortByLike: boolean;
+
   userTemplate: string;
   userDest: string;
   articleTemplate: string;
   articleDest: string;
+
+  max: number;
 }
 
 interface FragmentCreator {
   (template: HTMLTemplateElement): DocumentFragment;
 }
 
-export default class QiitaPresenter {
+export class QiitaPresenter {
+
+  static defaultConf: QiitaPresenterConf = {
+    useShuffle: false,
+    sortByLike: false,
+
+    userDest: '#qiita-user',
+    userTemplate: '#qiita-user-tpl',
+    articleDest: '#qiita-article',
+    articleTemplate: '#qiita-article-tpl',
+
+    max: 5
+  };
 
   articles: QiitaResponse.Article[];
   user: QiitaResponse.User;
 
-  private conf: QiitaPresenterConfig;
+  private conf: QiitaPresenterConf;
 
   private userTemplate: HTMLTemplateElement;
   private articleTemplate: HTMLTemplateElement;
@@ -24,10 +54,11 @@ export default class QiitaPresenter {
   private userDest: HTMLElement;
   private articleDest: HTMLElement;
 
-  constructor(conf: QiitaPresenterConfig) {
+  constructor(conf: QiitaPresenterParam) {
+
     this.articles = [];
     this.user = null;
-    this.conf = conf;
+    this.conf = Object.assign({}, QiitaPresenter.defaultConf, conf);
 
     this.userTemplate = <HTMLTemplateElement>document.querySelector(this.conf.userTemplate);
     this.userDest = <HTMLElement>document.querySelector(this.conf.userDest);
@@ -42,18 +73,6 @@ export default class QiitaPresenter {
   }
 
   renderUser(): void {
-    if (typeof this.user.likes_count === 'undefined') {
-      if (this.user.likes_count !== null) {
-        this.user.likes_count = this.countAllLikes();
-      }
-    }
-
-    if (typeof this.user.url === 'undefined') {
-      if (this.user.url !== null) {
-        this.user.url = `https://qiita.com/${this.user.id}`;
-      }
-    }
-
     const callback: FragmentCreator = (template) => {
       const fragment: DocumentFragment = document.importNode(template.content, true);
       Object.entries(this.user).forEach((kv: any[]) => {
@@ -69,9 +88,25 @@ export default class QiitaPresenter {
     const callback: FragmentCreator = (template) => {
       const fragment = document.createDocumentFragment();
 
-      this.articles.forEach((item: QiitaResponse.Article) => {
+      // Shuffle articles
+      let list = this.conf.useShuffle ?
+        Util.shuffleArray<QiitaResponse.Article>(this.articles) :
+        this.articles.concat()
+      ;
+
+      // Slice articles
+      list = list.slice(0, this.conf.max);
+
+      // Sort articles
+      list = this.conf.sortByLike ?
+        Util.sortArray(list, 'likes_count') :
+        list
+      ;
+
+      list.forEach((item: QiitaResponse.Article) => {
         // Except privates
         if (item.private) return;
+
         fragment.appendChild(this.createArticleFragment(template, item));
       });
 
@@ -119,7 +154,7 @@ export default class QiitaPresenter {
   private fillContent(key: string, content: any, template: HTMLElement): void {
     // Do nothing if content is unavailable.
     if (typeof content === 'undefined') return;
-    const val = (typeof content === 'number') ? this.numToString(content) : content;
+    const val = (typeof content === 'number') ? Util.numToString(content) : content;
     if (content === null) return;
 
     switch (key) {
@@ -145,8 +180,4 @@ export default class QiitaPresenter {
     }
   }
 
-  private numToString(num: number): string {
-    if (Number.isNaN(num)) return null;
-    return num + '';
-  }
 }
