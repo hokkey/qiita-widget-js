@@ -1,8 +1,4 @@
-export interface CachedResponseStorageData<T> {
-  id: string;
-  data: T;
-  timestamp: Date;
-}
+import {CachedResponseStorageData} from "./Interface";
 
 export default class CachedResponse<T> implements CachedResponseStorageData<T> {
   id: string;

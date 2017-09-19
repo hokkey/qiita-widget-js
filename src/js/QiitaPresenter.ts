@@ -1,33 +1,5 @@
-import * as QiitaResponse from './QiitaResponse';
 import * as Util from './Util';
-
-export interface QiitaPresenterParam {
-  useShuffle?: boolean;
-  sortByLike?: boolean;
-
-  userTemplate?: string;
-  userDest?: string;
-  articleTemplate?: string;
-  articleDest?: string;
-
-  max?: number;
-}
-
-interface QiitaPresenterConf {
-  useShuffle: boolean;
-  sortByLike: boolean;
-
-  userTemplate: string;
-  userDest: string;
-  articleTemplate: string;
-  articleDest: string;
-
-  max: number;
-}
-
-interface FragmentCreator {
-  (template: HTMLTemplateElement): DocumentFragment;
-}
+import {FragmentCreator, QiitaPresenterConf, QiitaPresenterParam, QiitaResponse} from "./Interface";
 
 export class QiitaPresenter {
 

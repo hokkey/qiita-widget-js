@@ -1,12 +1,6 @@
 import axios, {AxiosRequestConfig, AxiosResponse} from 'axios';
 import CachedResponse from './CachedResponse';
-
-export interface CachedApiConf {
-  id: string;
-  endpoint: string;
-  expirationDay: number;
-  axiosRequestConfig: AxiosRequestConfig,
-}
+import {CachedApiConf} from "./Interface";
 
 export class CachedApi {
 

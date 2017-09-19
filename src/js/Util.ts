@@ -7,12 +7,10 @@ export function shuffleArray<T>(source: T[]): T[] {
   const array = source.concat();
 
   let n: number = array.length;
-  let i: number;
-  let t: any;
 
   while (n) {
-    i = Math.floor(Math.random() * n--);
-    t = array[n];
+    const i = Math.floor(Math.random() * n--);
+    const t = array[n];
     array[n] = array[i];
     array[i] = t;
   }

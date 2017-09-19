@@ -1,22 +1,8 @@
+import {QiitaResponse, QiitaWidgetConf, QiitaWidgetParam} from "./Interface";
+import {QiitaPresenter} from "./QiitaPresenter";
+import {CachedApiConfCreator} from "./CachedApiConfCreator";
 import CachedResponse from "./CachedResponse";
 import {CachedApi} from "./CachedApi";
-import {CachedApiConfCreator} from "./CachedApiConfCreator";
-import * as QiitaResponse from "./QiitaResponse";
-import {QiitaPresenter, QiitaPresenterParam} from "./QiitaPresenter";
-
-export interface QiitaWidgetParam extends QiitaPresenterParam {
-  userId?: string;
-  perPage?: number;
-  expirationDay?: number;
-  maxRequest?: number;
-}
-
-export interface QiitaWidgetConf extends QiitaWidgetParam {
-  userId: string;
-  perPage: number;
-  expirationDay: number;
-  maxRequest: number;
-}
 
 export class QiitaWidget {
 
