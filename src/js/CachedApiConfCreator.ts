@@ -29,7 +29,7 @@ export class CachedApiConfCreator {
     const nextPage = page + 1;
 
     return Object.assign({}, conf, {
-      id: `${conf.endpoint}?page=${nextPage}}`,
+      id: `${conf.endpoint}?page=${nextPage}`,
       axiosRequestConfig: {
         params: {
           page: nextPage
