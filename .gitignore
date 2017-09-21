@@ -1,7 +1,3 @@
 .idea
-.sass-cache
-.DS_Store
-node_modules/*
-!node_modules/generator-ejsbemplate/
-public
-guide
+node_modules
+*.map
