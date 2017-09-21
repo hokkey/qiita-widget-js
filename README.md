@@ -1,9 +1,13 @@
-# Qiita Widget Js
+# Qiita Widget JS
 
 QiitaAPIv2を通じてQiitaのユーザー情報を表示するTypeScript製ウィジェット。
 単体で動作するiframe版と、柔軟にカスタマイズできるライブラリ版があります。
 
 ## iframe版
+
+[ライブデモ](https://codepen.io/hokkey/pen/RLRzEE?editors=1000)
+
+![](https://user-images.githubusercontent.com/6197292/30715017-e1307794-9f4f-11e7-92c3-07323bb71e47.png)
 
 ```html
 <div class="js-qiita-widget"
@@ -14,7 +18,7 @@ QiitaAPIv2を通じてQiitaのユーザー情報を表示するTypeScript製ウ�
   data-max-request="10"
   data-max="5">
 </div>
-<script src="./iframe.js"></script>
+<script src="https://cdn.rawgit.com/hokkey/qiita-widget-js/25065fa2/dist/iframe.js"></script>
 ```
 
 ## ライブラリ版
@@ -69,7 +73,7 @@ new QiitaWidget({
   userDest: '#qiita-user',
   articleTemplate: '#qiita-article-tpl',
   articleDest: '#qiita-article'
-});
+}).init();
 ```
 
 ## オプション
@@ -88,6 +92,8 @@ new QiitaWidget({
 - デザインの拡充
 - エラー処理
 - ユニットテストの追加
+- ドキュメントの拡充
+- npmへの公開
 
 ## Author
 
