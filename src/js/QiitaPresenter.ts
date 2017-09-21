@@ -5,14 +5,14 @@ export class QiitaPresenter {
 
   static defaultConf: QiitaPresenterConf = {
     useShuffle: false,
-    sortByLike: false,
+    sortByLike: true,
 
     userDest: '#qiita-user',
     userTemplate: '#qiita-user-tpl',
     articleDest: '#qiita-article',
     articleTemplate: '#qiita-article-tpl',
 
-    max: 5
+    max: 10
   };
 
   articles: QiitaResponse.Article[];
@@ -81,13 +81,19 @@ export class QiitaPresenter {
   }
 
   private createTargetArticleList<T>(source: T[], orders: number[]): T[] {
+    // Sort the list if not it using shuffle
+    let articles = (this.conf.sortByLike && !this.conf.useShuffle)
+      ? Util.sortArray(source, 'likes_count')
+      : source
+    ;
+
     // Create a list of required articles
-    const articles = orders.map((val) => {
+    articles = orders.map((val) => {
       return source[val];
     });
 
-    // Sort the list
-    if (this.conf.sortByLike) {
+    // Sort the list if it using shuffle
+    if (this.conf.sortByLike && this.conf.useShuffle) {
       return Util.sortArray(articles, 'likes_count');
     }
 
@@ -154,9 +160,13 @@ export class QiitaPresenter {
 
     // values to set as href
     case 'url':
-    case 'profile-image-url':
     case 'website_url':
       template.setAttribute('href', val);
+      break;
+
+    // values to set as src
+    case 'profile_image_url':
+      template.setAttribute('src', val);
       break;
 
     case 'tags':

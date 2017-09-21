@@ -2,56 +2,15 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>tstest</title>
-  <link rel="stylesheet" href="./style.css">
+  <title>qiita-widget-js</title>
 </head>
 <body>
 
-<div id="qiita-user"></div>
-<ul id="qiita-article"></ul>
+<div class="js-qiita-widget"
+  data-user-id="y_hokkey"
+  data-max="10">
+</div>
+<script src="./iframe.js"></script>
 
-<template id="qiita-user-tpl">
-  <p class="qiita-user__id js-id"></p>
-  <p class="qiita-user__likes">
-    <span class="qiita=user__like-num js-likes-count"></span>
-    <span class="qiita-user__like-unit">LIKE</span>
-  </p>
-  <p class="qiita-user__items">
-    <span class="qiita=user__item-num js-items-count"></span>
-  </p>
-</template>
-
-<template id="qiita-article-tpl">
-  <li class="qiita-article">
-    <a class="qiita-article__link js-url" target="_blank">
-      <h3 class="qiita-article__title js-title"></h3>
-      <p class="qiita-article__likes">
-        <span class="qiita-article__num js-likes-count"></span>
-        <span class="qiita-article__unit">LIKE</span>
-      </p>
-      <ul class="qiita-article__tags js-tags"></ul>
-    </a>
-  </li>
-</template>
-
-
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="./app.js"></script>
-<script>
-  (function() {
-
-    var widget = new QiitaWidget({
-      userId: 'y_hokkey',
-      useShuffle: true,
-      sortByLike: true,
-      expirationDay: 1,
-      perPage: 20,
-      max: 5
-    });
-
-    widget.init();
-
-  })();
-</script>
 </body>
 </html>

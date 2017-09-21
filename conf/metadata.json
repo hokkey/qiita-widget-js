@@ -1,9 +1,0 @@
-{
-  "siteName": "SITE_NAME_HERE",
-  "viewport": "width=device-width,initial-scale=1.0",
-  "ogLocale": "ja_JP",
-  "ogUrl": "",
-  "ogImage": "assets/images/ogp.png",
-  "ogAppId": "INSERT_YOUR_APPID",
-  "gmapKey": "INSERT_YOUR_GMAP_KEY"
-}

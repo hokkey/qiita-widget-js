@@ -19,7 +19,7 @@ if (!DEBUG) {
   );
 }
 
-module.exports = {
+module.exports = [{
   entry: ['./src/css/style.scss', './src/js/QiitaWidget.ts'],
 
   output: {
@@ -75,4 +75,33 @@ module.exports = {
     ]
   }
 
-};
+}, {
+  entry: ['./src/js/iframe.ts'],
+
+  output: {
+    filename: 'iframe.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
+
+  externals: {
+    'axios': 'axios'
+  },
+
+  resolve: {
+    extensions: ['.ts', '.json', '.js'],
+    modules: ['node_modules', path.resolve(__dirname, 'src/js')]
+  },
+
+  plugins: plugins,
+  devtool: DEBUG ? 'sourcemap' : false,
+
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/
+      }
+    ]
+  }
+}];

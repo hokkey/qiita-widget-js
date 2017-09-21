@@ -1,5 +1,5 @@
 {
-  "name": "practice-of-ts",
+  "name": "qiita-widget-js",
   "main": "dist/app.js",
   "version": "0.0.1",
   "description": "",
@@ -26,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:hokkey/practice-of-ts.git"
+    "url": "git@github.com:hokkey/qiita-widget-js.git"
   },
   "author": "Yuma Hori",
   "license": "MIT",
