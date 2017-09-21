@@ -2,7 +2,6 @@
   "compilerOptions": {
     "module": "es6",
     "target": "es5",
-    "outDir": "public/assets/js",
     "sourceMap": false,
     "lib": [
       "es2015",
@@ -13,9 +12,6 @@
     "removeComments": true,
     "preserveConstEnums": true,
     "baseUrl": ".",
-    "rootDirs": [
-      "./src/js",
-    ],
     "paths": {
       "axios": [
         "node_modules/axios/dist/axios",
@@ -23,14 +19,7 @@
       ]
     }
   },
-  "include": [
-    "./src/js/**/*"
-  ],
   "exclude": [
     "node_modules",
-    "**/*.spec.ts"
-  ],
-  "files": [
-    "src/js/app.ts"
   ]
 }

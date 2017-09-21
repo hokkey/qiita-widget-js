@@ -4,7 +4,7 @@ import {CachedApiConfCreator} from "./CachedApiConfCreator";
 import CachedResponse from "./CachedResponse";
 import {CachedApi} from "./CachedApi";
 
-export class QiitaWidget {
+class QiitaWidget {
 
   static defaultConf: QiitaWidgetConf = {
     userId: 'qiita',
@@ -83,3 +83,5 @@ export class QiitaWidget {
     this.presenter.user.url = `https://qiita.com/${this.presenter.user.id}`;
   }
 }
+
+export default QiitaWidget;

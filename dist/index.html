@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>tstest</title>
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
@@ -33,6 +34,24 @@
   </li>
 </template>
 
-<script src="./assets/js/app.js"></script>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="./app.js"></script>
+<script>
+  (function() {
+
+    var widget = new QiitaWidget({
+      userId: 'y_hokkey',
+      useShuffle: true,
+      sortByLike: true,
+      expirationDay: 1,
+      perPage: 20,
+      max: 5
+    });
+
+    widget.init();
+
+  })();
+</script>
 </body>
 </html>

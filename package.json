@@ -1,34 +1,34 @@
 {
-  "name": "ejsbemplate",
+  "name": "practice-of-ts",
+  "main": "dist/app.js",
   "version": "0.0.1",
   "description": "",
   "dependencies": {},
   "devDependencies": {
-    "@types/axios": "^0.14.0",
-    "@types/jquery": "^3.2.12",
+    "@types/node": "^8.0.28",
+    "autoprefixer": "^7.1.4",
     "axios": "^0.16.2",
-    "jquery": "^3.2.1",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.0",
     "js-beautify": "^1.6.14",
+    "node-sass": "^4.5.3",
+    "postcss-loader": "^2.0.6",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
     "svg-sprite": "^1.3.7",
     "svg4everybody": "^2.1.8",
-    "ts-loader": "^2.3.4",
+    "ts-loader": "^2.3.7",
     "typescript": "^2.5.2",
-    "yo": "^2.0.0"
+    "webpack": "^3.6.0"
   },
   "scripts": {
-    "start": "frp build && frp serve -t",
-    "test": "frp task test",
-    "build": "frp build && npm run svgsprite",
-    "serve": "frp serve",
-    "production": "frp build -p && npm run svgsprite && ./beautify.sh",
-    "changelog": "conventional-changelog -p eslint -i CHANGELOG.md -w -s -r 0",
     "svgsprite": "svg-sprite -C conf/svg-icons.json --shape-transform-svgo conf/svgo.json src/svg-icons/*.svg"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:frontainer/frontplate.git"
+    "url": "git@github.com:hokkey/practice-of-ts.git"
   },
-  "author": "frontainer",
+  "author": "Yuma Hori",
   "license": "MIT",
   "private": true
 }
