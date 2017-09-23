@@ -78,6 +78,8 @@ class QiitaWidget {
       return result.concat(article.data);
     }, []);
 
+    console.log(this.presenter.articles.length);
+
     this.presenter.user = Object.assign({}, this.dataList[0].data[0].user);
     this.presenter.user.likes_count = this.presenter.countAllLikes();
     this.presenter.user.url = `https://qiita.com/${this.presenter.user.id}`;

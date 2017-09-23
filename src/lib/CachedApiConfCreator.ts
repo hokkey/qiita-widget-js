@@ -32,7 +32,8 @@ export class CachedApiConfCreator {
       id: `${conf.endpoint}?page=${nextPage}`,
       axiosRequestConfig: {
         params: {
-          page: nextPage
+          page: nextPage,
+          per_page: this.conf.axiosRequestConfig.params.per_page
         }
       }
     });

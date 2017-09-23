@@ -5,11 +5,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const DEBUG = !process.argv.includes('--env.production');
 
 const plugins = [
-  new webpack.optimize.OccurrenceOrderPlugin(),
-  new ExtractTextPlugin({
-    filename: 'style.css',
-    allChunks: true
-  })
+  new webpack.optimize.OccurrenceOrderPlugin()
 ];
 
 if (!DEBUG) {
@@ -19,45 +15,119 @@ if (!DEBUG) {
   );
 }
 
-module.exports = [{
-  entry: ['./src/css/style.scss', './src/js/QiitaWidget.ts'],
+module.exports = [
 
-  output: {
-    filename: 'app.js',
-    path: path.resolve(__dirname, 'dist'),
-    library: 'QiitaWidget',
-    libraryTarget: 'umd',
-    libraryExport: 'default',
-    umdNamedDefine: true
+  // Library Build
+  {
+    entry: ['./src/lib/QiitaWidget.ts'],
+
+    output: {
+      filename: 'lib.js',
+      path: path.resolve(__dirname, 'dist'),
+      library: 'QiitaWidget',
+      libraryTarget: 'umd',
+      libraryExport: 'default',
+      umdNamedDefine: true
+    },
+
+    externals: {
+      'axios': 'axios'
+    },
+
+    resolve: {
+      extensions: ['.ts', '.json', '.js'],
+      modules: ['node_modules', path.resolve(__dirname, 'src/js')]
+    },
+
+    plugins: plugins,
+    devtool: DEBUG ? 'sourcemap' : false,
+
+    module: {
+      rules: [
+        {
+          test: /\.tsx?$/,
+          use: 'ts-loader',
+          exclude: /node_modules/
+        }
+      ]
+    }
   },
 
-  externals: {
-    'axios': 'axios'
+  // CSS Build
+  {
+    entry:['./src/css/style.scss'],
+
+    output: {
+      filename: 'style.css',
+      path: path.resolve(__dirname, 'dist')
+    },
+
+    plugins: [
+      new ExtractTextPlugin({
+        filename: 'style.css',
+        allChunks: true
+      })
+    ],
+
+    module: {
+      rules: [
+        {
+          test: /\.scss$/,
+          use: ExtractTextPlugin.extract({
+              fallback: 'style-loader',
+              use: [{
+                loader: "css-loader",
+                options: {
+                  minimize: !DEBUG,
+                  sourceMap: DEBUG
+                }
+              }, {
+                loader: 'postcss-loader',
+                options: {
+                  plugins: (loader) => [
+                    require('autoprefixer'),
+                  ]
+                }
+              }, {
+                loader: 'sass-loader'
+              }]
+            }
+          )
+        }
+      ]
+    }
   },
 
-  resolve: {
-    extensions: ['.ts', '.json', '.js'],
-    modules: ['node_modules', path.resolve(__dirname, 'src/js')]
-  },
+  // Iframe source build
+  {
+    entry: ['./src/iframe.ts'],
 
-  plugins: plugins,
-  devtool: DEBUG ? 'sourcemap' : false,
+    output: {
+      filename: 'iframe.js',
+      path: path.resolve(__dirname, 'dist'),
+    },
 
-  module: {
-    rules: [
-      {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/
-      },
-      {
-        test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
+    resolve: {
+      extensions: ['.ts', '.json', '.js', '.scss'],
+      modules: ['node_modules', path.resolve(__dirname, 'src')]
+    },
+
+    plugins: plugins,
+    devtool: DEBUG ? 'sourcemap' : false,
+
+    module: {
+      rules: [
+        {
+          test: /\.tsx?$/,
+          use: 'ts-loader',
+          exclude: /node_modules/
+        },
+        {
+          test: /\.scss$/,
           use: [{
             loader: "css-loader",
             options: {
-              minimize: true,
+              minimize: !DEBUG,
               sourceMap: DEBUG
             }
           }, {
@@ -71,37 +141,6 @@ module.exports = [{
             loader: 'sass-loader'
           }]
         }
-      )}
-    ]
-  }
-
-}, {
-  entry: ['./src/js/iframe.ts'],
-
-  output: {
-    filename: 'iframe.js',
-    path: path.resolve(__dirname, 'dist'),
-  },
-
-  externals: {
-    'axios': 'axios'
-  },
-
-  resolve: {
-    extensions: ['.ts', '.json', '.js'],
-    modules: ['node_modules', path.resolve(__dirname, 'src/js')]
-  },
-
-  plugins: plugins,
-  devtool: DEBUG ? 'sourcemap' : false,
-
-  module: {
-    rules: [
-      {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/
-      }
-    ]
-  }
+      ]
+    }
 }];

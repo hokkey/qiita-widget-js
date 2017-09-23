@@ -3,7 +3,9 @@
   "main": "dist/app.js",
   "version": "0.0.1",
   "description": "",
-  "dependencies": {},
+  "dependencies": {
+    "webpack": "^3.6.0"
+  },
   "devDependencies": {
     "@types/node": "^8.0.28",
     "autoprefixer": "^7.1.4",
@@ -17,10 +19,12 @@
     "svg-sprite": "^1.3.7",
     "svg4everybody": "^2.1.8",
     "ts-loader": "^2.3.7",
-    "typescript": "^2.5.2",
-    "webpack": "^3.6.0"
+    "typescript": "^2.5.2"
   },
   "scripts": {
+    "build": "webpack",
+    "production": "webpack -p",
+    "serve": "webpack --watch -d & browser-sync start --config bs-config.js",
     "svgsprite": "svg-sprite -C conf/svg-icons.json --shape-transform-svgo conf/svgo.json src/svg-icons/*.svg"
   },
   "repository": {
