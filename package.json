@@ -1,7 +1,7 @@
 {
   "name": "qiita-widget-js",
-  "main": "dist/app.js",
-  "version": "0.0.1",
+  "main": "dist/lib.js",
+  "version": "0.0.2",
   "description": "",
   "dependencies": {
     "webpack": "^3.6.0"

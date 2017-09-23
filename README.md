@@ -12,13 +12,14 @@ QiitaAPIv2を通じてQiitaのユーザー情報を表示するTypeScript製ウ�
 ```html
 <div class="js-qiita-widget"
   data-user-id="qiita"
-  data-use-shuffle="false"
+  data-use-shuffle="true"
+  data-sort-by-like="true"
   data-per-page="30"
-  data-cache-expiration-day="1"
+  data-expiration-day="1"
   data-max-request="10"
   data-max="5">
 </div>
-<script src="https://cdn.rawgit.com/hokkey/qiita-widget-js/25065fa2/dist/iframe.js"></script>
+<script src="https://cdn.rawgit.com/hokkey/qiita-widget-js/be967c4f/dist/iframe.js"></script>
 ```
 
 ## ライブラリ版
@@ -27,7 +28,7 @@ QiitaAPIv2を通じてQiitaのユーザー情報を表示するTypeScript製ウ�
 
 ```html:index.html
 
-<section>
+<section class="qiita-widget">
   <header class="qiita-widget__header qiita-user" id="qiita-user"></header>
   <section class="qiita-widget__articles">
     <h2 class="qiita-widget__articles-head">人気の投稿</h2>
@@ -62,18 +63,21 @@ QiitaAPIv2を通じてQiitaのユーザー情報を表示するTypeScript製ウ�
   </li>
 </template>
 
-<script src="app.js"></script>
-```
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.rawgit.com/hokkey/qiita-widget-js/be967c4f/dist/lib.js"></script>
 
-```js:app.js
-import QiitaWidget from 'QiitaWidget';
-new QiitaWidget({
-  userId: 'qiita',
-  userTemplate: '#qiita-user-tpl',
-  userDest: '#qiita-user',
-  articleTemplate: '#qiita-article-tpl',
-  articleDest: '#qiita-article'
-}).init();
+<script>
+  (function () {
+    new QiitaWidget({
+      userId: 'qiita',
+      useShuffle: true,
+      sortByLike: true,
+      expirationDay: 1,
+      perPage: 100,
+      max: 5
+    }).init();
+  })();
+</script>
 ```
 
 ## オプション
