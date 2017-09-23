@@ -1,6 +1,25 @@
 import {CachedApiConf, QiitaWidgetConf} from "./Interface";
+import {isType} from "./Util";
 
 export class CachedApiConfCreator {
+
+  static validateConf(conf: CachedApiConf): void {
+    if (!isType(conf.id, 'string')) {
+      throw new TypeError('id must be a string!');
+    }
+
+    if (!isType(conf.endpoint, 'string')) {
+      throw new TypeError('endpoint must be a string!');
+    }
+
+    if (!isType(conf.axiosRequestConfig.params.page, 'number')) {
+      throw new TypeError('page param is not available!');
+    }
+
+    if (!isType(conf.axiosRequestConfig.params.per_page, 'number')) {
+      throw new TypeError('per_page param is not available!');
+    }
+  }
 
   private conf: CachedApiConf;
 
@@ -21,6 +40,7 @@ export class CachedApiConfCreator {
   // Return conf of a request for the next page
   getNextConf(): CachedApiConf {
     this.conf = this.countUp(this.conf);
+    CachedApiConfCreator.validateConf(this.conf);
     return this.conf;
   }
 

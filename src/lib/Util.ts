@@ -42,3 +42,12 @@ export function sortArray(source: any[], sortKey: string): any[] {
     return 0;
   });
 }
+
+export function isType(obj: any, type: string): boolean {
+  const t = Object.prototype.toString.call(obj).toLowerCase();
+  return t === `[object ${type.toLowerCase()}]`;
+}
+
+export function toBoolean(str: string): boolean {
+  return str.toLowerCase() === "true";
+}

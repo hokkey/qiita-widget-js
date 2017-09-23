@@ -12,14 +12,14 @@ export class CachedApi {
     // Force fetch from the server
     if (conf.expirationDay === 0) return CachedApi.fetch<T>(conf, cr);
 
-    // Try to use localStorage
+    // Try to get from localStorage
     const isCacheAvailable: boolean = cr.getCache();
     if (!isCacheAvailable) return CachedApi.fetch<T>(conf, cr);
 
     const isCacheNotExpired: boolean = cr.validateDate(conf.expirationDay);
     if (!isCacheNotExpired) return CachedApi.fetch<T>(conf, cr);
 
-    // Return cache
+    // Return the cache
     return cr;
   }
 
@@ -31,7 +31,11 @@ export class CachedApi {
     const result: AxiosResponse = await axios.get(conf.endpoint, conf.axiosRequestConfig);
     cr.data = result.data;
     cr.setTimestamp(new Date());
-    cr.saveCache();
+
+    // Save to local storage
+    if (conf.expirationDay > 0) {
+      cr.saveCache();
+    }
 
     return cr;
   }
