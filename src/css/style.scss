@@ -3,15 +3,16 @@
 @import 'mixin/util';
 
 $color-link: #337ab7;
+$color-qiita: #59bb0c;
+
+.header {
+  background-color: $color-qiita;
+  color: white;
+}
 
 .qiita-widget {
 
-  p, ol, ul, a, li, h2, h3 {
-    line-height: 1.1;
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-
+  line-height: 1.1;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Hiragino Kaku Gothic ProN, "メイリオ", meiryo, sans-serif;
 
   a:link, a:visited {
@@ -31,6 +32,7 @@ $color-link: #337ab7;
     font-size: 14px;
     font-weight: 700;
     margin-bottom: 10px;
+    margin-top: 0;
   }
 
   &__articles {
@@ -46,11 +48,21 @@ $color-link: #337ab7;
     width: 60px;
     height: 60px;
     margin-right: 5px;
+    margin-bottom: 0;
   }
 
   &__id {
     font-size: 16px;
+    font-weight: 700;
+    margin-top: 0;
     margin-bottom: 3px;
+  }
+
+  &__likes,
+  &__followers,
+  &__items {
+    margin-top: 0;
+    margin-bottom: 2px;
   }
 
   &__likes-num,
@@ -73,12 +85,12 @@ $color-link: #337ab7;
 }
 
 .qiita-article {
-  &__title {
+
+  .qiita-article__title {
     font-size: 13px;
     line-height: 1.42857;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
     font-weight: normal;
-
     margin-top: 0;
 
     &:before {

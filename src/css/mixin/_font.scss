@@ -7,11 +7,11 @@
   @return strip-units($px)/strip-units($base-px);
 }
 
-@function calc-px-to-rem($px, $base-px: $root-font-size) {
+@function calc-px-to-rem($px, $base-px: 16px) {
   @return calc-font-size-ratio($px, $base-px) + 0rem;
 }
 
-@mixin set-rem-font-size($px, $base-px: $root-font-size) {
+@mixin set-rem-font-size($px, $base-px: 16px) {
   //font-size: $px;
   font-size: calc-px-to-rem($px, $base-px);
 }
