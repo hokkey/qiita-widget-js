@@ -20,7 +20,7 @@ module.exports = {
         }
     },
     "files": [
-      './dist/**/*'
+      './docs/**/*'
     ],
     "watchEvents": [
         "change"

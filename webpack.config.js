@@ -106,7 +106,7 @@ module.exports = [
 
     output: {
       filename: 'iframe.js',
-      path: path.resolve(__dirname, 'dist'),
+      path: path.resolve(__dirname, 'docs'),
     },
 
     resolve: {
