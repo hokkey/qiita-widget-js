@@ -5,8 +5,16 @@
   <title>Qiita Widget JS</title>
   <link rel="stylesheet" href="https://bootswatch.com/4-alpha/cosmo/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../dist/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+
+    .header {
+      background-color: #59bb0c;
+      color: white;
+    }
+
+  </style>
 </head>
 <body>
 
@@ -22,8 +30,8 @@
     <div class="row">
 
       <div class="col text-center">
-        <h3 class="h4">あなたの「いいね」数を表示</h3>
-        <p>APIからは直接提供されていない、<br />ユーザーの「いいね」数を表示します。</p>
+        <h3 class="h4">合計「いいね」数を表示</h3>
+        <p>APIからは直接提供されていない、<br />投稿の合計「いいね」数を表示します。</p>
       </div>
 
       <div class="col text-center">
@@ -48,11 +56,11 @@
     <div class="col">
       <p>ウィジェットを表示したい場所へ以下のコードをペーストしてください。</p>
       <pre><code>&lt;div class=&quot;js-qiita-widget&quot;
-  data-user-id=&quot;y_hokkey&quot;
+  data-user-id=&quot;qiita&quot;
+  data-height=&quot;auto&quot;
   data-use-shuffle=&quot;false&quot;
   data-per-page=&quot;100&quot;
-  data-cache-expiration-day=&quot;1&quot;
-  data-max-request=&quot;5&quot;
+  data-expiration-day=&quot;1&quot;
   data-max=&quot;5&quot;&gt;&lt;/div&gt;
 &lt;script src=&quot;./iframe.js&quot;&gt;&lt;/script&gt;</code></pre>
     </div>
@@ -62,23 +70,23 @@
         <div class="card-block">
           <div class="js-qiita-widget"
             data-user-id="qiita"
+            data-height="auto"
             data-use-shuffle="false"
             data-sort-by-like="true"
             data-per-page="100"
             data-expiration-day="1"
-            data-max-request="5"
             data-max="5"></div>
-          <script src="./iframe.js"></script>
+          <script src="../dist/iframe.js"></script>
         </div>
       </div>
     </div>
   </div>
 
   <h2>ライブラリ版の使い方</h2>
-  <p>以下のコードをbody要素内の好きなところへペーストしてください。必要に応じ、クラス名や要素の順番は自由に変更できます。</p>
+  <p>1. 以下のコードをbody要素内の好きなところへペーストしてください。必要に応じ、要素の順番や有無を自由にカスタマイズできます。</p>
 
   <p class="alert alert-dismissible alert-info">
-    template要素は画面には表示されません。</p>
+    template要素はJavaScriptによる初期化が完了するまで画面には表示されません。</p>
 
   <p class="alert alert-dismissible alert-danger">
     <strong>js-で始まるクラス名</strong>はデータとテンプレートの紐付けに使われているため、変更しないでください。 </p>
@@ -112,11 +120,7 @@
 &lt;/template&gt;
 &lt;!-- HTMLテンプレート --&gt;</code></pre>
 
-  <p>ウィジェットを表示したい位置へ以下のコードをペーストしてください。クラス名や要素の順番は自由に変更できます。</p>
-
-  <div class="alert alert-dismissible alert-info">
-    ウィジェットの挿入位置はidによって制御されています。idはQiitaWidgetの初期化パラメータから変更できます。
-  </div>
+  <p>2. ウィジェットを表示したい位置へ以下のコードをペーストしてください。クラス名や要素の順番は自由に変更できます。</p>
 
   <pre><code class="html">&lt;section class=&quot;qiita-widget&quot;&gt;
   &lt;header class=&quot;qiita-widget__header qiita-user&quot; id=&quot;qiita-user&quot;&gt;&lt;/header&gt;
@@ -125,78 +129,31 @@
   &lt;ul id=&quot;qiita-article&quot; class=&quot;qiita-article-list&quot;&gt;&lt;/ul&gt;
 &lt;/section&gt;</code></pre>
 
-  <p>最後に、body要素の最後へ以下のコードをペーストしてください。</p>
+  <div class="alert alert-dismissible alert-info">
+    ウィジェットの挿入位置はidによって制御されています。idはQiitaWidgetの初期化パラメータから変更できます。
+  </div>
+
+  <p>3. 最後に、body要素の最下部へ以下のコードをペーストしてください。</p>
 
   <pre><code class="html">&lt;script src=&quot;https://unpkg.com/axios/dist/axios.min.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;./lib.js&quot;&gt;&lt;/script&gt;
 &lt;script&gt;
 (function () {
   new QiitaWidget({
-  userId: 'y_hokkey',
-  useShuffle: false,
-  sortByLike: true,
-  expirationDay: 1,
-  perPage: 100,
-  max: 5
+  userId: 'qiita',   // QiitaのユーザーID
+  useShuffle: false, // trueで表示記事をランダムに選択する
+  sortByLike: true,  // trueで投稿を「いいね」数順でソートする
+  max: 5             // 最終的に表示する記事の件数
+  expirationDay: 1,  // JSONレスポンスのキャッシュ有効日数(0でキャッシュ無効化)
+  perPage: 100,      // 一度のリクエストで取得する記事数(1〜100)
   }).init();
 })();
 &lt;/script&gt;</code></pre>
 
 </div>
 
-
-<!--<section class="qiita-widget">-->
-  <!--<header class="qiita-widget__header qiita-user" id="qiita-user"></header>-->
-  <!--<section class="qiita-widget__articles">-->
-    <!--<h2 class="qiita-widget__articles-head">人気の投稿</h2>-->
-    <!--<ul id="qiita-article" class="qiita-article-list"></ul>-->
-  <!--</section>-->
-<!--</section>-->
-
-<template id="qiita-user-tpl">
-  <p class="qiita-user__image"><img class="qiita-user__img js-profile-image-url" src="" alt="" /></p>
-
-  <div class="qiita-user__title">
-    <a class="qiita-user__url js-url" target="_blank"><h1 class="qiita-user__id js-id"></h1></a>
-
-    <p class="qiita-user__items">
-      <span class="qiita-user__items-num js-items-count"></span>
-      <span class="qiita-user__items-unit">Items</span>
-    </p>
-
-    <p class="qiita-user__likes">
-      <span class="qiita-user__likes-num js-likes-count"></span>
-      <span class="qiita-user__likes-unit">Contribution</span>
-    </p>
-
-  </div>
-</template>
-
-<template id="qiita-article-tpl">
-  <li class="qiita-article-list__item">
-    <a class="qiita-article js-url" target="_blank">
-      <h3 class="qiita-article__title js-title"></h3>
-    </a>
-  </li>
-</template>
-
-<!--<script src="https://unpkg.com/axios/dist/axios.min.js"></script>-->
-<!--<script src="./lib.js"></script>-->
-<!--<script>-->
-  <!--(function () {-->
-    <!--new QiitaWidget({-->
-      <!--userId: 'y_hokkey',-->
-      <!--useShuffle: false,-->
-      <!--sortByLike: false,-->
-      <!--expirationDay: 1,-->
-      <!--perPage: 100,-->
-      <!--max: 5-->
-    <!--}).init();-->
-  <!--})();-->
-<!--</script>-->
-
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
+
 </body>
 </html>

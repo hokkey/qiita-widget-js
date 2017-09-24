@@ -3,7 +3,7 @@
 QiitaAPIv2を通じてQiitaのユーザー情報を表示するTypeScript製ウィジェット。
 単体で動作するiframe版と、柔軟にカスタマイズできるライブラリ版があります。
 
-## iframe版
+## iframe版kk
 
 [ライブデモ](https://codepen.io/hokkey/pen/RLRzEE?editors=1000)
 
@@ -19,7 +19,7 @@ QiitaAPIv2を通じてQiitaのユーザー情報を表示するTypeScript製ウ�
   data-max-request="10"
   data-max="5">
 </div>
-<script src="https://cdn.rawgit.com/hokkey/qiita-widget-js/be967c4f/dist/iframe.js"></script>
+<script src="path/to/iframe.js"></script>
 ```
 
 ## ライブラリ版
@@ -64,7 +64,7 @@ QiitaAPIv2を通じてQiitaのユーザー情報を表示するTypeScript製ウ�
 </template>
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="https://cdn.rawgit.com/hokkey/qiita-widget-js/be967c4f/dist/lib.js"></script>
+<script src="paht/to/lib.js"></script>
 
 <script>
   (function () {
@@ -84,7 +84,7 @@ QiitaAPIv2を通じてQiitaのユーザー情報を表示するTypeScript製ウ�
 
 - userId ユーザーID
   - 表示する情報の取得元となるQiitaのユーザーID
-- cacheExpirationDay ブラウザキャッシュ有効日数
+- expirationDay ブラウザキャッシュ有効日数
   - QiitaAPIの制限を緩和するために、日単位でlocalStorageへ情報をキャッシュします
 - useShuffle 投稿シャッフル
   - リロードの度に異なる順番で記事を表示できます
