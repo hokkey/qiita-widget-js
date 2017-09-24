@@ -8,39 +8,104 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
 
+    @font-face {
+      font-family: 'Noto Sans Japanese';
+      font-style: normal;
+      font-weight: 100;
+      src: url(https://media-massage.net/fonts/noto-sans-mm-el.woff2?ver=20170714) format("woff2"), url(https://media-massage.net/fonts/noto-sans-mm-el.woff?ver=20170714) format("woff"), url(https://media-massage.net/fonts/noto-sans-mm-el.otf?ver=20170714) format("opentype");
+    }
+
     .header {
+      padding: 2em;
+
       background-color: #59bb0c;
+      background: #59bb0c;
+      background: linear-gradient(135deg, #59bb0c 0%, #a5c956 92%, #a5c956 92%);
+    }
+
+    .features {
+      background: white;
+
+      padding: 2em;
+      padding-bottom: 1em;
+      border-bottom: 2px solid #ddd;
+      margin-bottom: 3.5em;
+    }
+
+    .features .h5 {
+      font-weight: bold;
+    }
+
+    .copy {
+      line-height: 1.3;
+      display: block;
+    }
+
+    .footer-hero {
+      background: #ffa8eb;
+      background: linear-gradient(135deg, #ffa8eb 0%, #9d97c2 50%, #73c997 100%);
       color: white;
+      margin-bottom: 0;
+      line-height: 1;
+      text-align: center;
+    }
+
+    .footer-hero a:link,
+    .footer-hero a:visited {
+      color: white;
+    }
+
+    .footer-hero a:hover {
+      text-decoration: none;
+    }
+
+    .site-footer-2 {
+      font-weight: 100;
+      font-family: "Noto Sans Japanese", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
     }
 
   </style>
 </head>
 <body>
 
-<div class="navbar navbar-toggleable-md header">
-  <div class="container">
-    <h1 class="h1">Qiita Widget JS</h1>
-  </div>
-</div>
+<header class="jumbotron mb-0 header">
+  <div class="container text-center">
+    <div class="row align-items-center">
+      <div class="col-sm-12 col-md-7 mb-sm-4 mb-md-0">
+        <h1 class="display-4 text-white">Qiita Widget JS <span class="h4 copy mt-3 mb-3">Qiitaのユーザー情報を表示する<br/>TypeScript製ウィジェット</span></h1>
+        <a class="btn btn-secondary" href="https://github.com/hokkey/qiita-widget-js" role="button">GitHub</a>
+      </div>
 
-<div class="jumbotron">
-  <div class="container">
+      <div class="col-sm-12 col-md-5">
+        <div class="card">
+          <div class="card-header">動作デモ</div>
+          <div class="card-block">
+            <div class="js-qiita-widget" data-user-id="qiita" data-height="230px" data-use-shuffle="false" data-sort-by-like="true" data-per-page="100" data-expiration-day="1" data-max="5"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="jumbotron features">
+  <div class="container text-center">
 
     <div class="row">
 
-      <div class="col text-center">
-        <h3 class="h4">合計「いいね」数を表示</h3>
+      <div class="col col-sm-12 col-lg-4 mb-md-4 mb-lg-0">
+        <h3 class="h5">合計「いいね」数を表示</h3>
         <p>APIからは直接提供されていない、<br />投稿の合計「いいね」数を表示します。</p>
       </div>
 
-      <div class="col text-center">
-        <h3 class="h4">豊富なオプション</h3>
+      <div class="col col-sm-12 col-lg-4 mb-md-4 mb-lg-0">
+        <h3 class="h5">豊富なオプション</h3>
         <p>リロードごとにランダムな記事を表示したり、<br />表示件数を自由に変更できます。</p>
       </div>
 
-      <div class="col text-center">
-        <h3 class="h4">簡単で柔軟</h3>
-        <p>コピペで導入できるiframe版と、HTML/CSSを柔軟にカスタマイズできるライブラリ版があります。</p>
+      <div class="col col-sm-12 col-lg-4">
+        <h3 class="h5">簡単で柔軟</h3>
+        <p>コピペで導入できるiframe版と柔軟に<br/>カスタマイズできるライブラリ版があります。</p>
       </div>
 
     </div>
@@ -49,48 +114,37 @@
 </div>
 
 <div class="container">
-
-  <h2>iframe版の使い方</h2>
-  <div class="row">
-    <div class="col">
-      <p>ウィジェットを表示したい場所へ以下のコードをペーストしてください。</p>
-      <pre><code>&lt;div class=&quot;js-qiita-widget&quot;
+  <div class="row justify-content-center">
+    <div class="col-md-12">
+      <section class="mb-5">
+        <h2>iframe版の使い方</h2>
+        <div class="row">
+          <div class="col">
+            <p><a href="https://github.com/hokkey/qiita-widget-js/blob/master/docs/iframe.js">iframe.js</a>をダウンロードし、ウィジェットを表示したい場所へ以下のコードをペーストしてください。
+            </p>
+            <pre><code>&lt;div class=&quot;js-qiita-widget&quot;
   data-user-id=&quot;qiita&quot;
   data-height=&quot;auto&quot;
   data-use-shuffle=&quot;false&quot;
   data-per-page=&quot;100&quot;
   data-expiration-day=&quot;1&quot;
   data-max=&quot;5&quot;&gt;&lt;/div&gt;
-&lt;script src=&quot;./iframe.js&quot;&gt;&lt;/script&gt;</code></pre>
-    </div>
-    <div class="col">
-      <div class="card">
-        <div class="card-header">動作デモ</div>
-        <div class="card-block">
-          <div class="js-qiita-widget"
-            data-user-id="qiita"
-            data-height="auto"
-            data-use-shuffle="false"
-            data-sort-by-like="true"
-            data-per-page="100"
-            data-expiration-day="1"
-            data-max="5"></div>
-          <script src="./iframe.js"></script>
+&lt;script src=&quot;/path/to/iframe.js&quot;&gt;&lt;/script&gt;</code></pre>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
+      </section>
 
-  <h2>ライブラリ版の使い方</h2>
-  <p>1. 以下のコードをbody要素内の好きなところへペーストしてください。必要に応じ、要素の順番や有無を自由にカスタマイズできます。</p>
+      <section class="mb-5">
+        <h2>ライブラリ版の使い方</h2>
+        <p>1. 以下のコードをbody要素内の好きなところへペーストしてください。必要に応じ、要素の順番や有無を自由にカスタマイズできます。</p>
 
-  <p class="alert alert-dismissible alert-info">
-    template要素はJavaScriptによる初期化が完了するまで画面には表示されません。</p>
+        <p class="alert alert-dismissible alert-info">
+          template要素はJavaScriptによる初期化が完了するまで画面には表示されません。</p>
 
-  <p class="alert alert-dismissible alert-danger">
-    <strong>js-で始まるクラス名</strong>はデータとテンプレートの紐付けに使われているため、変更しないでください。 </p>
+        <p class="alert alert-dismissible alert-danger">
+          <strong>js-で始まるクラス名</strong>はデータとテンプレートの紐付けに使われているため、変更しないでください。 </p>
 
-  <pre><code>&lt;!-- HTMLテンプレート --&gt;
+        <pre><code>&lt;!-- HTMLテンプレート --&gt;
 &lt;template id=&quot;qiita-user-tpl&quot;&gt;
   &lt;p class=&quot;qiita-user__image&quot;&gt;&lt;img class=&quot;qiita-user__img js-profile-image-url&quot; src=&quot;&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
@@ -119,23 +173,20 @@
 &lt;/template&gt;
 &lt;!-- HTMLテンプレート --&gt;</code></pre>
 
-  <p>2. ウィジェットを表示したい位置へ以下のコードをペーストしてください。クラス名や要素の順番は自由に変更できます。</p>
+        <p>2. ウィジェットを表示したい位置へ以下のコードをペーストしてください。クラス名や要素の順番は自由に変更できます。</p>
 
-  <pre><code class="html">&lt;section class=&quot;qiita-widget&quot;&gt;
+        <pre><code class="html">&lt;section class=&quot;qiita-widget&quot;&gt;
   &lt;header class=&quot;qiita-widget__header qiita-user&quot; id=&quot;qiita-user&quot;&gt;&lt;/header&gt;
   &lt;section class=&quot;qiita-widget__articles&quot;&gt;
   &lt;h2 class=&quot;qiita-widget__articles-head&quot;&gt;&#20154;&#27671;&#12398;&#25237;&#31295;&lt;/h2&gt;
   &lt;ul id=&quot;qiita-article&quot; class=&quot;qiita-article-list&quot;&gt;&lt;/ul&gt;
 &lt;/section&gt;</code></pre>
 
-  <div class="alert alert-dismissible alert-info">
-    ウィジェットの挿入位置はidによって制御されています。idはQiitaWidgetの初期化パラメータから変更できます。
-  </div>
+        <p>3. <a href="https://github.com/hokkey/qiita-widget-js/blob/master/dist/lib.js">lib.jsをダウンロードし、</a>body要素の最下部へ以下のコードをペーストしてください。
+        </p>
 
-  <p>3. 最後に、body要素の最下部へ以下のコードをペーストしてください。</p>
-
-  <pre><code class="html">&lt;script src=&quot;https://unpkg.com/axios/dist/axios.min.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;./lib.js&quot;&gt;&lt;/script&gt;
+        <pre><code class="html">&lt;script src=&quot;https://unpkg.com/axios/dist/axios.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/path/to/lib.js&quot;&gt;&lt;/script&gt;
 &lt;script&gt;
 (function () {
   new QiitaWidget({
@@ -148,9 +199,39 @@
   }).init();
 })();
 &lt;/script&gt;</code></pre>
+      </section>
 
+      <div class="row">
+        <div class="col">
+          <section>
+            <h2>作者のQiita</h2>
+            <div class="mb-5 card">
+              <div class="card-block">
+                <div class="js-qiita-widget" data-user-id="y_hokkey" data-height="340px" data-use-shuffle="true" data-sort-by-like="true" data-per-page="100" data-expiration-day="1" data-max="10"></div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="col">
+          <section class="mb-5">
+            <h2>ライセンス</h2>
+            <p>MIT License</p>
+          </section>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>
 
+<footer class="footer-hero jumbotron">
+  <div class="container">
+    <p class="site-footer-1 text-white lead"><a href="https://media-massage.net/">MEDIA-MASSAGE.net</a></p>
+    <p class="site-footer-2 text-white display-4"><a href="https://media-massage.net/">デザインとWeb開発とその他諸々。</a></p>
+  </div>
+</footer>
+
+<script src="./iframe.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
