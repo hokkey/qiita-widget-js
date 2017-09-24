@@ -11,7 +11,7 @@ export function pickDataset(el: HTMLElement): QiitaWidgetParam {
   }
 
   // set boolean value
-  ['sortByLike', 'userShuffle'].forEach((key:string) => {
+  ['sortByLike', 'useShuffle'].forEach((key:string) => {
     if (isType(el.dataset[key], 'string')) {
       result[key] = toBoolean(el.dataset[key]);
     }
