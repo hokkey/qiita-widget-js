@@ -29,7 +29,7 @@ module.exports = {
         "ignoreInitial": true
     },
     "server": {
-      'baseDir': './dist',
+      'baseDir': './docs',
     },
     "proxy": false,
     "port": 3000,
