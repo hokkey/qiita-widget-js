@@ -1,5 +1,5 @@
-import * as Util from './Util';
-import {FragmentCreator, QiitaPresenterConf, QiitaPresenterParam, QiitaResponse} from "./Interface";
+import * as Util from '../Util';
+import {FragmentCreator, QiitaPresenterConf, QiitaPresenterParam, QiitaResponse} from "../Interface";
 
 export class QiitaPresenter {
 

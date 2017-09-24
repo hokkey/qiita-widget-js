@@ -1,19 +1,19 @@
 const path = require('path');
 const webpack = require('webpack');
+
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const DEBUG = !process.argv.includes('--env.production');
 
-const plugins = [
-  new webpack.optimize.OccurrenceOrderPlugin()
-];
-
-if (!DEBUG) {
-  plugins.push(
-    new webpack.optimize.UglifyJsPlugin({compress: {screw_ie8: true, warnings: false}}),
-    new webpack.optimize.AggressiveMergingPlugin()
-  );
-}
+const attachProductionPlugins = (plugins) => {
+  if (!DEBUG) {
+    return plugins.push(
+      new webpack.optimize.UglifyJsPlugin({compress: {screw_ie8: true, warnings: false}}),
+      new webpack.optimize.AggressiveMergingPlugin()
+    );
+  }
+  return plugins;
+};
 
 module.exports = [
 
@@ -39,8 +39,10 @@ module.exports = [
       modules: ['node_modules', path.resolve(__dirname, 'src/js')]
     },
 
-    plugins: plugins,
-    devtool: DEBUG ? 'sourcemap' : false,
+    plugins: attachProductionPlugins([
+      new webpack.optimize.OccurrenceOrderPlugin()
+    ]),
+    devtool: DEBUG ? 'source-map' : false,
 
     module: {
       rules: [
@@ -98,9 +100,9 @@ module.exports = [
     }
   },
 
-  // Iframe source build
+  // Iframe version build
   {
-    entry: ['./src/iframe.ts'],
+    entry: ['./src/iframe/iframe.ts'],
 
     output: {
       filename: 'iframe.js',
@@ -108,12 +110,14 @@ module.exports = [
     },
 
     resolve: {
-      extensions: ['.ts', '.json', '.js', '.scss'],
+      extensions: ['.ts'],
       modules: ['node_modules', path.resolve(__dirname, 'src')]
     },
 
-    plugins: plugins,
-    devtool: DEBUG ? 'sourcemap' : false,
+    plugins: attachProductionPlugins([
+      new webpack.optimize.OccurrenceOrderPlugin()
+    ]),
+    devtool: false,
 
     module: {
       rules: [
@@ -123,12 +127,21 @@ module.exports = [
           exclude: /node_modules/
         },
         {
+          test: /\.txt$/,
+          use: 'raw-loader',
+          exclude: /node_modules/
+        },{
+          test: /\.js$/,
+          use: 'raw-loader',
+          exclude: /node_modules/
+        },
+        {
           test: /\.scss$/,
           use: [{
             loader: "css-loader",
             options: {
-              minimize: !DEBUG,
-              sourceMap: DEBUG
+              minimize: true,
+              sourceMap: false
             }
           }, {
             loader: 'postcss-loader',

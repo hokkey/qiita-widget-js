@@ -3,6 +3,7 @@
     "module": "es6",
     "target": "es5",
     "sourceMap": false,
+    "allowJs": true,
     "lib": [
       "es2015",
       "es2017",

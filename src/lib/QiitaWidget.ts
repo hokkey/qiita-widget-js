@@ -1,9 +1,9 @@
-import {QiitaResponse, QiitaWidgetConf, QiitaWidgetParam} from "./Interface";
+import {QiitaResponse, QiitaWidgetConf, QiitaWidgetParam} from "../Interface";
 import {QiitaPresenter} from "./QiitaPresenter";
 import {CachedApiConfCreator} from "./CachedApiConfCreator";
 import CachedResponse from "./CachedResponse";
 import {CachedApi} from "./CachedApi";
-import {isType} from "./Util";
+import {isType} from "../Util";
 
 class QiitaWidget {
 

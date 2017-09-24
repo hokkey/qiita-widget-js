@@ -1,6 +1,6 @@
 import axios, {AxiosRequestConfig, AxiosResponse} from 'axios';
 import CachedResponse from './CachedResponse';
-import {CachedApiConf} from "./Interface";
+import {CachedApiConf} from "../Interface";
 
 export class CachedApi {
 

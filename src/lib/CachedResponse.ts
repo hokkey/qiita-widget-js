@@ -1,4 +1,4 @@
-import {CachedResponseStorageData} from "./Interface";
+import {CachedResponseStorageData} from "../Interface";
 
 export default class CachedResponse<T> implements CachedResponseStorageData<T> {
   id: string;

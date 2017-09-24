@@ -32,6 +32,8 @@ export interface QiitaWidgetConf extends QiitaWidgetParam {
 }
 
 export interface QiitaPresenterParam {
+  [key: string]: string | number | boolean;
+
   useShuffle?: boolean;
   sortByLike?: boolean;
 

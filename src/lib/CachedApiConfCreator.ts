@@ -1,5 +1,5 @@
-import {CachedApiConf, QiitaWidgetConf} from "./Interface";
-import {isType} from "./Util";
+import {CachedApiConf, QiitaWidgetConf} from "../Interface";
+import {isType} from "../Util";
 
 export class CachedApiConfCreator {
 
