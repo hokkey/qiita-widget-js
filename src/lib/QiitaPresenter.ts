@@ -106,9 +106,9 @@ export class QiitaPresenter {
     };
 
     // Shuffle article orders
-    const orders = this.conf.useShuffle ?
-      Util.shuffleArray<number>(makeOrder()) :
-      makeOrder()
+    const orders = this.conf.useShuffle
+      ? Util.shuffleArray<number>(makeOrder())
+      : makeOrder()
     ;
 
     // Slice article orders
