@@ -3,7 +3,7 @@
 QiitaAPIv2を通じてQiitaのユーザー情報を表示するTypeScript製ウィジェット。
 単体で動作するiframe版と、柔軟にカスタマイズできるライブラリ版があります。
 
-## iframe版kk
+## iframe版
 
 [ライブデモ](https://codepen.io/hokkey/pen/RLRzEE?editors=1000)
 
