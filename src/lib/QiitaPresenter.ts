@@ -1,35 +1,28 @@
 import * as Util from '../Util';
-import {FragmentCreator, QiitaPresenterConf, QiitaPresenterParam, QiitaResponse} from "../Interface";
+import {FragmentCreator, QiitaPresenterConf, QiitaResponse, QiitaWidgetParam} from "../Interface";
+import {QiitaItems} from "./QiitaItems";
 
 export class QiitaPresenter {
 
-  static defaultConf: QiitaPresenterConf = {
-    useShuffle: false,
-    sortByLike: true,
+  items: QiitaItems;
 
+  private conf: QiitaPresenterConf;
+  private userTemplate: HTMLTemplateElement;
+  private articleTemplate: HTMLTemplateElement;
+  private userDest: HTMLElement;
+  private articleDest: HTMLElement;
+
+
+  static defaultConf: QiitaPresenterConf = {
     userDest: '#qiita-user',
     userTemplate: '#qiita-user-tpl',
     articleDest: '#qiita-article',
     articleTemplate: '#qiita-article-tpl',
-
-    max: 10
   };
 
-  articles: QiitaResponse.Article[];
-  user: QiitaResponse.User;
 
-  private conf: QiitaPresenterConf;
-
-  private userTemplate: HTMLTemplateElement;
-  private articleTemplate: HTMLTemplateElement;
-
-  private userDest: HTMLElement;
-  private articleDest: HTMLElement;
-
-  constructor(conf: QiitaPresenterParam) {
-
-    this.articles = [];
-    this.user = null;
+  constructor(items: QiitaItems, conf: QiitaWidgetParam) {
+    this.items = items;
     this.conf = Object.assign({}, QiitaPresenter.defaultConf, conf);
 
     this.userTemplate = <HTMLTemplateElement>document.querySelector(this.conf.userTemplate);
@@ -39,81 +32,52 @@ export class QiitaPresenter {
     this.articleDest = <HTMLElement>document.querySelector(this.conf.articleDest);
   }
 
-  countAllLikes(): number {
-    return this.articles.reduce((prev: number, item: QiitaResponse.Article): number => {
-      return prev + item.likes_count; }, 0);
-  }
 
   renderUser(): void {
+
+    console.log(this.items);
+
     const callback: FragmentCreator = (template) => {
+
       const fragment: DocumentFragment = document.importNode(template.content, true);
-      Object.entries(this.user).forEach((kv: any[]) => {
+      Object.entries(this.items.getUserToShow()).forEach((kv: any[]) => {
         this.fillTemplate(fragment, kv);
       });
       return fragment;
+
     };
 
     this.renderView(this.userTemplate, this.userDest, callback);
   }
 
+
   renderArticles(): void {
+
     const callback: FragmentCreator = (template) => {
-      const orders =
-        this.createArticleOrderList<QiitaResponse.Article>(this.articles);
-      const articles =
-        this.createTargetArticleList<QiitaResponse.Article>(this.articles, orders);
-      return this.genArticleFragment(template, articles);
+
+      const fragment = document.createDocumentFragment();
+      this.items.getArticlesToShow().forEach((item: QiitaResponse.Article) => {
+        fragment.appendChild(this.createArticleFragment(template, item));
+      });
+
+      return fragment;
+
     };
 
     this.renderView(this.articleTemplate, this.articleDest, callback);
   }
 
-  private genArticleFragment(template: HTMLTemplateElement, articles: QiitaResponse.Article[]): DocumentFragment {
-    const fragment = document.createDocumentFragment();
 
-    articles.forEach((item: QiitaResponse.Article) => {
-      // Except privates
-      if (item.private) return;
-      fragment.appendChild(this.createArticleFragment(template, item));
+  private createArticleFragment(template: HTMLTemplateElement, content: QiitaResponse.Article): DocumentFragment {
+
+    const fragment: DocumentFragment = document.importNode(template.content, true);
+    Object.entries(content).forEach((kv: any): void => {
+      return this.fillTemplate(fragment, kv);
     });
 
     return fragment;
   }
 
-  private createTargetArticleList<T>(source: T[], orders: number[]): T[] {
-    // Sort the list if not it using shuffle
-    let articles = (this.conf.sortByLike && !this.conf.useShuffle)
-      ? Util.sortArray(source, 'likes_count')
-      : source
-    ;
-
-    // Create a list of required articles
-    articles = orders.map((val) => {
-      return source[val];
-    });
-
-    // Sort the list if it using shuffle
-    if (this.conf.sortByLike && this.conf.useShuffle) {
-      return Util.sortArray(articles, 'likes_count');
-    }
-
-    return articles;
-  }
-
-  private createArticleOrderList<T>(ary: T[]): number[] {
-    const makeOrder = () => {
-      return Array(ary.length).fill(0).map((v:number, i:number) => i);
-    };
-
-    // Shuffle article orders
-    const orders = this.conf.useShuffle
-      ? Util.shuffleArray<number>(makeOrder())
-      : makeOrder()
-    ;
-
-    // Slice article orders
-    return orders.slice(0, this.conf.max);
-  }
 
   private renderView(template: HTMLTemplateElement, dest: HTMLElement, callback: FragmentCreator):void {
     if (template === null) {
@@ -128,13 +92,6 @@ export class QiitaPresenter {
     dest.appendChild(fragments);
   }
 
-  private createArticleFragment(template: HTMLTemplateElement, content: QiitaResponse.Article): DocumentFragment {
-    const fragment: DocumentFragment = document.importNode(template.content, true);
-    Object.entries(content).forEach((kv: any): void => {
-      return this.fillTemplate(fragment, kv);
-    });
-    return fragment;
-  }
 
   private fillTemplate(fragment: DocumentFragment, kv: any): void {
     const key = kv[0];
@@ -151,6 +108,7 @@ export class QiitaPresenter {
   private fillContent(key: string, content: string, template: HTMLElement): void;
   private fillContent(key: string, content: number, template: HTMLElement): void;
   private fillContent(key: string, content: any, template: HTMLElement): void {
+
     // Do nothing if content is unavailable.
     if (typeof content === 'undefined') return;
     const val = (typeof content === 'number') ? Util.numToString(content) : content;

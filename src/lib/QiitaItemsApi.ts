@@ -1,92 +1,111 @@
 import {Api} from "./Api";
-import {QiitaResponse, RequestConf} from "../Interface";
+import {QiitaItemsApiConf, QiitaItemsApiParam, QiitaItemsApiRequestConf, QiitaResponse} from "../Interface";
 
-export class ItemsApi {
+export class QiitaItemsApi {
 
-  public userId: string;
-  public articles: QiitaResponse.Article[];
-  public user: QiitaResponse.User;
+  private conf: QiitaItemsApiConf;
+  private requestConf: QiitaItemsApiRequestConf;
+  private api: Api;
 
-  private conf: RequestConf;
-  private maxRequest: number;
 
-  constructor(userId: string, cacheAge: number, url: string, perPage: number, maxRequest: number = 10) {
+  static defaultConf: QiitaItemsApiConf = {
+    userId: 'qiita',
+    maxRequest: 5,
+    perPage: 100,
+    cacheAge: 15 * 60 * 1000
+  };
 
-    this.userId =  userId;
-    this.articles = [];
-    this.user = null;
 
-    this.maxRequest = maxRequest;
-    this.conf = {
-      cacheAge: cacheAge,
+  static validateConf(conf: QiitaItemsApiConf): QiitaItemsApiConf {
+    // Number range validation:
+
+    // perPage must be upper than zero and lower than 100
+    if (conf.perPage <= 0) {
+      conf.perPage = 1;
+    }
+    if (conf.perPage > 100) {
+      conf.perPage = 100;
+    }
+
+    // maxRequest must be upper than minus one
+    if (conf.maxRequest < 0) {
+      conf.maxRequest = 0;
+    }
+
+    return conf;
+  }
+
+
+  constructor(conf: QiitaItemsApiParam) {
+
+    this.conf = QiitaItemsApi.validateConf(Object.assign({}, QiitaItemsApi.defaultConf, conf));
+    this.requestConf = {
+      maxRequest: this.conf.maxRequest,
+      cacheAge: this.conf.cacheAge,
+
       axiosRequestConfig: {
+        method: 'get',
+        url: `https://qiita.com/api/v2/users/${this.conf.userId}/items`,
+
         params: {
           page: 0,
-          url: `https://qiita.com/api/v2/users/${this.userId}`,
-          per_page: perPage
+          per_page: this.conf.perPage
         }
       }
-    }
+    };
+
+    this.api = new Api(this.requestConf);
   }
 
-  async fetch():Promise<void> {
-    await this.fetchArticles();
-    await this.fetchUser();
-  }
 
   // 記事がなくなるか、最大試行回数に到達するまでリクエストを続ける
-  private async fetchArticles(): Promise<QiitaResponse.Article[]> {
+  async fetch(): Promise<QiitaResponse.Article[]> {
     let counter = 0;
-    const result: QiitaResponse.Article[] = [];
+    let result: QiitaResponse.Article[] = [];
 
-    while (counter < this.maxRequest) {
+    while (counter < this.conf.maxRequest) {
+      counter++;
       this.createNextRequest();
 
       const res = await this.fetchItems();
-      result.push(res);
+      const isContinue = this.isThereNextPage<QiitaResponse.Article>(res);
+      result = result.concat(res);
 
-      if (this.isThereNextPage<QiitaResponse.Article>(res)) {
-        counter++;
+      if (isContinue) {
         continue;
       }
+
       break;
     }
-    return;
+
+    return result;
   }
+
 
   private async fetchItems(): Promise<QiitaResponse.Article[]> {
-    return await Api.fetch<QiitaResponse.Article[]>(this.conf);
+    return await this.api.fetch<QiitaResponse.Article[]>(this.requestConf);
   }
 
+
   private createNextRequest(): void {
-    this.conf.axiosRequestConfig.params.page += 1;
+    this.requestConf.axiosRequestConfig.params.page += 1;
   }
+
 
   private isThereNextPage<T>(list: T[]): boolean {
 
-    // 記事数0：ループ終了
+    // a result length is 0: break loop
     if (list.length === 0) {
       return false;
     }
 
-    // 記事数がperPage未満：ループ終了
-    if (list.length < this.conf.axiosRequestConfig.params.per_page) {
+    // a result length is lower than per_page: break loop
+    if (list.length < this.requestConf.axiosRequestConfig.params.per_page) {
       return false;
     }
 
-    // 記事数がperPageと同値以上：ループ継続
+    // a result length is equal or larger than per_page: continue loop
     return true;
-  }
-
-  private async fetchUser(): Promise<void> {
-    const res = await this.fetchItems();
-
-    if (res.length === 0) {
-      this.user = null;
-      return;
-    }
-
-    this.user = Object.assign({}, res[0].user);
   }
 
 }

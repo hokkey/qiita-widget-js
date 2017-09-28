@@ -1,61 +1,94 @@
 import {AxiosRequestConfig} from "axios";
+import {QiitaItems} from "./lib/QiitaItems";
 
-export interface CachedResponseStorageData<T> {
-  id: string;
-  data: T;
-  timestamp: Date;
-}
 
 export interface FragmentCreator {
   (template: HTMLTemplateElement): DocumentFragment;
 }
 
-export interface CachedApiConf {
-  id: string;
-  endpoint: string;
-  expirationDay: number;
+
+export interface QiitaItemsParam {
+  perPage?: number;
+  cacheAge?: number;
+  maxToShow?: number;
+  useShuffle?: boolean;
+  sortByLike?: boolean;
+}
+
+
+export interface QiitaItemsConf extends QiitaItemsApiParam {
+  maxToShow: number;
+  useShuffle: boolean;
+  sortByLike: boolean;
+}
+
+
+export interface QiitaItemsApiParam {
+  userId?: string;
+  maxRequest?: number;
+  perPage?: number;
+  cacheAge?: number;
+}
+
+
+export interface QiitaItemsApiConf {
+  userId: string;
+  maxRequest: number;
+  perPage: number;
+  cacheAge: number;
+}
+
+
+export interface QiitaItemsApiRequestConf extends RequestConf {
+  maxRequest: number;
+
+  axiosRequestConfig: {
+    method: string;
+    url: string;
+
+    params: {
+      page: number;
+      per_page: number;
+    }
+  }
+}
+
+
+export interface RequestConf {
+  cacheAge: number;
   axiosRequestConfig: AxiosRequestConfig,
 }
 
+
 export interface QiitaWidgetParam extends QiitaPresenterParam {
   userId?: string;
+
+  // for QiitaItemsParam
   perPage?: number;
-  expirationDay?: number;
+  cacheAge?: number;
   maxRequest?: number;
+  maxToShow?: number;
+  useShuffle?: boolean;
+  sortByLike?: boolean;
 }
 
-export interface QiitaWidgetConf extends QiitaWidgetParam {
-  userId: string;
-  perPage: number;
-  expirationDay: number;
-  maxRequest: number;
-}
 
 export interface QiitaPresenterParam {
   [key: string]: string | number | boolean;
-
-  useShuffle?: boolean;
-  sortByLike?: boolean;
-
   userTemplate?: string;
   userDest?: string;
   articleTemplate?: string;
   articleDest?: string;
-
-  max?: number;
 }
 
-export interface QiitaPresenterConf {
-  useShuffle: boolean;
-  sortByLike: boolean;
 
+export interface QiitaPresenterConf {
   userTemplate: string;
   userDest: string;
   articleTemplate: string;
   articleDest: string;
-
-  max: number;
 }
+
 
 export namespace QiitaResponse {
 

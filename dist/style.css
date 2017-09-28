@@ -1,1 +1,62 @@
-.qiita-widget{line-height:1.1;font-family:-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Hiragino Kaku Gothic ProN, "\30E1\30A4\30EA\30AA", meiryo, sans-serif}.qiita-widget a:link,.qiita-widget a:visited{color:#337ab7}.qiita-widget a:hover{text-decoration:underline}.qiita-widget img{width:100%;height:auto}.qiita-widget__articles-head{font-size:14px;font-weight:700;margin-bottom:10px;margin-top:0}.qiita-widget__articles{margin-top:15px}.qiita-user{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-flow:row nowrap;flex-flow:row nowrap}.qiita-user__image{width:60px;height:60px;margin-right:5px;margin-bottom:0}.qiita-user__id{font-size:16px;font-weight:700;margin-top:0;margin-bottom:3px}.qiita-user__likes,.qiita-user__followers,.qiita-user__items{margin-top:0;margin-bottom:2px}.qiita-user__likes-num,.qiita-user__followers-num,.qiita-user__items-num{font-weight:700;font-size:14px}.qiita-user__likes-unit,.qiita-user__followers-unit,.qiita-user__items-unit{font-size:12px}.qiita-article-list{padding-left:10px;list-style:none}.qiita-article .qiita-article__title{font-size:13px;line-height:1.42857;margin-bottom:4px;font-weight:normal;margin-top:0}.qiita-article .qiita-article__title:before{display:inline-block;content:'\2022';color:#999;margin-left:-10px;margin-right:5px}
+@charset "UTF-8";
+.qiita-widget {
+  line-height: 1.1;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Hiragino Kaku Gothic ProN, "\30E1\30A4\30EA\30AA", meiryo, sans-serif; }
+  .qiita-widget a:link, .qiita-widget a:visited {
+    color: #337ab7; }
+  .qiita-widget a:hover {
+    text-decoration: underline; }
+  .qiita-widget img {
+    width: 100%;
+    height: auto; }
+  .qiita-widget__articles-head {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    margin-top: 0; }
+  .qiita-widget__articles {
+    margin-top: 15px; }
+
+.qiita-user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap; }
+  .qiita-user__image {
+    width: 60px;
+    height: 60px;
+    margin-right: 5px;
+    margin-bottom: 0; }
+  .qiita-user__id {
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 3px; }
+  .qiita-user__likes, .qiita-user__followers, .qiita-user__items {
+    margin-top: 0;
+    margin-bottom: 2px; }
+  .qiita-user__likes-num, .qiita-user__followers-num, .qiita-user__items-num {
+    font-weight: 700;
+    font-size: 14px; }
+  .qiita-user__likes-unit, .qiita-user__followers-unit, .qiita-user__items-unit {
+    font-size: 12px; }
+
+.qiita-article-list {
+  padding-left: 10px;
+  list-style: none; }
+
+.qiita-article .qiita-article__title {
+  font-size: 13px;
+  line-height: 1.42857;
+  margin-bottom: 4px;
+  font-weight: normal;
+  margin-top: 0; }
+  .qiita-article .qiita-article__title:before {
+    display: inline-block;
+    content: '\2022';
+    color: #999;
+    margin-left: -10px;
+    margin-right: 5px; }

@@ -18,7 +18,7 @@ export function pickDataset(el: HTMLElement): QiitaWidgetParam {
   });
 
   // set number value
-  ['perPage', 'max', 'maxRequest', 'expirationDay'].forEach((key:string) => {
+  ['perPage', 'maxToShow', 'maxRequest', 'cacheAge'].forEach((key:string) => {
     if (isType(el.dataset[key], 'string')) {
       result[key] = parseInt(el.dataset[key], 10);
     }

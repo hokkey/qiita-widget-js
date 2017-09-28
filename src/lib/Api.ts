@@ -1,18 +1,22 @@
-import { setupCache } from 'axios-cache-adapter';
-import {CachedApiConf} from "../Interface";
+import {RequestConf} from "../Interface";
+declare var axiosCacheAdapter: any;
 
-export class CachedApi {
+export class Api {
 
-  static async fetch<T>(conf: CachedApiConf): Promise<T> {
+  api: Function;
 
-    const api = setupCache({
+  constructor(conf: RequestConf) {
+    this.api = axiosCacheAdapter.setup({
       cache: {
         maxAge: conf.cacheAge,
-        store: localStorage,
-        clearOnStale: true
+        clearOnStale: false,
+        debug: true
       }
     });
+  }
 
-    return api(conf);
+  async fetch<T>(conf: RequestConf): Promise<T> {
+    const res = this.api(conf.axiosRequestConfig);
+    return res.data;
   }
 }

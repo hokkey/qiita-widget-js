@@ -30,10 +30,6 @@ module.exports = [
       umdNamedDefine: true
     },
 
-    externals: {
-      'axios': 'axios'
-    },
-
     resolve: {
       extensions: ['.ts', '.json', '.js'],
       modules: ['node_modules', path.resolve(__dirname, 'src/js')]
@@ -127,11 +123,12 @@ module.exports = [
           exclude: /node_modules/
         },
         {
-          test: /\.txt$/,
+          test: /\.js$/,
           use: 'raw-loader',
           exclude: /node_modules/
-        },{
-          test: /\.js$/,
+        },
+        {
+          test: /\.html$/,
           use: 'raw-loader',
           exclude: /node_modules/
         },

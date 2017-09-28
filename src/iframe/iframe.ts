@@ -1,6 +1,3 @@
-import {QiitaWidgetParam} from 'Interface';
-import {toBoolean} from "../Util";
-import {insertIframe} from "./insertIframe";
 import {initIframe} from "./initIframe";
 
 (() => {
