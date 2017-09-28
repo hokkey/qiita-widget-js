@@ -1,4 +1,6 @@
-# Qiita Widget JS
+# hokey/qiita-widget-js
+
+![build state](https://travis-ci.org/hokkey/qiita-widget-js.svg?branch=master)
 
 QiitaAPIv2を通じてQiitaのユーザー情報を表示するTypeScript製ウィジェット。
 単体で動作するiframe版と、柔軟にカスタマイズできるライブラリ版があります。
