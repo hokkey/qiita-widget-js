@@ -1,0 +1,18 @@
+.qiita-article {
+  padding-left: 10px;
+
+  &__title {
+    @include set-rem-font-size(13px);
+    line-height: 1.42857;
+    margin-bottom: 5px;
+    font-weight: normal;
+
+    &:before {
+      display: inline-block;
+      content: "\2022";
+      color: #999;
+      margin-left: -10px;
+      margin-right: 5px;
+    }
+  }
+}

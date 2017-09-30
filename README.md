@@ -1,104 +1,52 @@
-# Qiita Widget JS
+# hokey/qiita-widget-js
 
-QiitaAPIv2を通じてQiitaのユーザー情報を表示するTypeScript製ウィジェット。
-単体で動作するiframe版と、柔軟にカスタマイズできるライブラリ版があります。
+![build state](https://travis-ci.org/hokkey/qiita-widget-js.svg?branch=master)
 
-## iframe版
+Qiita API v2に対応した、Qiitaのユーザー情報を表示するTypeScript製ブログウィジェットです。
+コピペで簡単に導入できるiframe版と、柔軟にカスタマイズできるライブラリ版があります。
 
-[ライブデモ](https://codepen.io/hokkey/pen/RLRzEE?editors=1000)
+[デモサイト](https://media-massage.net/qiita-widget-js/)
 
-![](https://user-images.githubusercontent.com/6197292/30715017-e1307794-9f4f-11e7-92c3-07323bb71e47.png)
+## npm/webpackでの利用方法
 
-```html
-<div class="js-qiita-widget"
-  data-user-id="qiita"
-  data-use-shuffle="true"
-  data-sort-by-like="true"
-  data-per-page="30"
-  data-expiration-day="1"
-  data-max-request="10"
-  data-max="5">
-</div>
-<script src="path/to/iframe.js"></script>
+```bash
+npm i qiita-widget --save-dev
+
+```
+```js
+import QiitaWidget from 'qiita-widget';
+new QiitaWidget({
+  userId: 'qiita',
+}).init();
+
 ```
 
-## ライブラリ版
+## 開発ビルド
 
-ライブラリ版ではHTMLテンプレート/CSSを自由にカスタマイズできます。
+```bash
+git clone https://github.com/hokkey/qiita-widget-js.git
+cd qiita-widget-js
+npm i
 
-```html:index.html
+# プロダクションビルド
+npm run build
 
-<section class="qiita-widget">
-  <header class="qiita-widget__header qiita-user" id="qiita-user"></header>
-  <section class="qiita-widget__articles">
-    <h2 class="qiita-widget__articles-head">人気の投稿</h2>
-    <ul id="qiita-article" class="qiita-article-list"></ul>
-  </section>
-</section>
-
-<template id="qiita-user-tpl">
-  <p class="qiita-user__image"><img class="qiita-user__img js-profile-image-url" src="" alt=""/></p>
-
-  <div class="qiita-user__title">
-    <a class="qiita-user__url js-url" target="_blank"><h1 class="qiita-user__id js-id"></h1></a>
-
-    <p class="qiita-user__items">
-      <span class="qiita-user__items-num js-items-count"></span>
-      <span class="qiita-user__items-unit">Items</span>
-    </p>
-
-    <p class="qiita-user__likes">
-      <span class="qiita-user__likes-num js-likes-count"></span>
-      <span class="qiita-user__likes-unit">Contribution</span>
-    </p>
-
-  </div>
-</template>
-
-<template id="qiita-article-tpl">
-  <li class="qiita-article-list__item">
-    <a class="qiita-article js-url" target="_blank">
-      <h3 class="qiita-article__title js-title"></h3>
-    </a>
-  </li>
-</template>
-
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="paht/to/lib.js"></script>
-
-<script>
-  (function () {
-    new QiitaWidget({
-      userId: 'qiita',
-      useShuffle: true,
-      sortByLike: true,
-      expirationDay: 1,
-      perPage: 100,
-      max: 5
-    }).init();
-  })();
-</script>
+# ファイル監視 + 開発サーバ立ち上げ
+npm run serve
 ```
 
-## オプション
+## 仕様
 
-- userId ユーザーID
-  - 表示する情報の取得元となるQiitaのユーザーID
-- expirationDay ブラウザキャッシュ有効日数
-  - QiitaAPIの制限を緩和するために、日単位でlocalStorageへ情報をキャッシュします
-- useShuffle 投稿シャッフル
-  - リロードの度に異なる順番で記事を表示できます
-- sortByLike 「いいね」順ソート機能
-  - 投稿を「いいね」の件数でソートして表示できます
-  
+* IE11を含むすべてのIEに未対応です。
+* 公開されている投稿の「いいね」からContributionを算出しているため、Qiitaのプロフィールページの数値と完全に一致しないことがあります。
+
 ## ToDo
 
-- デザインの拡充
 - エラー処理
 - ユニットテストの追加
 - ドキュメントの拡充
-- npmへの公開
+- デザインの拡充
 
 ## Author
 
-https://qiita.com/y_hokkey
+https://media-massage.net/profile/

@@ -1,0 +1,25 @@
+// remove units
+@function strip-units($number) {
+  @return $number/($number * 0 + 1);
+}
+
+@function calc-font-size-ratio($px, $base-px) {
+  @return strip-units($px)/strip-units($base-px);
+}
+
+@function calc-px-to-rem($px, $base-px: 16px) {
+  @return calc-font-size-ratio($px, $base-px) + 0rem;
+}
+
+@mixin set-rem-font-size($px, $base-px: 16px) {
+  font-size: $px;
+  //font-size: calc-px-to-rem($px, $base-px);
+}
+
+@function tracking($tracking) {
+  @return $tracking * 0.001 + 0em;
+}
+
+@mixin tracking($tracking) {
+  letter-spacing: tracking($tracking);
+}

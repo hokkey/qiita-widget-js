@@ -1,0 +1,16 @@
+@charset "utf-8";
+@import 'base/sanitize';
+@import 'mixin/font';
+@import 'mixin/util';
+@import 'block/qiita-widget';
+@import 'block/qiita-user';
+@import 'block/qiita-article-list';
+@import 'block/qiita-article';
+@import 'block/transition';
+@import 'block/loader';
+
+body {
+  position: relative;
+  overflow: hidden;
+  background-color: #fff;
+}

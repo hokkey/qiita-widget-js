@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
-    "module": "es6",
+    "module": "es2015",
     "target": "es5",
     "sourceMap": false,
     "allowJs": true,
+    "declaration": false,
     "lib": [
       "es2015",
       "es2017",
@@ -17,10 +18,17 @@
       "axios": [
         "node_modules/axios/dist/axios",
         "node_modules/axios/index.d.ts"
+      ],
+      "axios-cache-adapter": [
+        "../../node_modules/axios-cache-adapter/dist/cache.bundled"
+      ],
+      "localforage": [
+        "node_modules/localforage/dist/localforage",
+        "node_modules/localforage/typings/localforage.d.ts"
       ]
     }
   },
   "exclude": [
-    "node_modules",
+    "node_modules"
   ]
 }
