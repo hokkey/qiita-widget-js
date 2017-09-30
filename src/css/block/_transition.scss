@@ -1,0 +1,51 @@
+.transition {
+  display: block;
+  overflow: hidden;
+
+  &__inner {
+    display: inline-block;
+    transform: translateY(-125%);
+    will-change: transform;
+  }
+}
+
+.is-qiita-widget-loaded {
+  $initial-delay: 0s;
+  $step-count: .2s;
+
+  @for $i from 0 to 10 {
+    .transition--s#{$i} {
+
+      .transition__inner {
+        animation: transition 1s ease;
+        animation-delay: $initial-delay + $i * $step-count;
+        animation-fill-mode: both;
+      }
+
+      @for $j from 1 to 100 {
+        &:nth-of-type(#{$j}) {
+          .transition__inner {
+            animation-delay: $initial-delay + $i * $step-count + $j * .13s;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes transition {
+  from {
+    transform: translateY(-125%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.is-no-transition {
+
+  .transition__inner {
+    transform: none;
+    will-change: none;
+  }
+}

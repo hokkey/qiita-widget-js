@@ -1,16 +1,17 @@
 import {makeIframeContent} from "./makeIframeContent";
 import {pickDataset} from "./pickDataset";
 
-export function insertIframe(target: HTMLElement):HTMLIFrameElement {
+export function insertIframe(target: HTMLElement, id: number):HTMLIFrameElement {
 
   const iframe = <HTMLIFrameElement>document.createElement('iframe');
-  target.parentNode.insertBefore(iframe, target);
+  target.appendChild(iframe);
 
-  const doc = iframe.contentWindow.document;
-  const content: string = makeIframeContent(pickDataset(target));
+  const doc = iframe.contentDocument;
+  const content: string = makeIframeContent(pickDataset(target), id);
 
   doc.open();
   doc.write(content);
+  doc.body.classList.add('is-iframe-loading');
   doc.close();
 
   return iframe;

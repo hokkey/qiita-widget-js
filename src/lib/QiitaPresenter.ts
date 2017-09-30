@@ -14,28 +14,32 @@ export class QiitaPresenter {
 
 
   static defaultConf: QiitaPresenterConf = {
-    userDest: '#qiita-user',
+    userDest: '.js-qiita-user',
     userTemplate: '#qiita-user-tpl',
-    articleDest: '#qiita-article',
+    articleDest: '.js-qiita-article',
     articleTemplate: '#qiita-article-tpl',
   };
 
 
-  constructor(items: QiitaItems, conf: QiitaWidgetParam) {
+  constructor(items: QiitaItems, conf: QiitaWidgetParam, dest: HTMLElement = null) {
     this.items = items;
     this.conf = Object.assign({}, QiitaPresenter.defaultConf, conf);
 
     this.userTemplate = <HTMLTemplateElement>document.querySelector(this.conf.userTemplate);
-    this.userDest = <HTMLElement>document.querySelector(this.conf.userDest);
-
     this.articleTemplate = <HTMLTemplateElement>document.querySelector(this.conf.articleTemplate);
+
+    if (dest !== null) {
+      this.userDest = <HTMLElement>dest.querySelector(this.conf.userDest);
+      this.articleDest = <HTMLElement>dest.querySelector(this.conf.articleDest);
+      return;
+    }
+
+    this.userDest = <HTMLElement>document.querySelector(this.conf.userDest);
     this.articleDest = <HTMLElement>document.querySelector(this.conf.articleDest);
   }
 
 
   renderUser(): void {
-
-    console.log(this.items);
 
     const callback: FragmentCreator = (template) => {
 

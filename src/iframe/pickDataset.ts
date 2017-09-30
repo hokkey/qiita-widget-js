@@ -11,7 +11,7 @@ export function pickDataset(el: HTMLElement): QiitaWidgetParam {
   }
 
   // set boolean value
-  ['sortByLike', 'useShuffle'].forEach((key:string) => {
+  ['sortByLike', 'useShuffle', 'useTransition'].forEach((key:string) => {
     if (isType(el.dataset[key], 'string')) {
       result[key] = toBoolean(el.dataset[key]);
     }
@@ -20,7 +20,13 @@ export function pickDataset(el: HTMLElement): QiitaWidgetParam {
   // set number value
   ['perPage', 'maxToShow', 'maxRequest', 'cacheAge'].forEach((key:string) => {
     if (isType(el.dataset[key], 'string')) {
-      result[key] = parseInt(el.dataset[key], 10);
+      const num = parseInt(el.dataset[key], 10);
+
+      if (Number.isNaN(num)) {
+        throw new Error(`${key} was parsed as NaN!`);
+      }
+
+      result[key] = num;
     }
   });
 

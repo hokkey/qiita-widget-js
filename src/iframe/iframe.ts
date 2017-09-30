@@ -1,4 +1,4 @@
-import {initIframe} from "./initIframe";
+import {initIframe} from "./initIframe"
 
 (() => {
   const destinations = document.querySelectorAll('.js-qiita-widget');
@@ -8,8 +8,8 @@ import {initIframe} from "./initIframe";
     return;
   }
 
-  Array.from(destinations, (target:HTMLElement) => {
-    initIframe(target);
+  Array.from(destinations, (target: HTMLElement, index) => {
+    initIframe(target, index);
   });
 
 })();

@@ -1,0 +1,36 @@
+.qiita-user {
+  display: flex;
+  flex-flow: row nowrap;
+
+  &__image {
+    width: 60px;
+    height: 60px;
+    margin-right: 5px;
+  }
+
+  &__url {
+    &:hover {
+      > * {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__id {
+    @include set-rem-font-size(16px);
+    margin-bottom: 3px;
+  }
+
+  &__likes-num,
+  &__followers-num,
+  &__items-num {
+    font-weight: 700;
+    @include set-rem-font-size(14px);
+  }
+
+  &__likes-unit,
+  &__followers-unit,
+  &__items-unit {
+    @include set-rem-font-size(12px);
+  }
+}

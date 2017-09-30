@@ -63,6 +63,9 @@ export interface RequestConf {
 export interface QiitaWidgetParam extends QiitaPresenterParam {
   userId?: string;
 
+  useTransition?: boolean;
+  container?: string;
+
   // for QiitaItemsParam
   perPage?: number;
   cacheAge?: number;
