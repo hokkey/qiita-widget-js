@@ -5,24 +5,30 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const DEBUG = !process.argv.includes('--env.production');
 
-const attachProductionPlugins = (plugins) => {
-  if (!DEBUG) {
-    return plugins.push(
-      new webpack.optimize.UglifyJsPlugin({compress: {screw_ie8: true, warnings: false}}),
-      new webpack.optimize.AggressiveMergingPlugin()
-    );
-  }
-  return plugins;
-};
+const jsPlugins = [
+  new webpack.optimize.UglifyJsPlugin({
+    include: /\.min\.js$/,
+    minimize: true,
+    compress: {screw_ie8: true, warnings: false}
+  }),
+  new webpack.optimize.OccurrenceOrderPlugin(),
+  new webpack.optimize.AggressiveMergingPlugin(),
+  new webpack.BannerPlugin(
+    'qiita-widget-js | MIT License | https://media-massage.net/qiita-widget-js/'
+  )
+];
 
 module.exports = [
 
   // Library Build
   {
-    entry: ['./src/lib/QiitaWidget.ts'],
+    entry: {
+      'lib': "./lib/QiitaWidget.ts",
+      'lib.min': "./lib/QiitaWidget.ts"
+    },
 
     output: {
-      filename: 'lib.js',
+      filename: '[name].js',
       path: path.resolve(__dirname, 'dist'),
       library: 'QiitaWidget',
       libraryTarget: 'umd',
@@ -40,10 +46,8 @@ module.exports = [
       modules: ['node_modules', path.resolve(__dirname, 'src/js')]
     },
 
-    plugins: attachProductionPlugins([
-      new webpack.optimize.OccurrenceOrderPlugin()
-    ]),
-    devtool: DEBUG ? 'source-map' : false,
+    plugins: jsPlugins,
+    devtool: 'source-map',
 
     module: {
       rules: [
@@ -58,7 +62,7 @@ module.exports = [
 
   // CSS Build
   {
-    entry:['./src/css/style.scss'],
+    entry:['./lib/style/style.scss'],
 
     output: {
       filename: 'style.css',
@@ -103,10 +107,13 @@ module.exports = [
 
   // Iframe version build
   {
-    entry: ['./src/iframe/iframe.ts'],
+    entry: {
+      'iframe': './lib/iframe/iframe.ts',
+      'iframe.min': './lib/iframe/iframe.ts'
+    },
 
     output: {
-      filename: 'iframe.js',
+      filename: '[name].js',
       path: path.resolve(__dirname, 'docs'),
     },
 
@@ -120,9 +127,7 @@ module.exports = [
       modules: ['node_modules', path.resolve(__dirname, 'src')]
     },
 
-    plugins: attachProductionPlugins([
-      new webpack.optimize.OccurrenceOrderPlugin()
-    ]),
+    plugins: jsPlugins,
     devtool: false,
 
     module: {
@@ -133,7 +138,7 @@ module.exports = [
           exclude: /node_modules/
         },
         {
-          test: /lib.js$/,
+          test: /lib.min.js$/,
           use: 'raw-loader',
           exclude: /node_modules/
         },
@@ -163,4 +168,5 @@ module.exports = [
         }
       ]
     }
-}];
+  }
+];

@@ -4,6 +4,7 @@
     "target": "es5",
     "sourceMap": false,
     "allowJs": true,
+    "declaration": false,
     "lib": [
       "es2015",
       "es2017",

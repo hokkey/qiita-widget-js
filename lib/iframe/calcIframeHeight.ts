@@ -1,4 +1,4 @@
-import {isType} from "../Util";
+import {isType} from "../util";
 
 export function setIframeHeight(iframe: HTMLIFrameElement, target: HTMLElement): void {
   const paramHeight = target.dataset['height'];

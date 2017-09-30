@@ -1,8 +1,7 @@
 {
-  "name": "qiita-widget-js",
+  "name": "qiita-widget",
+  "version": "0.1.0",
   "main": "dist/lib.js",
-  "version": "0.0.3",
-  "description": "Qiitaのユーザー情報を表示するTypeScript製ウィジェット",
   "dependencies": {
     "axios": "^0.16.2",
     "axios-cache-adapter": "^1.1.0",
@@ -26,14 +25,27 @@
   },
   "scripts": {
     "build": "webpack",
-    "production": "webpack -p",
-    "serve": "webpack -p --watch -d & browser-sync start --config bs-config.js"
+    "serve": "webpack --watch -d & browser-sync start --config bs-config.js"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:hokkey/qiita-widget-js.git"
+    "url": "https://github.com/hokkey/qiita-widget-js.git"
   },
-  "author": "Yuma Hori",
+  "private": true,
+  "description": "Qiita API v2に対応した、Qiitaのユーザー情報を表示するTypeScript製ブログウィジェットです。コピペで簡単に導入できます。",
+  "homepage": "https://media-massage.net/qiita-widget-js/",
+  "keywords": [
+    "Qiita",
+    "Wiedget",
+    "TypeScript",
+    "Web"
+  ],
+  "bugs": {
+    "url": "https://github.com/hokkey/qiita-widget-js/issues"
+  },
   "license": "MIT",
-  "private": true
+  "author": {
+    "name": "Yuma Hori",
+    "url": "https://media-massage.net/"
+  }
 }

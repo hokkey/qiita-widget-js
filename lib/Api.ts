@@ -1,4 +1,4 @@
-import {RequestConf} from "../Interface";
+import {RequestConf} from "./interface";
 import * as LocalForage from "localforage";
 import * as axiosCacheAdapter from 'axios-cache-adapter';
 

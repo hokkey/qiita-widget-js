@@ -1,5 +1,5 @@
 import {Api} from "./Api";
-import {QiitaItemsApiConf, QiitaItemsApiParam, QiitaItemsApiRequestConf, QiitaResponse} from "../Interface";
+import {QiitaItemsApiConf, QiitaItemsApiParam, QiitaItemsApiRequestConf, QiitaResponse} from "./interface";
 
 export class QiitaItemsApi {
 

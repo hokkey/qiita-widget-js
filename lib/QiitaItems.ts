@@ -1,5 +1,5 @@
-import {QiitaItemsConf, QiitaItemsParam, QiitaResponse} from "../Interface";
-import * as Util from "../Util";
+import {QiitaItemsConf, QiitaItemsParam, QiitaResponse} from "./interface";
+import * as Util from "./util";
 import {QiitaItemsApi} from "./QiitaItemsApi";
 
 

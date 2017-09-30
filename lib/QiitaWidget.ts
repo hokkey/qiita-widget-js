@@ -1,6 +1,6 @@
 import {QiitaItems} from "./QiitaItems";
 import {QiitaPresenter} from "./QiitaPresenter";
-import {QiitaWidgetParam} from "../Interface";
+import {QiitaWidgetParam} from "./interface";
 
 export default class QiitaWidget {
 

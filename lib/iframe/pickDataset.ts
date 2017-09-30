@@ -1,5 +1,5 @@
-import {QiitaWidgetParam} from "../Interface";
-import {isType, toBoolean} from "../Util";
+import {QiitaWidgetParam} from "../interface";
+import {isType, toBoolean} from "../util";
 
 export function pickDataset(el: HTMLElement): QiitaWidgetParam {
 

@@ -1,6 +1,4 @@
 import {AxiosRequestConfig} from "axios";
-import {QiitaItems} from "./lib/QiitaItems";
-
 
 export interface FragmentCreator {
   (template: HTMLTemplateElement): DocumentFragment;
