@@ -7,7 +7,6 @@ const DEBUG = !process.argv.includes('--env.production');
 
 const jsPlugins = [
   new webpack.optimize.UglifyJsPlugin({
-    include: /\.min\.js$/,
     minimize: true,
     compress: {screw_ie8: true, warnings: false}
   }),
@@ -24,7 +23,6 @@ module.exports = [
   {
     entry: {
       'lib': "./lib/QiitaWidget.ts",
-      'lib.min': "./lib/QiitaWidget.ts"
     },
 
     output: {
@@ -109,17 +107,11 @@ module.exports = [
   {
     entry: {
       'iframe': './lib/iframe/iframe.ts',
-      'iframe.min': './lib/iframe/iframe.ts'
     },
 
     output: {
       filename: '[name].js',
       path: path.resolve(__dirname, 'docs'),
-    },
-
-    externals: {
-      'localforage': 'localforage',
-      'axios-cache-adapter': 'axios-cache-adapter'
     },
 
     resolve: {
@@ -138,7 +130,7 @@ module.exports = [
           exclude: /node_modules/
         },
         {
-          test: /lib.min.js$/,
+          test: /lib.js$/,
           use: 'raw-loader',
           exclude: /node_modules/
         },

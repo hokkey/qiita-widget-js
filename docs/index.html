@@ -170,38 +170,43 @@
       <section class="mb-5">
         <h2>ライブラリ版の使い方</h2>
         <p>1. 以下のコードをbody要素内の好きなところへペーストしてください。必要に応じ、要素の順番や有無を自由にカスタマイズできます。</p>
-
-        <p class="alert alert-dismissible alert-info">
-          template要素はJavaScriptによる初期化が完了するまで画面には表示されません。</p>
-
-        <p class="alert alert-dismissible alert-danger">
-          <strong>js-で始まるクラス名</strong>はデータとテンプレートの紐付けに使われているため、変更しないでください。 </p>
+        <p class="alert alert-dismissible alert-info">template要素はJavaScriptによる初期化が完了するまで画面には表示されません。</p>
+        <p class="alert alert-dismissible alert-danger"><strong>js-で始まるクラス名</strong>はJavaScriptとHTMLの紐付けに使われています。</p>
 
         <pre><code>&lt;!-- HTMLテンプレート --&gt;
+&lt;section class=&quot;qiita-widget js-qiita-widget&quot;&gt;
+  &lt;header class=&quot;qiita-widget__header qiita-user js-qiita-user&quot;&gt;&lt;/header&gt;
+  &lt;section class=&quot;qiita-widget__articles&quot;&gt;
+    &lt;h2 class=&quot;qiita-widget__articles-head transition transition--s4&quot;&gt;&lt;span class=&quot;transition__inner&quot;&gt;&#20154;&#27671;&#12398;&#25237;&#31295;&lt;/span&gt;
+    &lt;/h2&gt;
+    &lt;ul class=&quot;qiita-article-list js-qiita-article&quot;&gt;&lt;/ul&gt;
+  &lt;/section&gt;
+&lt;/section&gt;
+
 &lt;template id=&quot;qiita-user-tpl&quot;&gt;
-  &lt;p class=&quot;qiita-user__image&quot;&gt;&lt;img class=&quot;qiita-user__img js-profile-image-url&quot; src=&quot;&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;p class=&quot;qiita-user__image transition transition--s1&quot;&gt;&lt;img class=&quot;qiita-user__img js-profile-image-url transition__inner&quot; src=&quot;&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
   &lt;div class=&quot;qiita-user__title&quot;&gt;
-  &lt;a class=&quot;qiita-user__url js-url&quot; target=&quot;_blank&quot;&gt;&lt;h1 class=&quot;qiita-user__id js-id&quot;&gt;&lt;/h1&gt;&lt;/a&gt;
+    &lt;a class=&quot;qiita-user__url js-url transition transition--s2&quot; target=&quot;_blank&quot;&gt;&lt;h1 class=&quot;qiita-user__id js-id transition__inner&quot;&gt;&lt;/h1&gt;&lt;/a&gt;
 
-  &lt;p class=&quot;qiita-user__items&quot;&gt;
-  &lt;span class=&quot;qiita-user__items-num js-items-count&quot;&gt;&lt;/span&gt;
-  &lt;span class=&quot;qiita-user__items-unit&quot;&gt;Items&lt;/span&gt;
-  &lt;/p&gt;
+    &lt;p class=&quot;qiita-user__items transition transition--s3&quot;&gt;
+      &lt;span class=&quot;qiita-user__items-num js-items-count transition__inner&quot;&gt;&lt;/span&gt;
+      &lt;span class=&quot;qiita-user__items-unit transition__inner&quot;&gt;Items&lt;/span&gt;
+    &lt;/p&gt;
 
-  &lt;p class=&quot;qiita-user__likes&quot;&gt;
-  &lt;span class=&quot;qiita-user__likes-num js-likes-count&quot;&gt;&lt;/span&gt;
-  &lt;span class=&quot;qiita-user__likes-unit&quot;&gt;Contribution&lt;/span&gt;
-  &lt;/p&gt;
+    &lt;p class=&quot;qiita-user__likes transition transition--s3&quot;&gt;
+      &lt;span class=&quot;qiita-user__likes-num js-likes-count transition__inner&quot;&gt;&lt;/span&gt;
+      &lt;span class=&quot;qiita-user__likes-unit transition__inner&quot;&gt;Contribution&lt;/span&gt;
+    &lt;/p&gt;
 
   &lt;/div&gt;
 &lt;/template&gt;
 
 &lt;template id=&quot;qiita-article-tpl&quot;&gt;
-  &lt;li class=&quot;qiita-article-list__item&quot;&gt;
-  &lt;a class=&quot;qiita-article js-url&quot; target=&quot;_blank&quot;&gt;
-  &lt;h3 class=&quot;qiita-article__title js-title&quot;&gt;&lt;/h3&gt;
-  &lt;/a&gt;
+  &lt;li class=&quot;qiita-article-list__item transition transition--s5&quot;&gt;
+    &lt;a class=&quot;qiita-article js-url transition transition__inner&quot; target=&quot;_blank&quot;&gt;
+      &lt;h3 class=&quot;qiita-article__title js-title&quot;&gt;&lt;/h3&gt;
+    &lt;/a&gt;
   &lt;/li&gt;
 &lt;/template&gt;
 &lt;!-- HTMLテンプレート --&gt;</code></pre>
