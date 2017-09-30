@@ -17,6 +17,13 @@
       "axios": [
         "node_modules/axios/dist/axios",
         "node_modules/axios/index.d.ts"
+      ],
+      "axios-cache-adapter": [
+        "../../node_modules/axios-cache-adapter/dist/cache.bundled"
+      ],
+      "localforage": [
+        "node_modules/localforage/dist/localforage",
+        "node_modules/localforage/typings/localforage.d.ts"
       ]
     }
   },

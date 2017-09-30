@@ -30,6 +30,11 @@ module.exports = [
       umdNamedDefine: true
     },
 
+    externals: {
+      'localforage': 'localforage',
+      'axios-cache-adapter': 'axiosCacheAdapter'
+    },
+
     resolve: {
       extensions: ['.ts', '.json', '.js'],
       modules: ['node_modules', path.resolve(__dirname, 'src/js')]
@@ -105,6 +110,11 @@ module.exports = [
       path: path.resolve(__dirname, 'docs'),
     },
 
+    externals: {
+      'localforage': 'localforage',
+      'axios-cache-adapter': 'axios-cache-adapter'
+    },
+
     resolve: {
       extensions: ['.ts'],
       modules: ['node_modules', path.resolve(__dirname, 'src')]
@@ -123,7 +133,7 @@ module.exports = [
           exclude: /node_modules/
         },
         {
-          test: /\.js$/,
+          test: /lib.js$/,
           use: 'raw-loader',
           exclude: /node_modules/
         },
