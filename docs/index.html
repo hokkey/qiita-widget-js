@@ -183,15 +183,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <p class="alert alert-dismissible alert-danger"><strong>js-で始まるクラス名</strong>はJavaScriptとHTMLの紐付けに使われています。</p>
 
         <pre><code>&lt;!-- HTMLテンプレート --&gt;
-&lt;section class=&quot;qiita-widget js-qiita-widget&quot;&gt;
-  &lt;header class=&quot;qiita-widget__header qiita-user js-qiita-user&quot;&gt;&lt;/header&gt;
-  &lt;section class=&quot;qiita-widget__articles&quot;&gt;
-    &lt;h2 class=&quot;qiita-widget__articles-head transition transition--s4&quot;&gt;&lt;span class=&quot;transition__inner&quot;&gt;&#20154;&#27671;&#12398;&#25237;&#31295;&lt;/span&gt;
-    &lt;/h2&gt;
-    &lt;ul class=&quot;qiita-article-list js-qiita-article&quot;&gt;&lt;/ul&gt;
-  &lt;/section&gt;
-&lt;/section&gt;
-
 &lt;template id=&quot;qiita-user-tpl&quot;&gt;
   &lt;p class=&quot;qiita-user__image transition transition--s1&quot;&gt;&lt;img class=&quot;qiita-user__img js-profile-image-url transition__inner&quot; src=&quot;&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
@@ -222,11 +213,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
         <p>2. ウィジェットを表示したい位置へ以下のコードをペーストしてください。クラス名や要素の順番は自由に変更できます。</p>
 
-        <pre><code class="html">&lt;section class=&quot;qiita-widget&quot;&gt;
-  &lt;header class=&quot;qiita-widget__header qiita-user&quot; id=&quot;qiita-user&quot;&gt;&lt;/header&gt;
+        <pre><code class="html">&lt;section class=&quot;qiita-widget js-qiita-widget&quot;&gt;
+  &lt;header class=&quot;qiita-widget__header qiita-user js-qiita-user&quot;&gt;&lt;/header&gt;
   &lt;section class=&quot;qiita-widget__articles&quot;&gt;
-  &lt;h2 class=&quot;qiita-widget__articles-head&quot;&gt;&#20154;&#27671;&#12398;&#25237;&#31295;&lt;/h2&gt;
-  &lt;ul id=&quot;qiita-article&quot; class=&quot;qiita-article-list&quot;&gt;&lt;/ul&gt;
+    &lt;h2 class=&quot;qiita-widget__articles-head transition transition--s4&quot;&gt;&lt;span class=&quot;transition__inner&quot;&gt;&#20154;&#27671;&#12398;&#25237;&#31295;&lt;/span&gt;
+    &lt;/h2&gt;
+    &lt;ul class=&quot;qiita-article-list js-qiita-article&quot;&gt;&lt;/ul&gt;
+  &lt;/section&gt;
 &lt;/section&gt;</code></pre>
 
         <p>3. <a href="https://github.com/hokkey/qiita-widget-js/blob/master/dist/lib.js">lib.jsをダウンロードし、</a>body要素の最下部へ以下のコードをペーストしてください。
