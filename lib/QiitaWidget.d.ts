@@ -5,7 +5,7 @@ export default class QiitaWidget {
     private items;
     private dest;
     static defaultConf: QiitaWidgetParam;
-    constructor(conf: QiitaWidgetParam);
+    constructor(container: HTMLElement, conf: QiitaWidgetParam);
     init(): Promise<void>;
     private render();
     private claimLoaded();
