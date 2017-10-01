@@ -34,10 +34,17 @@ module.exports = [
       umdNamedDefine: true
     },
 
-    externals: {
-      'localforage': 'localforage',
-      'axios-cache-adapter': 'axiosCacheAdapter'
-    },
+    externals: [
+      "localforage",
+      {
+        "axios-cache-adapter": {
+          root: "axiosCacheAdapter",
+          amd: "axios-cache-adapter",
+          commonjs: "axios-cache-adapter",
+          commonjs2: "axios-cache-adapter"
+        }
+      }
+    ],
 
     resolve: {
       extensions: ['.ts', '.json', '.js'],
