@@ -86,6 +86,15 @@
   </style>
 </head>
 <body>
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KHN2V2"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KHN2V2');</script>
+<!-- End Google Tag Manager -->
 
 <header class="jumbotron mb-0 header">
   <div class="container">
@@ -228,15 +237,16 @@
 &lt;script src=&quot;https://unpkg.com/axios-cache-adapter/dist/cache.bundled.min.js&quot;&gt;&lt;/script&gt;
 &lt;script&gt;
 (function () {
-  new QiitaWidget({
-  userId: 'qiita',          // QiitaのユーザーID
-  useShuffle: false,        // trueで表示記事をランダムに選択する
-  sortByLike: true,         // trueで投稿を「いいね」数順でソートする
-  useTransition: true,      // trueでロード直後のアニメーションを表示
-  maxToShow: 5              // 最終的に表示する記事の件数
-  cacheAge: 15 * 60 * 1000, // JSONレスポンスのキャッシュ有効時間(ミリ秒)
-  perPage: 100,             // 一度のリクエストで取得する記事数(1〜100)
-  }).init();
+  var container = document.querySelector('.js-qiita-widget');
+  new QiitaWidget(container, {
+    userId: 'qiita',          // QiitaのユーザーID
+    useShuffle: false,        // trueで表示記事をランダムに選択する
+    sortByLike: true,         // trueで投稿を「いいね」数順でソートする
+    useTransition: true,      // trueでロード直後のアニメーションを表示
+    maxToShow: 5,             // 最終的に表示する記事の件数
+    cacheAge: 15 * 60 * 1000, // JSONレスポンスのキャッシュ有効時間(ミリ秒)
+    perPage: 100              // 一度のリクエストで取得する記事数(1〜100)
+}).init();
 })();
 &lt;/script&gt;</code></pre>
       </section>

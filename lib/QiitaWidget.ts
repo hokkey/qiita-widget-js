@@ -10,14 +10,13 @@ export default class QiitaWidget {
   private dest: HTMLElement;
 
   static defaultConf: QiitaWidgetParam = {
-    useTransition: true,
-    container: '.js-qiita-widget'
+    useTransition: true
   };
 
 
-  constructor(conf: QiitaWidgetParam) {
+  constructor(container: HTMLElement, conf: QiitaWidgetParam) {
     this.conf = Object.assign({}, QiitaWidget.defaultConf, conf);
-    this.dest = <HTMLElement>document.querySelector(this.conf.container);
+    this.dest = container;
     this.items = new QiitaItems(this.conf);
     this.presenter = new QiitaPresenter(this.items, this.conf, this.dest);
 

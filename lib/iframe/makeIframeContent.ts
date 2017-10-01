@@ -8,17 +8,21 @@ import * as LIB from "../../dist/lib.js";
 export function makeIframeContent(data: QiitaWidgetParam, id: number): string {
   return `
 <style>${CSS}</style>
-${HTML}
-<script>${LIB}</script>
-
+<div id="widget">${HTML}</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/localforage/1.5.0/localforage.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/axios-cache-adapter/dist/cache.bundled.min.js"></script>
 <script>
+  ${LIB}
   (function() {
-    new QiitaWidget(${JSON.stringify(data)}).init().then(() => {
+    var widget = document.getElementById('widget');
+    
+    new QiitaWidget(widget, ${JSON.stringify(data)}).init().then(() => {
       document.body.classList.remove('is-iframe-loading');
       
-      const body = document.body;
-      const html = document.documentElement;
-      const height = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
+      var body = document.body;
+      var html = document.documentElement;
+      var height = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
       
       parent.window.postMessage({
         id: ${id},
