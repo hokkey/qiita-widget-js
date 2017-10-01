@@ -31,14 +31,14 @@
     "type": "git",
     "url": "https://github.com/hokkey/qiita-widget-js.git"
   },
-  "private": true,
+  "private": false,
   "description": "Qiita API v2に対応した、Qiitaのユーザー情報を表示するTypeScript製ブログウィジェットです。コピペで簡単に導入できます。",
   "homepage": "https://media-massage.net/qiita-widget-js/",
   "keywords": [
     "Qiita",
-    "Wiedget",
+    "wiedget",
     "TypeScript",
-    "Web"
+    "Japanese"
   ],
   "bugs": {
     "url": "https://github.com/hokkey/qiita-widget-js/issues"
