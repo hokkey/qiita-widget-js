@@ -105,6 +105,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <svg class="icon" role="img">
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./sprite.octicons.svg#mark-github"></use>
           </svg>GitHub</a>
+        <a href="https://www.npmjs.com/package/qiita-widget" target="_blank" class="btn btn-danger">npmJS</a>
       </div>
 
       <div class="col-sm-12 col-md-5 col-lg-6 col-xl-5">
@@ -211,13 +212,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 &lt;/template&gt;
 &lt;!-- HTMLテンプレート --&gt;</code></pre>
 
-        <p>2. ウィジェットを表示したい位置へ以下のコードをペーストしてください。クラス名や要素の順番は自由に変更できます。</p>
+        <p>2. ウィジェットを表示したい位置へ以下のコードをペーストしてください。要素の順番や有無は自由に変更できます。</p>
 
         <pre><code class="html">&lt;section class=&quot;qiita-widget js-qiita-widget&quot;&gt;
   &lt;header class=&quot;qiita-widget__header qiita-user js-qiita-user&quot;&gt;&lt;/header&gt;
   &lt;section class=&quot;qiita-widget__articles&quot;&gt;
-    &lt;h2 class=&quot;qiita-widget__articles-head transition transition--s4&quot;&gt;&lt;span class=&quot;transition__inner&quot;&gt;&#20154;&#27671;&#12398;&#25237;&#31295;&lt;/span&gt;
-    &lt;/h2&gt;
+    &lt;h2 class=&quot;qiita-widget__articles-head transition transition--s4&quot;&gt;&lt;span class=&quot;transition__inner&quot;&gt;&#20154;&#27671;&#12398;&#25237;&#31295;&lt;/span&gt;&lt;/h2&gt;
     &lt;ul class=&quot;qiita-article-list js-qiita-article&quot;&gt;&lt;/ul&gt;
   &lt;/section&gt;
 &lt;/section&gt;</code></pre>
@@ -242,6 +242,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 }).init();
 })();
 &lt;/script&gt;</code></pre>
+        <p>4. <a href="https://github.com/hokkey/qiita-widget-js/blob/master/dist/style.css">デフォルトのCSS</a>を使うか、好きなCSSを使ってスタイルを実装してください。</p>
+      </section>
+      <section class="mb-5">
+        <h2>開発者向け情報</h2>
+        <p><a href="https://github.com/hokkey/qiita-widget-js/blob/master/README.md">README</a>を参照してください。</p>
       </section>
 
     </div>
