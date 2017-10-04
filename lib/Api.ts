@@ -1,13 +1,15 @@
 import {RequestConf} from "./interface";
 import * as LocalForage from "localforage";
-import * as axiosCacheAdapter from 'axios-cache-adapter';
+import * as AxiosCacheAdapter from 'axios-cache-adapter';
+import {AxiosResponse} from "axios";
+import {AxiosCacheAdapterSetupCallback} from "axios-cache-adapter";
 
 export class Api {
 
-  api: Function;
+  private api: AxiosCacheAdapterSetupCallback;
 
   constructor(conf: RequestConf) {
-    this.api = axiosCacheAdapter.setup({
+    this.api = AxiosCacheAdapter.setup({
       cache: {
         maxAge: conf.cacheAge,
         store: LocalForage,
@@ -17,7 +19,8 @@ export class Api {
   }
 
   async fetch<T>(conf: RequestConf): Promise<T> {
-    const res = await this.api(conf.axiosRequestConfig);
-    return res.data;
+    const apiConf = conf.axiosRequestConfig;
+    const res: AxiosResponse = await this.api(apiConf);
+    return <T>res.data;
   }
 }
