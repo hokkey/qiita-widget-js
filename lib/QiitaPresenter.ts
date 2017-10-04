@@ -85,11 +85,13 @@ export class QiitaPresenter {
 
   private renderView(template: HTMLTemplateElement, dest: HTMLElement, callback: FragmentCreator):void {
     if (template === null) {
-      throw new Error(`Could not find template! conf ${JSON.stringify(this.conf)}`);
+      // throw new Error(`Could not find template! conf ${JSON.stringify(this.conf)}`);
+      return;
     }
 
     if (dest === null) {
-      throw new Error(`Could not find dest! conf ${JSON.stringify(this.conf)}`);
+      // throw new Error(`Could not find dest! conf ${JSON.stringify(this.conf)}`);
+      return;
     }
 
     const fragments = callback(template);

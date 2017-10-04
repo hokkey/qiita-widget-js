@@ -40,7 +40,7 @@ export class QiitaItems {
   }
 
 
-  getArticlesToShow() {
+  getArticlesToShow(): QiitaResponse.Article[] {
     const order = this.createOrder();
 
     // Sort the list if not it using shuffle

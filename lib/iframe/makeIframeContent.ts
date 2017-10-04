@@ -1,9 +1,10 @@
 import {QiitaWidgetParam} from "../interface";
 
-import * as CSS from "../style/iframe.scss";
+import * as CSS from "lib/style/iframe.scss";
+
 // Included via raw-loader:
-import * as HTML from "./view/basic.html";
-import * as LIB from "../../dist/lib.js";
+import * as HTML from "lib/iframe/view/basic.html";
+import * as LIB from "dist/lib.js";
 
 export function makeIframeContent(data: QiitaWidgetParam, id: number): string {
   return `

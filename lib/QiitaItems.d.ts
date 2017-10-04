@@ -7,7 +7,7 @@ export declare class QiitaItems {
     constructor(conf: QiitaItemsParam);
     fetch(): Promise<void>;
     private createOrder();
-    getArticlesToShow(): any[];
+    getArticlesToShow(): QiitaResponse.Article[];
     getUserToShow(): QiitaResponse.User;
     private countAllLikes();
 }

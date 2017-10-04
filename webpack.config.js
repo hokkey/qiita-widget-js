@@ -48,7 +48,7 @@ module.exports = [
 
     resolve: {
       extensions: ['.ts', '.json', '.js'],
-      modules: ['node_modules', path.resolve(__dirname, 'src/js')]
+      modules: ['node_modules', path.resolve(__dirname, '')]
     },
 
     plugins: jsPlugins,
@@ -123,7 +123,7 @@ module.exports = [
 
     resolve: {
       extensions: ['.ts'],
-      modules: ['node_modules', path.resolve(__dirname, 'src')]
+      modules: ['node_modules', path.resolve(__dirname, '')]
     },
 
     plugins: jsPlugins,
