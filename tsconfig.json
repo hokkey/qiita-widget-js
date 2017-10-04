@@ -3,7 +3,7 @@
     "module": "es2015",
     "target": "es5",
     "sourceMap": false,
-    "allowJs": true,
+    "allowJs": false,
     "declaration": false,
     "lib": [
       "es2015",
@@ -25,6 +25,9 @@
       "localforage": [
         "node_modules/localforage/dist/localforage",
         "node_modules/localforage/typings/localforage.d.ts"
+      ],
+      "lib": [
+        "dist/lib.js"
       ]
     }
   },
