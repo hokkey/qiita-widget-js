@@ -1,14 +1,13 @@
-import {QiitaItemsApiConf, QiitaItemsApiParam, QiitaItemsApiRequestConf, QiitaResponse} from "./interface";
-import {Api} from "./Api";
+import { QiitaItemsApiConf, QiitaItemsApiParam, QiitaResponse } from "./interface";
 export declare class QiitaItemsApi {
-  private conf: QiitaItemsApiConf;
-  private requestConf: QiitaItemsApiRequestConf;
-  private api: Api;
-  static defaultConf: QiitaItemsApiConf;
-  static validateConf(conf: QiitaItemsApiConf): QiitaItemsApiConf;
-  constructor(conf: QiitaItemsApiParam);
-  fetch(): Promise<QiitaResponse.Article[]>;
-  private fetchItems();
-  private createNextRequest();
-  private isThereNextPage<T>(list);
+    private conf;
+    private requestConf;
+    private api;
+    static defaultConf: QiitaItemsApiConf;
+    static validateConf(conf: QiitaItemsApiConf): QiitaItemsApiConf;
+    constructor(conf: QiitaItemsApiParam);
+    fetch(): Promise<QiitaResponse.Article[]>;
+    private fetchItems();
+    private createNextRequest();
+    private isThereNextPage<T>(list);
 }
