@@ -1,7 +1,7 @@
 {
   "name": "qiita-widget",
-  "version": "0.3.1",
-  "main": "index.js",
+  "version": "0.3.2",
+  "main": "dist/lib.js",
   "types": "index.d.ts",
   "dependencies": {
     "axios": "^0.16.2",
