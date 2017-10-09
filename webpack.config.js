@@ -2,8 +2,17 @@ const path = require('path');
 const webpack = require('webpack');
 
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-
 const DEBUG = !process.argv.includes('--env.production');
+const banner = {
+  lib: 'qiita-widget-js | https://media-massage.net/qiita-widget-js | MIT License',
+  bundled: `qiita-widget-js | https://media-massage.net/qiita-widget-js | MIT License'
+This software includes localforage that is distributed in the Apache License 2.0
+
+Acknowledgements:
+axios | https://www.npmjs.com/package/axios | MIT License
+localforage | https://www.npmjs.com/package/localforage | Apache License 2.0
+axios-cache-adapter | https://www.npmjs.com/package/axios-cache-adapter | MIT License`
+};
 
 const jsPlugins = [
   new webpack.optimize.UglifyJsPlugin({
@@ -11,10 +20,7 @@ const jsPlugins = [
     compress: {screw_ie8: true, warnings: false}
   }),
   new webpack.optimize.OccurrenceOrderPlugin(),
-  new webpack.optimize.AggressiveMergingPlugin(),
-  new webpack.BannerPlugin(
-    'qiita-widget-js | MIT License | https://media-massage.net/qiita-widget-js/'
-  )
+  new webpack.optimize.AggressiveMergingPlugin()
 ];
 
 module.exports = [
@@ -51,7 +57,45 @@ module.exports = [
       modules: ['node_modules', path.resolve(__dirname, '')]
     },
 
-    plugins: jsPlugins,
+    plugins: jsPlugins.concat([
+      new webpack.BannerPlugin(banner.lib)
+    ]),
+    devtool: 'source-map',
+
+    module: {
+      rules: [
+        {
+          test: /\.tsx?$/,
+          use: 'ts-loader',
+          exclude: /node_modules/
+        }
+      ]
+    }
+  },
+
+  // Library Build (bundled)
+  {
+    entry: {
+      'lib.bundled': "./lib/QiitaWidget.ts",
+    },
+
+    output: {
+      filename: '[name].js',
+      path: path.resolve(__dirname, 'dist'),
+      library: 'QiitaWidget',
+      libraryTarget: 'umd',
+      libraryExport: 'default',
+      umdNamedDefine: true
+    },
+
+    resolve: {
+      extensions: ['.ts', '.json', '.js'],
+      modules: ['node_modules', path.resolve(__dirname, '')]
+    },
+
+    plugins: jsPlugins.concat([
+      new webpack.BannerPlugin(banner.bundled)
+    ]),
     devtool: 'source-map',
 
     module: {
@@ -126,7 +170,9 @@ module.exports = [
       modules: ['node_modules', path.resolve(__dirname, '')]
     },
 
-    plugins: jsPlugins,
+    plugins: jsPlugins.concat([
+      new webpack.BannerPlugin(banner.bundled)
+    ]),
     devtool: false,
 
     module: {
@@ -137,7 +183,7 @@ module.exports = [
           exclude: /node_modules/
         },
         {
-          test: /lib.js$/,
+          test: /lib.bundled.js$/,
           use: 'raw-loader',
           exclude: /node_modules/
         },
