@@ -64,7 +64,6 @@ export interface QiitaWidgetParam extends QiitaPresenterParam {
   container?: string;
 
   // for QiitaItemsParam
-  useTransition?: boolean;
   perPage?: number;
   cacheAge?: number;
   maxRequest?: number;
@@ -82,6 +81,8 @@ export interface QiitaPresenterParam {
   userDest?: string;
   articleTemplate?: string;
   articleDest?: string;
+
+  subject?: string;
 }
 
 
@@ -92,6 +93,8 @@ export interface QiitaPresenterConf {
   userDest: string;
   articleTemplate: string;
   articleDest: string;
+
+  subject: string;
 }
 
 

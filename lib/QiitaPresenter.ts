@@ -15,6 +15,7 @@ export class QiitaPresenter {
 
 
   static defaultConf: QiitaPresenterConf = {
+    subject: '人気の投稿',
     userDest: '.js-qiita-user',
     userTemplate: '#qiita-user-tpl',
     articleDest: '.js-qiita-article',
@@ -45,7 +46,15 @@ export class QiitaPresenter {
     this.claimNoTransition();
     this.renderUser();
     this.renderArticles();
+    this.setSubject();
     this.claimLoaded();
+  }
+
+  private setSubject(): void {
+    const elems = <NodeListOf<HTMLElement>>this.dest.querySelectorAll('.js-subject');
+    Array.from(elems,(elem) => {
+      elem.innerText = this.conf.subject;
+    });
   }
 
   private renderUser(): void {
