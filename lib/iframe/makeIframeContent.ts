@@ -10,9 +10,9 @@ export function makeIframeContent(data: QiitaWidgetParam, id: number): string {
   return `
 <style>${CSS}</style>
 <div id="widget">${HTML}</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/localforage/1.5.0/localforage.min.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="https://unpkg.com/axios-cache-adapter/dist/cache.bundled.min.js"></script>
+<script src="https://unpkg.com/axios@0.16.2/dist/axios.min.js"></script>
+<script src="https://unpkg.com/localforage@1.5.1/dist/localforage.min.js"></script>
+<script src="https://unpkg.com/axios-cache-adapter@1.5.2/dist/cache.bundled.min.js"></script>
 <script>
   ${LIB}
   (function() {

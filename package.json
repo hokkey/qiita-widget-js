@@ -1,12 +1,12 @@
 {
   "name": "qiita-widget",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "main": "index.js",
   "types": "index.d.ts",
   "dependencies": {
     "axios": "^0.16.2",
-    "axios-cache-adapter": "^1.1.0",
-    "localforage": "^1.5.0"
+    "axios-cache-adapter": "^1.5.2",
+    "localforage": "^1.5.1"
   },
   "devDependencies": {
     "@types/node": "^8.0.28",

@@ -18,13 +18,15 @@ import QiitaWidget from 'qiita-widget';
 
 const container = document.querySelector('.js-qiita-widget');
 new QiitaWidget(container, {
+  subject: '人気の記事',      // 見出し
   userId: 'qiita',          // QiitaのユーザーID
   useShuffle: false,        // trueで表示記事をランダムに選択する
   sortByLike: true,         // trueで投稿を「いいね」数順でソートする
   useTransition: true,      // trueでロード直後のアニメーションを表示
   maxToShow: 5,             // 最終的に表示する記事の件数
   cacheAge: 15 * 60 * 1000, // JSONレスポンスのキャッシュ有効時間(ミリ秒)
-  perPage: 100              // 一度のリクエストで取得する記事数(1〜100)
+  perPage: 100,             // 一度のリクエストで取得する記事数(1〜100)
+  maxRequest: 10            // perPage * maxRequest = 取得を試みる最大記事件数 
 }).init();
 
 ```

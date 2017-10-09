@@ -6,19 +6,21 @@ export function pickDataset(el: HTMLElement): QiitaWidgetParam {
   const result: QiitaWidgetParam = {};
 
   // set string value
-  if (isType(el.dataset['userId'], 'string')) {
-    result['userId'] = el.dataset['userId'];
-  }
+  ['userId', 'subject'].forEach((key: string) => {
+    if (isType(el.dataset[key], 'string')) {
+      result[key] = el.dataset[key];
+    }
+  });
 
   // set boolean value
-  ['sortByLike', 'useShuffle', 'useTransition'].forEach((key:string) => {
+  ['sortByLike', 'useShuffle', 'useTransition'].forEach((key: string) => {
     if (isType(el.dataset[key], 'string')) {
       result[key] = toBoolean(el.dataset[key]);
     }
   });
 
   // set number value
-  ['perPage', 'maxToShow', 'maxRequest', 'cacheAge'].forEach((key:string) => {
+  ['perPage', 'maxToShow', 'maxRequest', 'cacheAge'].forEach((key: string) => {
     if (isType(el.dataset[key], 'string')) {
       const num = parseInt(el.dataset[key], 10);
 
