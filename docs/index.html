@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>Qiita Widget JS | APIv2対応 Qiitaのユーザー情報を表示するTypeScript製ブログウィジェット</title>
+  <title>Qiita Widget JS | API V2対応 Qiitaのユーザー情報を表示するTypeScript製ブログウィジェット</title>
   <meta name="description" content="Qiita Widget JSはAPIv2に対応した、Qiitaのユーザー情報を表示するTypeScript製ブログウィジェットです。">
   <link rel="stylesheet" href="https://bootswatch.com/4-alpha/cosmo/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
@@ -99,7 +99,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <div class="container">
     <div class="row align-items-center justify-content-center text-xs-center">
       <div class="col-sm-12 col-md-7 col-lg-5 col-xl-5 mb-4 mb-md-0">
-        <h1 class="display-4 text-white">Qiita Widget JS <span class="h4 copy mt-3 mb-3"><span class="small">API v2対応</span><br/>Qiitaのユーザー情報を表示するTypeScript製ブログウィジェット</span></h1>
+        <h1 class="display-4 text-white">Qiita Widget JS <span class="h4 copy mt-3 mb-3"><span class="small">API V2対応</span><br/>Qiitaのユーザー情報を表示するTypeScript製ブログウィジェット</span></h1>
         <a class="btn btn-secondary" href="https://github.com/hokkey/qiita-widget-js" role="button">
           <svg class="icon" role="img">
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./sprite.octicons.svg#mark-github"></use>
@@ -184,7 +184,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   data-max-request="10"&gt;&lt;/div&gt;
 &lt;script src=&quot;/path/to/iframe.js&quot; defer&gt;&lt;/script&gt;</code></pre>
 
-            <iframe height='390' scrolling='yes' title='QiitaWidgetJS' src='//codepen.io/hokkey/embed/RLRzEE/?height=399&theme-id=light&default-tab=html,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/hokkey/pen/RLRzEE/'>QiitaWidgetJS</a> by y_hokkey (<a href='https://codepen.io/hokkey'>@hokkey</a>) on <a href='https://codepen.io'>CodePen</a>.</iframe>
+            <p data-height="390" data-theme-id="light" data-slug-hash="RLRzEE" data-default-tab="html,result" data-user="hokkey" data-embed-version="2" data-pen-title="QiitaWidgetJS" class="codepen">See the Pen <a href="https://codepen.io/hokkey/pen/RLRzEE/">QiitaWidgetJS</a> by y_hokkey (<a href="https://codepen.io/hokkey">@hokkey</a>) on <a href="https://codepen.io">CodePen</a>.</p>
           </div>
         </div>
       </section>
@@ -234,12 +234,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   &lt;/section&gt;
 &lt;/section&gt;</code></pre>
 
-        <p>3. <a href="https://github.com/hokkey/qiita-widget-js/blob/master/dist/lib.js">lib.jsをダウンロードし、</a>body要素の最下部へ以下のコードをペーストしてください。
+        <p>3. <a href="https://github.com/hokkey/qiita-widget-js/blob/master/dist/lib.bundled.js">lib.bundled.jsをダウンロードし、</a>body要素の最下部へ以下のコードをペーストしてください。
         </p>
 
-        <pre><code class="html">&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/localforage/1.5.0/localforage.min.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;https://unpkg.com/axios/dist/axios.min.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;https://unpkg.com/axios-cache-adapter/dist/cache.bundled.min.js&quot;&gt;&lt;/script&gt;
+        <pre><code class="html">&lt;script src=&quot;path/to/lib.bundled.js&quot;&gt;&lt;/script&gt;
 &lt;script&gt;
 (function () {
   var container = document.querySelector('.js-qiita-widget');
@@ -257,22 +255,37 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })();
 &lt;/script&gt;</code></pre>
         <p>4. <a href="https://github.com/hokkey/qiita-widget-js/blob/master/dist/style.css">デフォルトのCSS</a>を使うか、好きなCSSを使ってスタイルを実装してください。</p>
+
+        <p data-height="371" data-theme-id="light" data-slug-hash="eGMKOG" data-default-tab="js,result" data-user="hokkey" data-embed-version="2" data-pen-title="QiitaWidgetJS (library)" class="codepen">See the Pen
+          <a href="https://codepen.io/hokkey/pen/eGMKOG/">QiitaWidgetJS (library)</a> by y_hokkey (<a href="https://codepen.io/hokkey">@hokkey</a>) on
+          <a href="https://codepen.io">CodePen</a>.</p>
+
       </section>
+
       <section class="mb-5">
         <h2>開発者向け情報</h2>
-        <p><a href="https://github.com/hokkey/qiita-widget-js/blob/master/README.md">README</a>を参照してください。</p>
+        <p><a href="https://github.com/hokkey/qiita-widget-js/blob/master/">README</a>を参照してください。</p>
       </section>
 
     </div>
     <div class="col-xs-12 col-md-4 col-lg-3">
 
-      <section class="mb-4 mt-1">
+      <section class="mb-3 mt-1">
         <div class="js-qiita-widget" data-user-id="y_hokkey" data-height="auto" data-use-shuffle="true" data-sort-by-like="true" data-per-page="100" data-max-to-show="10" data-use-transition="false"></div>
       </section>
 
-      <section class="mb-5">
+      <section class="mb-3">
         <h2 class="h4">ライセンス</h2>
         <p>MIT License</p>
+      </section>
+
+      <section class="mb-5">
+        <h2 class="h5">謝辞</h2>
+        <ul>
+          <li><a href="https://www.npmjs.com/package/axios">axios</a>, MIT</li>
+          <li><a href="https://www.npmjs.com/package/localforage">localforage</a>, Apache-2.0</li>
+          <li><a href="https://www.npmjs.com/package/axios-cache-adapter">axios-cache-adapter</a>, MIT</li>
+        </ul>
       </section>
     </div>
   </div>
@@ -285,6 +298,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </footer>
 
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 <script src="./iframe.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>

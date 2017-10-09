@@ -2,7 +2,7 @@
 
 ![build state](https://travis-ci.org/hokkey/qiita-widget-js.svg?branch=master)
 
-Qiita API v2に対応した、Qiitaのユーザー情報を表示するTypeScript製ブログウィジェットです。
+Qiita API V2に対応した、Qiitaのユーザー情報を表示するTypeScript製ブログウィジェットです。
 コピペで簡単に導入できるiframe版と、柔軟にカスタマイズできるライブラリ版があります。
 
 [デモサイト](https://media-massage.net/qiita-widget-js/)
@@ -59,4 +59,12 @@ npm run serve
 
 ## Author
 
-https://media-massage.net/profile/
+* [Yuma Hori](https://media-massage.net/profile/)
+
+## Acknowledgements
+
+qiita-widget-js uses following libraries:
+
+* [axios](https://www.npmjs.com/package/axios), MIT License
+* [localforage](https://www.npmjs.com/package/localforage), Apache License Version 2.0
+* [axios-cache-adapter](https://www.npmjs.com/package/axios-cache-adapter), MIT License
