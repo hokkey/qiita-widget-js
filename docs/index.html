@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
@@ -37,8 +37,7 @@
       padding: 2em;
 
       background-color: #59bb0c;
-      background: #59bb0c;
-      background: linear-gradient(135deg, #59bb0c 0%, #a5c956 92%, #a5c956 92%);
+      background-image: linear-gradient(135deg, #59bb0c 0%, #a5c956 92%, #a5c956 92%);
     }
 
     .features {
@@ -112,7 +111,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class="card">
           <div class="card-header">動作デモ</div>
           <div class="card-block">
-            <div class="js-qiita-widget" data-user-id="qiita" data-height="auto" data-use-shuffle="false" data-sort-by-like="true" data-per-page="100" data-expiration-day="1" data-max="5"></div>
+            <div class="js-qiita-widget"
+              data-subject="最近の投稿"
+              data-user-id="qiita"
+              data-height="auto"
+              data-use-shuffle="false"
+              data-sort-by-like="false"
+              data-per-page="100"
+              data-cache-age="900000"
+              data-max-to-show="5"
+              data-max-request="1"></div>
           </div>
         </div>
       </div>
@@ -164,15 +172,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <p><a href="https://github.com/hokkey/qiita-widget-js/blob/master/docs/iframe.js">iframe.js</a>をダウンロードし、ウィジェットを表示したい場所へ以下のコードをペーストしてください。
             </p>
             <pre><code>&lt;div class=&quot;js-qiita-widget&quot;
+  data-subject=&quot;人気の投稿&quot;
   data-user-id=&quot;qiita&quot;
   data-height=&quot;auto&quot;
   data-use-shuffle=&quot;false&quot;
-  data-per-page=&quot;100&quot;
+  data-sort-by-like=&quot;true&quot;
+  data-use-transition=&quot;true&quot;
+  data-max-to-show=&quot;5&quot;
   data-cache-age=&quot;900000&quot;
-  data-max-to-show=&quot;5&quot;&gt;&lt;/div&gt;
-&lt;script src=&quot;/path/to/iframe.js&quot; async&gt;&lt;/script&gt;</code></pre>
+  data-per-page=&quot;100&quot;
+  data-max-request="10"&gt;&lt;/div&gt;
+&lt;script src=&quot;/path/to/iframe.js&quot; defer&gt;&lt;/script&gt;</code></pre>
 
-            <iframe height='500' scrolling='no' title='QiitaWidgetJS' src='//codepen.io/hokkey/embed/RLRzEE/?height=399&theme-id=light&default-tab=html,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/hokkey/pen/RLRzEE/'>QiitaWidgetJS</a> by y_hokkey (<a href='https://codepen.io/hokkey'>@hokkey</a>) on <a href='https://codepen.io'>CodePen</a>.</iframe>
+            <iframe height='390' scrolling='yes' title='QiitaWidgetJS' src='//codepen.io/hokkey/embed/RLRzEE/?height=399&theme-id=light&default-tab=html,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/hokkey/pen/RLRzEE/'>QiitaWidgetJS</a> by y_hokkey (<a href='https://codepen.io/hokkey'>@hokkey</a>) on <a href='https://codepen.io'>CodePen</a>.</iframe>
           </div>
         </div>
       </section>
@@ -217,7 +229,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <pre><code class="html">&lt;section class=&quot;qiita-widget js-qiita-widget&quot;&gt;
   &lt;header class=&quot;qiita-widget__header qiita-user js-qiita-user&quot;&gt;&lt;/header&gt;
   &lt;section class=&quot;qiita-widget__articles&quot;&gt;
-    &lt;h2 class=&quot;qiita-widget__articles-head transition transition--s4&quot;&gt;&lt;span class=&quot;transition__inner&quot;&gt;&#20154;&#27671;&#12398;&#25237;&#31295;&lt;/span&gt;&lt;/h2&gt;
+    &lt;h2 class=&quot;qiita-widget__articles-head transition transition--s4&quot;&gt;&lt;span class=&quot;transition__inner js-subject&quot;&gt;&lt;/span&gt;&lt;/h2&gt;
     &lt;ul class=&quot;qiita-article-list js-qiita-article&quot;&gt;&lt;/ul&gt;
   &lt;/section&gt;
 &lt;/section&gt;</code></pre>
@@ -232,6 +244,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 (function () {
   var container = document.querySelector('.js-qiita-widget');
   new QiitaWidget(container, {
+    subject: '人気の投稿',      // 見出し
     userId: 'qiita',          // QiitaのユーザーID
     useShuffle: false,        // trueで表示記事をランダムに選択する
     sortByLike: true,         // trueで投稿を「いいね」数順でソートする
@@ -239,6 +252,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     maxToShow: 5,             // 最終的に表示する記事の件数
     cacheAge: 15 * 60 * 1000, // JSONレスポンスのキャッシュ有効時間(ミリ秒)
     perPage: 100              // 一度のリクエストで取得する記事数(1〜100)
+    maxRequest: 10            // perPage * maxRequest = 取得を試みる最大記事件数
 }).init();
 })();
 &lt;/script&gt;</code></pre>
@@ -271,7 +285,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </footer>
 
-<script src="./iframe.js" async></script>
+<script src="./iframe.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
