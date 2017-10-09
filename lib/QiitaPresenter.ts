@@ -6,6 +6,7 @@ export class QiitaPresenter {
 
   items: QiitaItems;
 
+  private dest: HTMLElement;
   private conf: QiitaPresenterConf;
   private userTemplate: HTMLTemplateElement;
   private articleTemplate: HTMLTemplateElement;
@@ -18,17 +19,19 @@ export class QiitaPresenter {
     userTemplate: '#qiita-user-tpl',
     articleDest: '.js-qiita-article',
     articleTemplate: '#qiita-article-tpl',
+    useTransition: true
   };
 
 
-  constructor(items: QiitaItems, conf: QiitaWidgetParam, dest: HTMLElement = null) {
+  constructor(dest: HTMLElement, items: QiitaItems, conf: QiitaWidgetParam) {
+    this.dest = dest;
     this.items = items;
     this.conf = Object.assign({}, QiitaPresenter.defaultConf, conf);
 
     this.userTemplate = <HTMLTemplateElement>document.querySelector(this.conf.userTemplate);
     this.articleTemplate = <HTMLTemplateElement>document.querySelector(this.conf.articleTemplate);
 
-    if (dest !== null) {
+    if (this.dest !== null) {
       this.userDest = <HTMLElement>dest.querySelector(this.conf.userDest);
       this.articleDest = <HTMLElement>dest.querySelector(this.conf.articleDest);
       return;
@@ -38,8 +41,14 @@ export class QiitaPresenter {
     this.articleDest = <HTMLElement>document.querySelector(this.conf.articleDest);
   }
 
+  render(): void {
+    this.claimNoTransition();
+    this.renderUser();
+    this.renderArticles();
+    this.claimLoaded();
+  }
 
-  renderUser(): void {
+  private renderUser(): void {
 
     const callback: FragmentCreator = (template) => {
 
@@ -55,7 +64,7 @@ export class QiitaPresenter {
   }
 
 
-  renderArticles(): void {
+  private renderArticles(): void {
 
     const callback: FragmentCreator = (template) => {
 
@@ -145,6 +154,20 @@ export class QiitaPresenter {
       template.textContent = val;
       break;
     }
+  }
+
+  private claimNoTransition(): void {
+    if (this.dest === null) return;
+    if (this.conf.useTransition) return;
+
+    this.dest.classList.add('is-no-transition');
+  }
+
+  private claimLoaded(): void {
+    if (this.dest === null) return;
+    if (!this.conf.useTransition) return;
+
+    this.dest.classList.add('is-qiita-widget-loaded');
   }
 
 }

@@ -61,10 +61,10 @@ export interface RequestConf {
 export interface QiitaWidgetParam extends QiitaPresenterParam {
   userId?: string;
 
-  useTransition?: boolean;
   container?: string;
 
   // for QiitaItemsParam
+  useTransition?: boolean;
   perPage?: number;
   cacheAge?: number;
   maxRequest?: number;
@@ -76,6 +76,8 @@ export interface QiitaWidgetParam extends QiitaPresenterParam {
 
 export interface QiitaPresenterParam {
   [key: string]: string | number | boolean;
+  useTransition?: boolean;
+
   userTemplate?: string;
   userDest?: string;
   articleTemplate?: string;
@@ -84,6 +86,8 @@ export interface QiitaPresenterParam {
 
 
 export interface QiitaPresenterConf {
+  useTransition: boolean;
+
   userTemplate: string;
   userDest: string;
   articleTemplate: string;
