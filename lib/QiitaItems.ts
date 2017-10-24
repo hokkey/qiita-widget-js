@@ -13,12 +13,28 @@ export class QiitaItems {
   static defaultConf: QiitaItemsConf = {
     maxToShow: 5,
     useShuffle: false,
-    sortByLike: true
+    sortByLike: true,
+    filterByLikesFrom: 0
   };
 
 
+  static validateConf(conf: QiitaItemsConf): QiitaItemsConf {
+    // A minus value is not expected
+    if (conf.maxToShow < 0) {
+      conf.maxToShow = 0;
+    }
+
+    // A minus value is not expected
+    if (conf.filterByLikesFrom < 0) {
+      conf.filterByLikesFrom = 0;
+    }
+
+    return conf;
+  }
+
+
   constructor(conf: QiitaItemsParam) {
-    this.conf = Object.assign({}, QiitaItems.defaultConf, conf);
+    this.conf = QiitaItems.validateConf(Object.assign({}, QiitaItems.defaultConf, conf));
     this.api = new QiitaItemsApi(this.conf);
   }
 
@@ -27,27 +43,40 @@ export class QiitaItems {
   }
 
 
-  private createOrder(): number[] {
-
-    // Shuffle article orders
+  private createOrder<T>(source: T[]): number[] {
+    // Shuffle articles order
     const order = this.conf.useShuffle
-      ? Util.shuffleArray<number>(Util.initSerialNumArray(this.articles.length))
-      : Util.initSerialNumArray(this.articles.length)
+      ? Util.shuffleArray<number>(Util.initSerialNumArray(source.length))
+      : Util.initSerialNumArray(source.length)
       ;
 
-    // Slice article orders
+    // Slice articles order
     return order.slice(0, this.conf.maxToShow);
   }
 
 
+  private filterOrigin(): QiitaResponse.Article[] {
+    if (this.conf.filterByLikesFrom === 0) {
+      return this.articles;
+    }
+
+    return this.articles.filter((article) => {
+      return article.likes_count >= this.conf.filterByLikesFrom;
+    });
+  }
+
+
   getArticlesToShow(): QiitaResponse.Article[] {
-    const order = this.createOrder();
+    const filteredOrigin = this.filterOrigin();
 
     // Sort the list if not it using shuffle
     const articlesOrigin = (this.conf.sortByLike && !this.conf.useShuffle)
-      ? Util.sortArray(this.articles, 'likes_count')
-      : this.articles
+      ? Util.sortArray(filteredOrigin, 'likes_count')
+      : filteredOrigin
       ;
+
+    // Create articles order
+    const order = this.createOrder<QiitaResponse.Article>(filteredOrigin);
 
     // Create a list of required articles
     const articles = order.map((val) => {

@@ -4,9 +4,11 @@ export declare class QiitaItems {
     private api;
     private articles;
     static defaultConf: QiitaItemsConf;
+    static validateConf(conf: QiitaItemsConf): QiitaItemsConf;
     constructor(conf: QiitaItemsParam);
     fetch(): Promise<void>;
-    private createOrder();
+    private createOrder<T>(source);
+    private filterOrigin();
     getArticlesToShow(): QiitaResponse.Article[];
     getUserToShow(): QiitaResponse.User;
     private countAllLikes();
