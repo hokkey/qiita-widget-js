@@ -11,6 +11,7 @@ export interface QiitaItemsParam {
   maxToShow?: number;
   useShuffle?: boolean;
   sortByLike?: boolean;
+  filterByLikesFrom?: number;
 }
 
 
@@ -18,6 +19,7 @@ export interface QiitaItemsConf extends QiitaItemsApiParam {
   maxToShow: number;
   useShuffle: boolean;
   sortByLike: boolean;
+  filterByLikesFrom: number;
 }
 
 
@@ -64,6 +66,7 @@ export interface QiitaWidgetParam extends QiitaPresenterParam {
   container?: string;
 
   // for QiitaItemsParam
+  filterByLikesFrom?: number;
   perPage?: number;
   cacheAge?: number;
   maxRequest?: number;
