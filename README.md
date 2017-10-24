@@ -1,6 +1,7 @@
 # hokey/qiita-widget-js
 
-![build state](https://travis-ci.org/hokkey/qiita-widget-js.svg?branch=master)
+[![npm version](https://badge.fury.io/js/qiita-widget.svg)](https://badge.fury.io/js/qiita-widget)![build state](https://travis-ci.org/hokkey/qiita-widget-js.svg?branch=master)[![Dependency Status](https://gemnasium.com/badges/github.com/hokkey/qiita-widget-js.svg)](https://gemnasium.com/github.com/hokkey/qiita-widget-js)
+
 
 Qiita API V2に対応した、Qiitaのユーザー情報を表示するTypeScript製ブログウィジェットです。
 コピペで簡単に導入できるiframe版と、柔軟にカスタマイズできるライブラリ版があります。
@@ -23,6 +24,7 @@ new QiitaWidget(container, {
   useShuffle: false,        // trueで表示記事をランダムに選択する
   sortByLike: true,         // trueで投稿を「いいね」数順でソートする
   useTransition: true,      // trueでロード直後のアニメーションを表示
+  filterByLikesFrom: 0,     // 表示する記事の最低いいね数(0でフィルタ無効)
   maxToShow: 5,             // 最終的に表示する記事の件数
   cacheAge: 15 * 60 * 1000, // JSONレスポンスのキャッシュ有効時間(ミリ秒)
   perPage: 100,             // 一度のリクエストで取得する記事数(1〜100)
@@ -57,6 +59,22 @@ npm run serve
 - ドキュメントの拡充
 - デザインの拡充
 
+## Changelog
+
+- 0.4.0
+  - いいね数で表示記事をフィルタできるパラメータ`filterByLikesFrom`を追加
+- 0.3.1
+  - ライブラリ版がimportできなかった問題を修正
+- 0.3.0
+  - 依存ライブラリをバンドルした配布用ファイルを追加
+- 0.2.1
+  - ビルド設定の修正
+- 0.2.0
+  - 同じページ内へ複数のインスタンスを作成できるように修正
+- 0.1.0
+  - NPMへの公開準備
+  - コードレビュー指摘箇所の修正
+  
 ## Author
 
 * [Yuma Hori](https://media-massage.net/profile/)

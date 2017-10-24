@@ -9,7 +9,6 @@ export default class QiitaWidget {
   private items: QiitaItems;
 
   static defaultConf: QiitaWidgetParam = {
-    useTransition: true
   };
 
 
