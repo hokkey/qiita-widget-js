@@ -5,6 +5,7 @@
     "sourceMap": false,
     "allowJs": false,
     "declaration": false,
+    "strictNullChecks": true,
     "lib": [
       "es2015",
       "es2017",
