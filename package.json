@@ -4,8 +4,8 @@
   "main": "dist/lib.js",
   "types": "index.d.ts",
   "dependencies": {
-    "axios-cache-adapter": "^1.5.2",
-    "localforage": "^1.5.1"
+    "axios-cache-adapter": "^2.0.0",
+    "localforage": "^1.5.3"
   },
   "devDependencies": {
     "@types/node": "^8.0.28",
