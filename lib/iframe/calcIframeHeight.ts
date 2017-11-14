@@ -11,7 +11,7 @@ export function setIframeHeight(iframe: HTMLIFrameElement, target: HTMLElement):
     return;
   }
 
-  iframe.height = target.dataset['height'];
+  iframe.height = <string>target.dataset['height'];
 }
 
 export function watchIframeHeight(iframe: HTMLIFrameElement, target: HTMLElement, id: number): void {
