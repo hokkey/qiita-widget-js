@@ -55,7 +55,7 @@ export interface QiitaWidgetParam extends QiitaPresenterParam {
     sortByLike?: boolean;
 }
 export interface QiitaPresenterParam {
-    [key: string]: string | number | boolean;
+    [key: string]: string | number | boolean | undefined;
     useTransition?: boolean;
     userTemplate?: string;
     userDest?: string;
