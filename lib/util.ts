@@ -1,5 +1,5 @@
 export function numToString(num: number): string {
-  if (Number.isNaN(num)) return null;
+  if (Number.isNaN(num)) return '';
   return num + '';
 }
 
