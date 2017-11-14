@@ -49,7 +49,7 @@ npm run serve
 
 ## 仕様
 
-* IE11を含むすべてのIEに未対応です。
+* **IE11を含むすべてのIEに非対応です。**
 * 公開されている投稿の「いいね」からContributionを算出しているため、Qiitaのプロフィールページの数値と完全に一致しないことがあります。
 
 ## ToDo
@@ -61,6 +61,10 @@ npm run serve
 
 ## Changelog
 
+- 0.4.2
+  - tsconfig.jsonで`strictNullChecks`を有効化
+  - axios-cache-adapterを2.0.0へ更新
+  - localforageを1.5.3へ更新
 - 0.4.1
   - axiosをdependenciesからdevDependenciesへ移動
 - 0.4.0

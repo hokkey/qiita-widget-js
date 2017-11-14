@@ -8,21 +8,21 @@ export function pickDataset(el: HTMLElement): QiitaWidgetParam {
   // set string value
   ['userId', 'subject'].forEach((key: string) => {
     if (isType(el.dataset[key], 'string')) {
-      result[key] = el.dataset[key];
+      result[key] = <string>el.dataset[key];
     }
   });
 
   // set boolean value
   ['sortByLike', 'useShuffle', 'useTransition'].forEach((key: string) => {
     if (isType(el.dataset[key], 'string')) {
-      result[key] = toBoolean(el.dataset[key]);
+      result[key] = toBoolean(<string>el.dataset[key]);
     }
   });
 
   // set number value
   ['perPage', 'maxToShow', 'maxRequest', 'cacheAge', 'filterByLikesFrom'].forEach((key: string) => {
     if (isType(el.dataset[key], 'string')) {
-      const num = parseInt(el.dataset[key], 10);
+      const num = parseInt(<string>el.dataset[key], 10);
 
       if (Number.isNaN(num)) {
         throw new Error(`${key} was parsed as NaN!`);
