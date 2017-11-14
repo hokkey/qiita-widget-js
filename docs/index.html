@@ -20,6 +20,10 @@
       fill: currentColor;
     }
 
+    .card-block-hero {
+      padding: 1em;
+    }
+
     @font-face {
       font-family: 'Noto Sans Japanese';
       font-style: normal;
@@ -110,7 +114,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="col-sm-12 col-md-5 col-lg-6 col-xl-5">
         <div class="card">
           <div class="card-header">動作デモ</div>
-          <div class="card-block">
+          <div class="card-block card-block-hero">
             <div class="js-qiita-widget"
               data-subject="最近の投稿"
               data-user-id="qiita"
@@ -286,12 +290,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <p>MIT License</p>
       </section>
 
-      <section class="mb-5">
+      <section class="mb-3">
         <h2 class="h5">謝辞</h2>
         <ul>
           <li><a href="https://www.npmjs.com/package/axios">axios</a>, MIT</li>
           <li><a href="https://www.npmjs.com/package/localforage">localforage</a>, Apache-2.0</li>
           <li><a href="https://www.npmjs.com/package/axios-cache-adapter">axios-cache-adapter</a>, MIT</li>
+        </ul>
+      </section>
+
+      <section class="mb-5">
+        <h2 class="h5">このライブラリの設計</h2>
+        <ul>
+          <li><a href="https://qiita.com/y_hokkey/items/055e335b9d6d6f77c7ad">同僚のコードレビューでこんなにクラスの設計が良くなったという話</a></li>
         </ul>
       </section>
     </div>
