@@ -61,6 +61,11 @@ npm run serve
 
 ## Changelog
 
+- 0.4.3
+  - ビルド失敗の修正
+  - package-lock.jsonを追加
+  - CIで利用するNodeバージョンを変更
+  - ドキュメント更新
 - 0.4.2
   - tsconfig.jsonで`strictNullChecks`を有効化
   - axios-cache-adapterを2.0.0へ更新
