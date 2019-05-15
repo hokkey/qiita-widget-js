@@ -134,7 +134,6 @@ module.exports = [
               use: [{
                 loader: "css-loader",
                 options: {
-                  minimize: !DEBUG,
                   sourceMap: DEBUG
                 }
               }, {
@@ -197,7 +196,6 @@ module.exports = [
           use: [{
             loader: "css-loader",
             options: {
-              minimize: true,
               sourceMap: false
             }
           }, {
