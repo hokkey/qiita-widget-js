@@ -1,6 +1,6 @@
 # hokey/qiita-widget-js
 
-[![npm version](https://badge.fury.io/js/qiita-widget.svg)](https://badge.fury.io/js/qiita-widget) ![build state](https://travis-ci.org/hokkey/qiita-widget-js.svg?branch=master) [![Dependency Status](https://gemnasium.com/badges/github.com/hokkey/qiita-widget-js.svg)](https://gemnasium.com/github.com/hokkey/qiita-widget-js)
+[![npm version](https://badge.fury.io/js/qiita-widget.svg)](https://badge.fury.io/js/qiita-widget) ![build state](https://travis-ci.org/hokkey/qiita-widget-js.svg?branch=master) ![Dependency Status](https://david-dm.org/hokkey/qiita-widget-js.svg)
 
 
 Qiita API V2に対応した、Qiitaのユーザー情報を表示するTypeScript製ブログウィジェットです。
