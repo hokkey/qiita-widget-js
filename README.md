@@ -61,6 +61,8 @@ npm run serve
 
 ## Changelog
 
+- 0.4.4
+  - package.jsonを修正
 - 0.4.3
   - ビルド失敗の修正
   - package-lock.jsonを追加
