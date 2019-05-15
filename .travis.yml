@@ -1,9 +1,7 @@
 sudo: false
 language: node_js
 node_js:
-- '6.11.3'
-- '7.10'
-- '8.6'
+- 'stable'
 before_script:
   - npm i
 script:
