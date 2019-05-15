@@ -11,6 +11,7 @@
     "@types/node": "^8.0.28",
     "autoprefixer": "^7.1.4",
     "axios": "^0.17.0",
+    "browser-sync": "^2.26.5",
     "css-loader": "^0.28.7",
     "extract-text-webpack-plugin": "^3.0.0",
     "node-sass": "^4.5.3",
