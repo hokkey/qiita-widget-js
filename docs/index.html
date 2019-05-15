@@ -122,7 +122,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               data-use-shuffle="false"
               data-sort-by-like="false"
               data-per-page="100"
-              data-cache-age="900000"
+              data-cache-age-min="15"
               data-max-to-show="5"
               data-max-request="1"></div>
           </div>
@@ -184,7 +184,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   data-use-transition=&quot;true&quot;
   data-filter-by-likes-from=&quot;0&quot;
   data-max-to-show=&quot;5&quot;
-  data-cache-age=&quot;900000&quot;
+  data-cache-age-min=&quot;15&quot;
   data-per-page=&quot;100&quot;
   data-max-request="10"&gt;&lt;/div&gt;
 &lt;script src=&quot;/path/to/iframe.js&quot; defer&gt;&lt;/script&gt;</code></pre>
@@ -254,7 +254,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     useTransition: true,      // trueでロード直後のアニメーションを表示
     filterByLikesFrom: 0,     // 表示する記事の最低いいね数(0でフィルタ無効)
     maxToShow: 5,             // 最終的に表示する記事の最大件数
-    cacheAge: 15 * 60 * 1000, // JSONレスポンスのキャッシュ有効時間(ミリ秒)
+    cacheAgeMin: 15,          // JSONレスポンスのキャッシュ有効時間(分)
     perPage: 100              // 一度のリクエストで取得する記事数(1〜100)
     maxRequest: 10            // perPage * maxRequest = 取得を試みる最大記事件数
 }).init();
@@ -294,8 +294,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h2 class="h5">謝辞</h2>
         <ul>
           <li><a href="https://www.npmjs.com/package/axios">axios</a>, MIT</li>
-          <li><a href="https://www.npmjs.com/package/localforage">localforage</a>, Apache-2.0</li>
-          <li><a href="https://www.npmjs.com/package/axios-cache-adapter">axios-cache-adapter</a>, MIT</li>
+          <li><a href="https://www.npmjs.com/package/lscache">lscache</a>, Apache-2.0</li>
         </ul>
       </section>
 

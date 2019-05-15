@@ -61,6 +61,10 @@ npm run serve
 
 ## Changelog
 
+- 1.0.0
+  - キャッシュの実装を[lscache](https://www.npmjs.com/package/lscache)へ変更
+  - **break** パラメータ名`cacheAgeMin`, `data-cache-age-min`を追加
+  - **break** パラメータ名`cacheAge`, `data-cache-age`を削除
 - 0.4.4
   - package.jsonを修正
 - 0.4.3
@@ -97,5 +101,4 @@ npm run serve
 qiita-widget-js uses following libraries:
 
 * [axios](https://www.npmjs.com/package/axios), MIT License
-* [localforage](https://www.npmjs.com/package/localforage), Apache License Version 2.0
-* [axios-cache-adapter](https://www.npmjs.com/package/axios-cache-adapter), MIT License
+* [scache](https://www.npmjs.com/package/lscache), Apache License Version 2.0
