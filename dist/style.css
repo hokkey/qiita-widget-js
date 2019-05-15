@@ -1,7 +1,7 @@
 @charset "UTF-8";
 .qiita-widget {
   line-height: 1.1;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Hiragino Kaku Gothic ProN, "\30E1\30A4\30EA\30AA", meiryo, sans-serif; }
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Hiragino Kaku Gothic ProN, "メイリオ", meiryo, sans-serif; }
   .qiita-widget a:link, .qiita-widget a:visited {
     color: #337ab7; }
   .qiita-widget a:hover {
