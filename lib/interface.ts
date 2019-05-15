@@ -7,7 +7,7 @@ export interface FragmentCreator {
 
 export interface QiitaItemsParam {
   perPage?: number;
-  cacheAge?: number;
+  cacheAgeMin?: number;
   maxToShow?: number;
   useShuffle?: boolean;
   sortByLike?: boolean;
@@ -27,7 +27,7 @@ export interface QiitaItemsApiParam {
   userId?: string;
   maxRequest?: number;
   perPage?: number;
-  cacheAge?: number;
+  cacheAgeMin?: number;
 }
 
 
@@ -35,7 +35,7 @@ export interface QiitaItemsApiConf {
   userId: string;
   maxRequest: number;
   perPage: number;
-  cacheAge: number;
+  cacheAgeMin: number;
 }
 
 
@@ -55,7 +55,7 @@ export interface QiitaItemsApiRequestConf extends RequestConf {
 
 
 export interface RequestConf {
-  cacheAge: number;
+  cacheAgeMin: number;
   axiosRequestConfig: AxiosRequestConfig,
 }
 
@@ -68,7 +68,7 @@ export interface QiitaWidgetParam extends QiitaPresenterParam {
   // for QiitaItemsParam
   filterByLikesFrom?: number;
   perPage?: number;
-  cacheAge?: number;
+  cacheAgeMin?: number;
   maxRequest?: number;
   maxToShow?: number;
   useShuffle?: boolean;

@@ -10,8 +10,7 @@ This software includes localforage that is distributed in the Apache License 2.0
 
 Acknowledgements:
 axios | https://www.npmjs.com/package/axios | MIT License
-localforage | https://www.npmjs.com/package/localforage | Apache License 2.0
-axios-cache-adapter | https://www.npmjs.com/package/axios-cache-adapter | MIT License`
+lscache | https://www.npmjs.com/package/lscache | Apache License 2.0`
 };
 
 const jsPlugins = [
@@ -139,7 +138,7 @@ module.exports = [
               }, {
                 loader: 'postcss-loader',
                 options: {
-                  plugins: (loader) => [
+                  plugins: () => [
                     require('autoprefixer'),
                   ]
                 }
@@ -201,7 +200,7 @@ module.exports = [
           }, {
             loader: 'postcss-loader',
             options: {
-              plugins: (loader) => [
+              plugins: () => [
                 require('autoprefixer'),
               ]
             }

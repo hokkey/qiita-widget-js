@@ -12,7 +12,7 @@ export class QiitaItemsApi {
     userId: 'qiita',
     maxRequest: 5,
     perPage: 100,
-    cacheAge: 15 * 60 * 1000
+    cacheAgeMin: 15
   };
 
 
@@ -41,7 +41,7 @@ export class QiitaItemsApi {
     this.conf = QiitaItemsApi.validateConf(Object.assign({}, QiitaItemsApi.defaultConf, conf));
     this.requestConf = {
       maxRequest: this.conf.maxRequest,
-      cacheAge: this.conf.cacheAge,
+      cacheAgeMin: this.conf.cacheAgeMin,
 
       axiosRequestConfig: {
         method: 'get',
@@ -54,7 +54,7 @@ export class QiitaItemsApi {
       }
     };
 
-    this.api = new Api(this.requestConf);
+    this.api = new Api();
   }
 
 
