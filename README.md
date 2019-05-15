@@ -26,7 +26,7 @@ new QiitaWidget(container, {
   useTransition: true,      // trueでロード直後のアニメーションを表示
   filterByLikesFrom: 0,     // 表示する記事の最低いいね数(0でフィルタ無効)
   maxToShow: 5,             // 最終的に表示する記事の件数
-  cacheAge: 15 * 60 * 1000, // JSONレスポンスのキャッシュ有効時間(ミリ秒)
+  cacheAgeMin: 15,          // JSONレスポンスのキャッシュ有効時間(分)
   perPage: 100,             // 一度のリクエストで取得する記事数(1〜100)
   maxRequest: 10            // perPage * maxRequest = 取得を試みる最大記事件数 
 }).init();
@@ -101,4 +101,4 @@ npm run serve
 qiita-widget-js uses following libraries:
 
 * [axios](https://www.npmjs.com/package/axios), MIT License
-* [scache](https://www.npmjs.com/package/lscache), Apache License Version 2.0
+* [lscache](https://www.npmjs.com/package/lscache), Apache License Version 2.0
