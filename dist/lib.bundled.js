@@ -1,6 +1,6 @@
 /*!
  * qiita-widget-js | https://media-massage.net/qiita-widget-js | MIT License'
- * This software includes localforage that is distributed in the Apache License 2.0
+ * This software includes axios and lscache that is distributed in the Apache License 2.0
  * 
  * Acknowledgements:
  * axios | https://www.npmjs.com/package/axios | MIT License
