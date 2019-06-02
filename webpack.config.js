@@ -6,7 +6,7 @@ const DEBUG = !process.argv.includes('--env.production');
 const banner = {
   lib: 'qiita-widget-js | https://media-massage.net/qiita-widget-js | MIT License',
   bundled: `qiita-widget-js | https://media-massage.net/qiita-widget-js | MIT License'
-This software includes localforage that is distributed in the Apache License 2.0
+This software includes axios and lscache that is distributed in the Apache License 2.0
 
 Acknowledgements:
 axios | https://www.npmjs.com/package/axios | MIT License
@@ -40,15 +40,8 @@ module.exports = [
     },
 
     externals: [
-      "localforage",
-      {
-        "axios-cache-adapter": {
-          root: "axiosCacheAdapter",
-          amd: "axios-cache-adapter",
-          commonjs: "axios-cache-adapter",
-          commonjs2: "axios-cache-adapter"
-        }
-      }
+      "axios",
+      "lscache"
     ],
 
     resolve: {
