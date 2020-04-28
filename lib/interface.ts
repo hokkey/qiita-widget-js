@@ -41,16 +41,8 @@ export interface QiitaItemsApiConf {
 
 export interface QiitaItemsApiRequestConf extends RequestConf {
   maxRequest: number;
-
-  axiosRequestConfig: {
-    method: string;
-    url: string;
-
-    params: {
-      page: number;
-      per_page: number;
-    }
-  }
+  cacheAgeMin: number;
+  axiosRequestConfig: AxiosRequestConfig;
 }
 
 
