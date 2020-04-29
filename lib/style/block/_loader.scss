@@ -50,15 +50,6 @@ $color-qiita: tint(#59bb0c, 50%);
   animation: load2 2s infinite ease;
 }
 
-@-webkit-keyframes load2 {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 @keyframes load2 {
   0% {
     transform: rotate(0deg);
