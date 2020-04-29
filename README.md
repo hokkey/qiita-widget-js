@@ -54,6 +54,8 @@ npm run serve
 
 ## Changelog
 
+- 2.0.1
+  - 軽微なバグフィックス
 - 2.0.0
   - axiosを廃止してFetch APIに置き換え
   - Webpackをv3系からv4系に置き換え
