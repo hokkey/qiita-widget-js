@@ -1,33 +1,43 @@
-import {RequestConf} from "./interface";
-import axios, { AxiosRequestConfig, AxiosResponse, AxiosStatic } from 'axios';
+import {RequestConf} from './interface';
 import * as lscache from 'lscache';
 
 export class Api {
 
-  private api: AxiosStatic;
-  private cache: any;
+  private cache = lscache;
 
   constructor() {
-    this.api = axios;
-    this.cache = lscache;
+    if (typeof fetch === 'undefined') {
+      throw new Error('This browser does not have Fetch API.');
+    }
   }
 
   async fetch<T>(conf: RequestConf): Promise<T> {
-    const key = this.createCacheKey(conf.axiosRequestConfig);
-    const cache = this.getCache<T>(key);
 
+    const url = new URL(conf.url);
+    Object.keys(conf.params).forEach((key: string) => {
+
+      if (typeof conf.params[key] === 'string') {
+        url.searchParams.append(key, conf.params[key]);
+      }
+
+      else {
+        url.searchParams.append(key, conf.params[key].toString());
+      }
+    });
+
+    const cache = this.getCache<T>(url.toString());
     if (cache != null) {
       return Promise.resolve<T>(cache);
     }
 
-    const res: AxiosResponse = await this.api.request(conf.axiosRequestConfig);
+    const res = await fetch(url.toString());
     if (res.status !== 200) {
       return Promise.reject();
     }
 
-    this.saveCache<T>(key, res.data, conf.cacheAgeMin);
-
-    return <T>res.data;
+    const result = <T>await res.json();
+    this.saveCache<T>(url.toString(), result, conf.cacheAgeMin);
+    return result;
   }
 
   private getCache<T>(key: string): T | null {
@@ -36,14 +46,6 @@ export class Api {
 
   private saveCache<T>(key: string, data: T, expireMin: number): void {
     this.cache.set(key, data, expireMin);
-  }
-
-  private createCacheKey(conf: AxiosRequestConfig): string {
-    return `${conf.url}?${this.createUriString(conf.params)}`;
-  }
-
-  private createUriString(obj: any): string {
-    return Object.entries(obj).map(pair => pair.map(encodeURIComponent).join('=')).join('&');
   }
 
 }

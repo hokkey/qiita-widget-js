@@ -6,7 +6,7 @@
 Qiita API V2に対応した、Qiitaのユーザー情報を表示するTypeScript製ブログウィジェットです。
 コピペで簡単に導入できるiframe版と、柔軟にカスタマイズできるライブラリ版があります。
 
-[デモサイト](https://media-massage.net/qiita-widget-js/)
+[ライブデモ](https://media-massage.net/qiita-widget-js/)
 
 ## npm/webpackでの利用方法
 
@@ -43,28 +43,27 @@ npm i
 # プロダクションビルド
 npm run build
 
-# ファイル監視 + 開発サーバ立ち上げ
+# ファイル監視 + 開発サーバ立ち上げ (事前にbrowser-syncのglobalインストールが必要)
 npm run serve
 ```
 
 ## 仕様
 
-* **IE11を含むすべてのIEに非対応です。**
+* **InternetExplorerに非対応です。**
 * 公開されている投稿の「いいね」からContributionを算出しているため、Qiitaのプロフィールページの数値と完全に一致しないことがあります。
-
-## ToDo
-
-- エラー処理
-- ユニットテストの追加
-- ドキュメントの拡充
-- デザインの拡充
 
 ## Changelog
 
+- 2.0.0
+  - axiosを廃止してFetch APIに置き換え
+  - Webpackをv3系からv4系に置き換え
+  - browser-syncをdevDependenciesから削除
+- 1.0.1
+  - バグフィックス
 - 1.0.0
   - キャッシュの実装を[lscache](https://www.npmjs.com/package/lscache)へ変更
-  - **break** パラメータ名`cacheAgeMin`, `data-cache-age-min`を追加
-  - **break** パラメータ名`cacheAge`, `data-cache-age`を削除
+  - **breaking** パラメータ名`cacheAgeMin`, `data-cache-age-min`を追加
+  - **breaking** パラメータ名`cacheAge`, `data-cache-age`を削除
 - 0.4.4
   - package.jsonを修正
 - 0.4.3

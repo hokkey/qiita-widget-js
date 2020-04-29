@@ -4,9 +4,9 @@ import {QiitaWidgetParam} from "./interface";
 
 export default class QiitaWidget {
 
-  private conf: QiitaWidgetParam;
-  private presenter: QiitaPresenter;
-  private items: QiitaItems;
+  private readonly presenter: QiitaPresenter;
+  private readonly conf: QiitaWidgetParam;
+  private readonly items: QiitaItems;
 
   static defaultConf: QiitaWidgetParam = {
   };

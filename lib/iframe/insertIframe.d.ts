@@ -1,1 +1,1 @@
-export declare function insertIframe(target: HTMLElement, id: number): HTMLIFrameElement;
+export declare function insertIframe(target: HTMLElement, id: number): HTMLIFrameElement | null;

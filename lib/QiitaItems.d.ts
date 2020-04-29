@@ -7,9 +7,9 @@ export declare class QiitaItems {
     static validateConf(conf: QiitaItemsConf): QiitaItemsConf;
     constructor(conf: QiitaItemsParam);
     fetch(): Promise<void>;
-    private createOrder<T>(source);
-    private filterOrigin();
+    private createOrder;
+    private filterOrigin;
     getArticlesToShow(): QiitaResponse.Article[];
     getUserToShow(): QiitaResponse.User;
-    private countAllLikes();
+    private countAllLikes;
 }

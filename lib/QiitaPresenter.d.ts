@@ -11,14 +11,13 @@ export declare class QiitaPresenter {
     static defaultConf: QiitaPresenterConf;
     constructor(dest: HTMLElement, items: QiitaItems, conf: QiitaWidgetParam);
     render(): void;
-    private setSubject();
-    private renderUser();
-    private renderArticles();
-    private createArticleFragment(template, content);
-    private renderView(template, dest, callback);
-    private fillTemplate(fragment, kv);
-    private fillContent(key, content, template);
-    private fillContent(key, content, template);
-    private claimNoTransition();
-    private claimLoaded();
+    private setSubject;
+    private renderUser;
+    private renderArticles;
+    private createArticleFragment;
+    private renderView;
+    private fillTemplate;
+    private fillContent;
+    private claimNoTransition;
+    private claimLoaded;
 }

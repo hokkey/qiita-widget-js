@@ -3,9 +3,8 @@ import {QiitaItemsApiConf, QiitaItemsApiParam, QiitaItemsApiRequestConf, QiitaRe
 
 export class QiitaItemsApi {
 
-  private conf: QiitaItemsApiConf;
-  private requestConf: QiitaItemsApiRequestConf;
   private api: Api;
+  private readonly requestConf: QiitaItemsApiRequestConf;
 
 
   static defaultConf: QiitaItemsApiConf = {
@@ -38,19 +37,15 @@ export class QiitaItemsApi {
 
   constructor(conf: QiitaItemsApiParam) {
 
-    this.conf = QiitaItemsApi.validateConf(Object.assign({}, QiitaItemsApi.defaultConf, conf));
+    const actualConf = QiitaItemsApi.validateConf(Object.assign({}, QiitaItemsApi.defaultConf, conf));
+
     this.requestConf = {
-      maxRequest: this.conf.maxRequest,
-      cacheAgeMin: this.conf.cacheAgeMin,
-
-      axiosRequestConfig: {
-        method: 'get',
-        url: `https://qiita.com/api/v2/users/${this.conf.userId}/items`,
-
-        params: {
-          page: 0,
-          per_page: this.conf.perPage
-        }
+      maxRequest: actualConf.maxRequest,
+      cacheAgeMin: actualConf.cacheAgeMin,
+      url: `https://qiita.com/api/v2/users/${actualConf.userId}/items`,
+      params: {
+        per_page: actualConf.perPage,
+        page: 0,
       }
     };
 
@@ -63,7 +58,7 @@ export class QiitaItemsApi {
     let counter = 0;
     let result: QiitaResponse.Article[] = [];
 
-    while (counter < this.conf.maxRequest) {
+    while (counter < this.requestConf.maxRequest) {
       counter++;
       this.createNextRequest();
 
@@ -88,23 +83,24 @@ export class QiitaItemsApi {
 
 
   private createNextRequest(): void {
-    this.requestConf.axiosRequestConfig.params.page += 1;
+    this.requestConf.params.page += 1;
   }
 
 
   private isThereNextPage<T>(list: T[]): boolean {
+    console.log(this.requestConf.url, list.length, this.requestConf.params.per_page);
 
     // a result length is 0: break loop
     if (list.length === 0) {
       return false;
     }
 
-    // a result length is lower than per_page: break loop
-    if (list.length < this.requestConf.axiosRequestConfig.params.per_page) {
+    // a result length is lower than perPage: break loop
+    if (list.length < this.requestConf.params.per_page) {
       return false;
     }
 
-    // a result length is equal or larger than per_page: continue loop
+    // a result length is equal or larger than perPage: continue loop
     return true;
   }
 
