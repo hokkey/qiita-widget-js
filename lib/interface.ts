@@ -1,5 +1,3 @@
-import {AxiosRequestConfig} from "axios";
-
 export interface FragmentCreator {
   (template: HTMLTemplateElement): DocumentFragment;
 }
@@ -38,26 +36,29 @@ export interface QiitaItemsApiConf {
   cacheAgeMin: number;
 }
 
-
 export interface QiitaItemsApiRequestConf extends RequestConf {
   maxRequest: number;
   cacheAgeMin: number;
-  axiosRequestConfig: AxiosRequestConfig;
+  url: string;
+  params: {
+    per_page: number;
+    page: number;
+    [key: string]: any;
+  }
 }
-
 
 export interface RequestConf {
+  maxRequest: number;
   cacheAgeMin: number;
-  axiosRequestConfig: AxiosRequestConfig,
+  url: string;
+  params: {
+    [key: string]: any;
+  }
 }
-
 
 export interface QiitaWidgetParam extends QiitaPresenterParam {
   userId?: string;
-
   container?: string;
-
-  // for QiitaItemsParam
   filterByLikesFrom?: number;
   perPage?: number;
   cacheAgeMin?: number;

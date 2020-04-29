@@ -14,17 +14,7 @@
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,
-    "baseUrl": ".",
-    "paths": {
-      "axios": [
-        "node_modules/axios/dist/axios",
-        "node_modules/axios/index.d.ts"
-      ],
-      "localforage": [
-        "node_modules/localforage/dist/localforage",
-        "node_modules/localforage/typings/localforage.d.ts"
-      ]
-    }
+    "baseUrl": "."
   },
   "exclude": [
     "node_modules"
