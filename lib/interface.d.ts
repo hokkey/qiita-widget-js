@@ -1,10 +1,9 @@
-import { AxiosRequestConfig } from "axios";
 export interface FragmentCreator {
     (template: HTMLTemplateElement): DocumentFragment;
 }
 export interface QiitaItemsParam {
     perPage?: number;
-    cacheAge?: number;
+    cacheAgeMin?: number;
     maxToShow?: number;
     useShuffle?: boolean;
     sortByLike?: boolean;
@@ -20,35 +19,38 @@ export interface QiitaItemsApiParam {
     userId?: string;
     maxRequest?: number;
     perPage?: number;
-    cacheAge?: number;
+    cacheAgeMin?: number;
 }
 export interface QiitaItemsApiConf {
     userId: string;
     maxRequest: number;
     perPage: number;
-    cacheAge: number;
+    cacheAgeMin: number;
 }
 export interface QiitaItemsApiRequestConf extends RequestConf {
     maxRequest: number;
-    axiosRequestConfig: {
-        method: string;
-        url: string;
-        params: {
-            page: number;
-            per_page: number;
-        };
+    cacheAgeMin: number;
+    url: string;
+    params: {
+        per_page: number;
+        page: number;
+        [key: string]: any;
     };
 }
 export interface RequestConf {
-    cacheAge: number;
-    axiosRequestConfig: AxiosRequestConfig;
+    maxRequest: number;
+    cacheAgeMin: number;
+    url: string;
+    params: {
+        [key: string]: any;
+    };
 }
 export interface QiitaWidgetParam extends QiitaPresenterParam {
     userId?: string;
     container?: string;
     filterByLikesFrom?: number;
     perPage?: number;
-    cacheAge?: number;
+    cacheAgeMin?: number;
     maxRequest?: number;
     maxToShow?: number;
     useShuffle?: boolean;
