@@ -88,8 +88,6 @@ export class QiitaItemsApi {
 
 
   private isThereNextPage<T>(list: T[]): boolean {
-    console.log(this.requestConf.url, list.length, this.requestConf.params.per_page);
-
     // a result length is 0: break loop
     if (list.length === 0) {
       return false;
