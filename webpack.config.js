@@ -1,8 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const DEBUG = !process.argv.includes('--env.production');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
+
 const banner = {
   lib: 'qiita-widget-js | https://media-massage.net/qiita-widget-js | MIT License',
   bundled: `qiita-widget-js | https://media-massage.net/qiita-widget-js | MIT License'
@@ -13,10 +14,6 @@ lscache | https://www.npmjs.com/package/lscache | Apache License 2.0`
 };
 
 const jsPlugins = [
-  new webpack.optimize.UglifyJsPlugin({
-    minimize: true,
-    compress: {screw_ie8: true, warnings: false}
-  }),
   new webpack.optimize.OccurrenceOrderPlugin(),
   new webpack.optimize.AggressiveMergingPlugin()
 ];
@@ -25,6 +22,9 @@ module.exports = [
 
   // Library Build
   {
+    name: 'lib',
+    mode: 'production',
+
     entry: {
       'lib': "./lib/QiitaWidget.ts",
     },
@@ -50,7 +50,6 @@ module.exports = [
     plugins: jsPlugins.concat([
       new webpack.BannerPlugin(banner.lib)
     ]),
-    devtool: 'source-map',
 
     module: {
       rules: [
@@ -65,6 +64,9 @@ module.exports = [
 
   // Library Build (bundled)
   {
+    name: 'lib-bundled',
+    mode: 'production',
+
     entry: {
       'lib.bundled': "./lib/QiitaWidget.ts",
     },
@@ -86,7 +88,6 @@ module.exports = [
     plugins: jsPlugins.concat([
       new webpack.BannerPlugin(banner.bundled)
     ]),
-    devtool: 'source-map',
 
     module: {
       rules: [
@@ -101,17 +102,15 @@ module.exports = [
 
   // CSS Build
   {
+    name: 'css',
+    mode: 'production',
+
     entry:['./lib/style/style.scss'],
 
-    output: {
-      filename: 'style.css',
-      path: path.resolve(__dirname, 'dist')
-    },
-
     plugins: [
-      new ExtractTextPlugin({
+      new FixStyleOnlyEntriesPlugin(),
+      new MiniCssExtractPlugin({
         filename: 'style.css',
-        allChunks: true
       })
     ],
 
@@ -119,25 +118,17 @@ module.exports = [
       rules: [
         {
           test: /\.scss$/,
-          use: ExtractTextPlugin.extract({
-              fallback: 'style-loader',
-              use: [{
-                loader: "css-loader",
-                options: {
-                  sourceMap: DEBUG
-                }
-              }, {
-                loader: 'postcss-loader',
-                options: {
-                  plugins: () => [
-                    require('autoprefixer'),
-                  ]
-                }
-              }, {
-                loader: 'sass-loader'
-              }]
-            }
-          )
+          use: [
+            {
+              loader: MiniCssExtractPlugin.loader,
+              options: {
+                hmr: process.env.NODE_ENV === 'development',
+              },
+            },
+            'css-loader',
+            'postcss-loader',
+            'sass-loader',
+          ],
         }
       ]
     }
@@ -145,6 +136,9 @@ module.exports = [
 
   // Iframe version build
   {
+    name: 'iframe',
+    mode: 'production',
+
     entry: {
       'iframe': './lib/iframe/iframe.ts',
     },
@@ -162,7 +156,6 @@ module.exports = [
     plugins: jsPlugins.concat([
       new webpack.BannerPlugin(banner.bundled)
     ]),
-    devtool: false,
 
     module: {
       rules: [
@@ -173,31 +166,47 @@ module.exports = [
         },
         {
           test: /lib.bundled.js$/,
-          use: 'raw-loader',
+          use: [
+            {
+              loader: 'raw-loader',
+              options: {
+                esModule: false
+              }
+            }
+          ],
           exclude: /node_modules/
         },
         {
           test: /\.html$/,
-          use: 'raw-loader',
+          use: [
+            {
+              loader: 'raw-loader',
+              options: {
+                esModule: false
+              }
+            }
+          ],
           exclude: /node_modules/
         },
         {
           test: /\.scss$/,
-          use: [{
-            loader: "css-loader",
-            options: {
-              sourceMap: false
-            }
-          }, {
-            loader: 'postcss-loader',
-            options: {
-              plugins: () => [
-                require('autoprefixer'),
-              ]
-            }
-          }, {
-            loader: 'sass-loader'
-          }]
+          use: [
+            {
+              loader: "css-loader",
+              options: {
+                sourceMap: false
+              }
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins: () => [
+                  require('autoprefixer'),
+                ],
+              }
+            },
+            'sass-loader'
+          ]
         }
       ]
     }
