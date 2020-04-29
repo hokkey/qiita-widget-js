@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>Qiita Widget JS | API V2対応 Qiitaのユーザー情報を表示するTypeScript製ブログウィジェット</title>
+  <title>Qiita Widget JS | Qiita API V2対応 Qiitaのユーザー情報を表示するブログウィジェット</title>
   <meta name="description" content="Qiita Widget JSはAPIv2に対応した、Qiitaのユーザー情報を表示するTypeScript製ブログウィジェットです。">
   <link rel="stylesheet" href="https://cdn.rawgit.com/thomaspark/bootswatch/bc8b8797/dist/cosmo/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
@@ -102,8 +102,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <a href="https://github.com/hokkey/qiita-widget-js"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 1" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
   <div class="container">
     <div class="row align-items-center justify-content-center text-xs-center">
-      <div class="col-sm-12 col-md-7 col-lg-5 col-xl-5 mb-4 mb-md-0">
-        <h1 class="display-4 text-white">Qiita Widget JS<span class="h4 copy mt-3 mb-3"><span class="small">API V2対応</span><br/>Qiitaのユーザー情報を表示するTypeScript製ブログウィジェット</span></h1>
+      <div class="col-sm-12 col-md-7 col-lg-6 col-xl-7 mb-4 mb-md-0">
+        <h1 class="display-4 text-white">Qiita Widget JS<span class="h4 copy mt-3 mb-3"><span class="small">Qiita API V2対応</span><br/>Qiitaのユーザー情報を表示するブログウィジェット</span></h1>
         <a class="btn btn-secondary" href="https://github.com/hokkey/qiita-widget-js" role="button">
           <svg class="icon" role="img">
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./sprite.octicons.svg#mark-github"></use>
@@ -196,9 +196,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
       <section class="mb-5">
         <h2>ライブラリ版の使い方</h2>
-        <p>1. 以下のコードをbody要素内の好きなところへペーストしてください。必要に応じ、要素の順番や有無を自由にカスタマイズできます。</p>
+        <p>1. 以下のコードをbody要素内の好きなところにペーストしてください。必要に応じ、要素の順番や有無をカスタマイズできます。</p>
         <p class="alert alert-dismissible alert-info">template要素はJavaScriptによる初期化が完了するまで画面には表示されません。</p>
-        <p class="alert alert-dismissible alert-danger"><strong>js-で始まるクラス名</strong>はJavaScriptとHTMLの紐付けに使われます。</p>
+        <p class="alert alert-dismissible alert-danger"><strong>js-で始まるクラス名</strong>はJavaScriptとHTMLの紐付けに使われため変更できません。</p>
 
         <pre><code>&lt;!-- HTMLテンプレート --&gt;
 &lt;template id=&quot;qiita-user-tpl&quot;&gt;
