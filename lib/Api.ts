@@ -1,15 +1,18 @@
-import { QiitaResponse, RequestConf } from './interface';
+import {RequestConf} from './interface';
 import * as lscache from 'lscache';
 
 export class Api {
 
-  private cache: any;
+  private cache = lscache;
 
   constructor() {
-    this.cache = lscache;
+    if (typeof fetch === 'undefined') {
+      throw new Error('This browser does not have Fetch API.');
+    }
   }
 
   async fetch<T>(conf: RequestConf): Promise<T> {
+
     const url = new URL(conf.url);
     Object.keys(conf.params).forEach((key: string) => {
 
@@ -23,7 +26,6 @@ export class Api {
     });
 
     const cache = this.getCache<T>(url.toString());
-    console.log(cache);
     if (cache != null) {
       return Promise.resolve<T>(cache);
     }

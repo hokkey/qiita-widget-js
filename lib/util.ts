@@ -52,7 +52,6 @@ export function toBoolean(str: string): boolean {
   return str.toLowerCase() === "true";
 }
 
-
 export function initSerialNumArray(length: number): number[] {
   return Array(length).fill(0).map((v: number, i: number) => i);
 }
