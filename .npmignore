@@ -2,3 +2,9 @@ docs/index.html
 docs/sprite.octicons.svg
 lib/**/*.ts
 !lib/**/*.d.ts
+.idea/
+.gitignore
+.travis.yml
+bs-config.js
+tsconfig.json
+webpack.config.js
