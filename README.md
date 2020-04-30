@@ -101,5 +101,4 @@ npm run serve
 
 qiita-widget-js uses following libraries:
 
-* [axios](https://www.npmjs.com/package/axios), MIT License
 * [lscache](https://www.npmjs.com/package/lscache), Apache License Version 2.0
