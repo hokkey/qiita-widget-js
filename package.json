@@ -29,6 +29,7 @@
   "scripts": {
     "build": "webpack",
     "serve": "webpack --watch -d & browser-sync start --config bs-config.js",
+    "coverage": "jest --coverage",
     "test": "jest"
   },
   "repository": {
