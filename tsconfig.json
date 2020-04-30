@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "module": "es2015",
+    "esModuleInterop": true,
     "target": "es5",
     "sourceMap": false,
     "allowJs": false,
@@ -20,6 +21,7 @@
     }
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "./tests"
   ]
 }
