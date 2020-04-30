@@ -2,6 +2,7 @@ docs/index.html
 docs/sprite.octicons.svg
 lib/**/*.ts
 !lib/**/*.d.ts
+coverage/
 .idea/
 .gitignore
 .travis.yml

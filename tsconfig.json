@@ -14,7 +14,10 @@
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,
-    "baseUrl": "."
+    "baseUrl": "./lib/",
+    "paths": {
+      "#/*": ["*"]
+    }
   },
   "exclude": [
     "node_modules"
