@@ -55,15 +55,19 @@ describe('sortArray Function', () => {
       { id: 1, dataKey: 123 },
       { id: 2, dataKey: 999 },
       { id: 3 },
-      { id: 4 },
+      { id: 4, dataKey: 999 },
+      { id: 5 },
+      { id: 6, dataKey: 9 },
     ];
 
     const expected = [
       { id: 0, dataKey: 'abc' },
       { id: 2, dataKey: 999 },
+      { id: 4, dataKey: 999 },
       { id: 1, dataKey: 123 },
       { id: 3 },
-      { id: 4 },
+      { id: 5 },
+      { id: 6, dataKey: 9 },
     ];
 
     const sample = util.sortArray(data.concat(), 'dataKey');
