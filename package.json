@@ -12,6 +12,7 @@
     "autoprefixer": "^9.7.6",
     "css-loader": "^3.5.3",
     "jest": "^25.5.2",
+    "jest-fetch-mock": "^3.0.3",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.14.0",
     "postcss-loader": "^2.1.6",
@@ -52,6 +53,7 @@
     "url": "https://media-massage.net/"
   },
   "jest": {
+    "automock": false,
     "moduleFileExtensions": [
       "ts",
       "js"
