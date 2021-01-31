@@ -14,7 +14,6 @@ lscache | https://www.npmjs.com/package/lscache | Apache License 2.0`
 };
 
 const jsPlugins = [
-  new webpack.optimize.OccurrenceOrderPlugin(),
   new webpack.optimize.AggressiveMergingPlugin()
 ];
 
@@ -120,13 +119,17 @@ module.exports = [
           test: /\.scss$/,
           use: [
             {
-              loader: MiniCssExtractPlugin.loader,
-              options: {
-                hmr: process.env.NODE_ENV === 'development',
-              },
+              loader: MiniCssExtractPlugin.loader
             },
             'css-loader',
-            'postcss-loader',
+            {
+              loader: 'postcss-loader',
+              options: {
+                postcssOptions: {
+                  plugins: ['autoprefixer']
+                }
+              }
+            },
             'sass-loader',
           ],
         }
@@ -194,15 +197,16 @@ module.exports = [
             {
               loader: "css-loader",
               options: {
-                sourceMap: false
+                sourceMap: false,
+                esModule: false,
               }
             },
             {
               loader: 'postcss-loader',
               options: {
-                plugins: () => [
-                  require('autoprefixer'),
-                ],
+                postcssOptions: {
+                  plugins: ['autoprefixer']
+                }
               }
             },
             'sass-loader'
