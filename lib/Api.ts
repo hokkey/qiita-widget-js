@@ -30,7 +30,7 @@ export class Api {
 
     const res = await fetch(url.toString())
     if (res.status !== 200) {
-      return Promise.reject()
+      return Promise.reject(new Error(`${res.status}`))
     }
 
     const result = <T>await res.json()

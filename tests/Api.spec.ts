@@ -44,7 +44,7 @@ describe('Api Class', () => {
       })
 
       it('can create an instance', (): void => {
-        new Api()
+        expect(new Api()).toBeInstanceOf(Api)
         return
       })
 
@@ -93,10 +93,20 @@ describe('Api Class', () => {
   })
 
   describe('error behavior', () => {
+    beforeEach(() => {
+      fetchMock.resetMocks()
+    })
+
     it('should return error on fetch rejecting', (): Promise<void> => {
-      fetchMock.mockAbort()
+      fetchMock.mockAbortOnce()
       const api = new Api()
       return expect(api.fetch(MOCK_REQUEST)).rejects.toThrow()
+    })
+
+    it('should reject and throw an error if the returned HTTP status code is not 200', () => {
+      fetchMock.mockResponse(JSON.stringify({}), { status: 404 })
+      const api = new Api()
+      return expect(api.fetch(MOCK_REQUEST)).rejects.toThrow('404')
     })
   })
 })

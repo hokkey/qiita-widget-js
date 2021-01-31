@@ -1,19 +1,19 @@
 import * as util from '#/util'
 
 describe('numToString function', () => {
-  it('should return number as string', (): void => {
+  it('should return number as string', () => {
     const sample = util.numToString(1234)
     expect(sample).toBe('1234')
   })
 
-  it('should be blank string when NaN is passed', (): void => {
+  it('should be blank string when NaN is passed', () => {
     const sample = util.numToString(NaN)
     expect(sample).toBe('')
   })
 })
 
 describe('shuffleArray function', () => {
-  it('should return a different ordered array', (): void => {
+  it('should return a different ordered array', () => {
     const ary = ['a', 'b', 'c']
     const sample = util.shuffleArray<string>(ary)
 
@@ -23,7 +23,7 @@ describe('shuffleArray function', () => {
 })
 
 describe('sortArray Function', () => {
-  it('should return the descending sorted array compared with values of passed key', (): void => {
+  it('should return the descending sorted array compared with values of passed key', () => {
     const data = [
       { id: 0, dataKey: -1 },
       { id: 1, dataKey: '100' },
@@ -44,7 +44,9 @@ describe('sortArray Function', () => {
     expect(sample).toStrictEqual(expected)
   })
 
-  it('should do nothing when the specified key has a NaN of undefined value', (): void => {
+  it('should do nothing when the specified key has a NaN of undefined value', () => {
+    type TestData = { id: number; dataKey?: number | string }
+
     const data = [
       { id: 0, dataKey: 'abc' },
       { id: 1, dataKey: 123 },
@@ -65,52 +67,25 @@ describe('sortArray Function', () => {
       { id: 6, dataKey: 9 },
     ]
 
-    const sample = util.sortArray(data.concat(), 'dataKey')
+    const sample = util.sortArray<TestData>(data.concat(), 'dataKey')
     expect(sample).toStrictEqual(expected)
   })
 })
 
-describe('isType function', () => {
-  it('should return true when the object has the tested type: string', (): void => {
-    const sample = util.isType('abc', 'string')
-    expect(sample).toBe(true)
-  })
-
-  it('should return true when the object has the tested type: number', (): void => {
-    const sample = util.isType(123, 'number')
-    expect(sample).toBe(true)
-  })
-
-  it('should return true when the object has the tested type: array', (): void => {
-    const sample = util.isType([], 'array')
-    expect(sample).toBe(true)
-  })
-
-  it('should return true when the object has the tested type: object', (): void => {
-    const sample = util.isType({}, 'object')
-    expect(sample).toBe(true)
-  })
-
-  it('should return true when the object has the tested type: undefined', (): void => {
-    const sample = util.isType(undefined, 'undefined')
-    expect(sample).toBe(true)
-  })
-})
-
 describe('toBoolean function', () => {
-  it('should return true when "true" is passed', (): void => {
+  it('should return true when "true" is passed', () => {
     const sample = util.toBoolean('true')
     expect(sample).toBe(true)
   })
 
-  test('should return false in other cases', (): void => {
+  test('should return false in other cases', () => {
     const sample = util.toBoolean('other strings')
     expect(sample).toBe(false)
   })
 })
 
 describe('initSerialNumArray function', () => {
-  it('should return an array which has serial numbers with the specified length', (): void => {
+  it('should return an array which has serial numbers with the specified length', () => {
     const sample = util.initSerialNumArray(5)
     const expected = [0, 1, 2, 3, 4]
     expect(sample).toStrictEqual(expected)
