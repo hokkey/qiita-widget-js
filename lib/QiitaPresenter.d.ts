@@ -1,23 +1,23 @@
-import { QiitaPresenterConf, QiitaWidgetParam } from "./interface";
-import { QiitaItems } from "./QiitaItems";
+import { QiitaPresenterConf, QiitaWidgetParam } from './interface'
+import { QiitaItems } from './QiitaItems'
 export declare class QiitaPresenter {
-    items: QiitaItems;
-    private dest;
-    private conf;
-    private userTemplate;
-    private articleTemplate;
-    private userDest;
-    private articleDest;
-    static defaultConf: QiitaPresenterConf;
-    constructor(dest: HTMLElement, items: QiitaItems, conf: QiitaWidgetParam);
-    render(): void;
-    private setSubject;
-    private renderUser;
-    private renderArticles;
-    private createArticleFragment;
-    private renderView;
-    private fillTemplate;
-    private fillContent;
-    private claimNoTransition;
-    private claimLoaded;
+  private readonly items
+  private readonly dest
+  private readonly conf
+  private readonly userTemplate
+  private readonly articleTemplate
+  private readonly userDest
+  private readonly articleDest
+  static defaultConf: QiitaPresenterConf
+  constructor(dest: HTMLElement | null, items: QiitaItems, conf: QiitaWidgetParam)
+  render(): void
+  private setSubject
+  private renderUser
+  private renderArticles
+  private createArticleFragment
+  private renderView
+  private fillTemplate
+  private fillContent
+  private claimNoTransition
+  private claimLoaded
 }

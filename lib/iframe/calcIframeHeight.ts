@@ -1,35 +1,42 @@
-import {isType} from "../util";
+export type IframeMessageEventData = {
+  id: number
+  height: number
+}
 
 export function setIframeHeight(iframe: HTMLIFrameElement, target: HTMLElement): void {
-  const paramHeight = target.dataset['height'];
+  const paramHeight = target.dataset['height']
 
-  if (!isType(paramHeight, 'string')) {
-    return;
+  if (typeof paramHeight !== 'string') {
+    return
   }
 
   if (paramHeight === 'auto') {
-    return;
+    return
   }
 
-  iframe.height = <string>target.dataset['height'];
+  iframe.height = paramHeight
 }
 
-export function watchIframeHeight(iframe: HTMLIFrameElement, target: HTMLElement, id: number): void {
-  const paramHeight = target.dataset['height'];
+export function watchIframeHeight(
+  iframe: HTMLIFrameElement,
+  target: HTMLElement,
+  id: number,
+): void {
+  const paramHeight = target.dataset['height']
 
-  window.addEventListener('message', (e) => {
-    if (paramHeight !== 'auto') {
-      return;
-    }
+  window.addEventListener(
+    'message',
+    (e: MessageEvent<IframeMessageEventData>) => {
+      if (paramHeight !== 'auto') {
+        return
+      }
 
-    if (e.data === null) {
-      return;
-    }
+      if (e.data.id !== id) {
+        return
+      }
 
-    if (e.data.id !== id) {
-      return;
-    }
-
-    iframe.height = e.data.height + 'px';
-  }, false);
+      iframe.height = `${e.data.height}px`
+    },
+    false,
+  )
 }

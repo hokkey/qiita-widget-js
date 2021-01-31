@@ -7,12 +7,15 @@
     "declaration": true,
     "strictNullChecks": true,
     "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
     "lib": [
       "es2015",
       "es2017",
       "dom"
     ],
-    "noImplicitAny": true,
     "removeComments": true,
     "baseUrl": "./lib/",
     "paths": {

@@ -1,10 +1,10 @@
-import QiitaWidget from '#/QiitaWidget';
-import fetchMock from 'jest-fetch-mock';
+import QiitaWidget from '#/QiitaWidget'
+import { default as fetchMock } from 'jest-fetch-mock'
 
 describe('QiitaWidget class', () => {
-
   beforeEach(() => {
-    fetchMock.enableMocks();
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+    fetchMock.enableMocks()
     document.body.innerHTML = `
       <div class="js-qiita-widget">
         <div class="js-qiita-user"></div>
@@ -13,14 +13,11 @@ describe('QiitaWidget class', () => {
       </div>
       <template id="qiita-user-tpl"></template>
       <template id="qiita-article-tpl"></template>
-    `;
-  });
+    `
+  })
 
   it('can create an instance', (): void => {
-    const widget = new QiitaWidget(
-      <HTMLElement>document.querySelector('.js-qiita-widget'),
-      {}
-    );
-  });
-
-});
+    const widget = new QiitaWidget(<HTMLElement>document.querySelector('.js-qiita-widget'), {})
+    expect(widget).toBeInstanceOf(QiitaWidget)
+  })
+})
