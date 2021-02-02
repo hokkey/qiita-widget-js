@@ -25,6 +25,7 @@
     "prettier": "^2.2.1",
     "prettier-eslint-cli": "^5.0.0",
     "sass-loader": "^10.1.1",
+    "sloc": "^0.2.1",
     "style-loader": "^2.0.0",
     "ts-jest": "^26.4.4",
     "ts-loader": "^8.0.14",
@@ -34,7 +35,7 @@
     "webpack-fix-style-only-entries": "^0.6.1"
   },
   "scripts": {
-    "build": "npm run clean && npm run build:lib && npm run build:iframe",
+    "build": "npm run clean && npm run build:lib && npm run build:iframe && npm run sloc:lib",
     "build:lib": "webpack && npm run fix:prettier",
     "build:iframe": "webpack --config ./webpack.config.iframe.js && npm run fix:prettier",
     "serve": "npm run build && browser-sync start --config bs-config.js",
@@ -44,8 +45,11 @@
     "fix": "npm run fix:eslint && npm run fix:prettier",
     "fix:eslint": "eslint --fix lib tests",
     "fix:prettier": "prettier --check --write lib tests",
+    "sloc": "npm run sloc:lib && npm run sloc:test",
+    "sloc:lib": "sloc lib",
+    "sloc:test": "sloc tests",
     "test": "jest && npm run lint",
-    "test:verbose": "jest --coverage --verbose",
+    "test:verbose": "jest --coverage --verbose && npm run sloc:test",
     "clean": "rm -f ./dist/* && rm -f ./docs/iframe.js"
   },
   "repository": {
