@@ -1,0 +1,1 @@
+/*! qiita-widget-js | https://media-massage.net/qiita-widget-js | MIT License */
