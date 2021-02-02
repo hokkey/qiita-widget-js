@@ -74,7 +74,10 @@
       "js"
     ],
     "moduleNameMapper": {
-      "^#/(.+)": "<rootDir>/lib/$1"
+      "^@/(.+)": "<rootDir>/lib/$1",
+      "\\.scss$": "<rootDir>/__mocks__/styleMock.js",
+      "\\.html$": "<rootDir>/__mocks__/htmlMock.js",
+      "\\.bundled.js$": "<rootDir>/__mocks__/bundleMock.js"
     },
     "transform": {
       "^.+\\.ts$": "ts-jest"

@@ -1,26 +1,74 @@
-import QiitaWidget from '#/QiitaWidget';
-import fetchMock from 'jest-fetch-mock';
+import QiitaWidget from '@/QiitaWidget'
+import { QiitaPresenter } from '@/QiitaPresenter'
+import { QiitaItems } from '@/QiitaItems'
+import { QiitaWidgetParam } from '@/interface'
 
-describe('QiitaWidget class', () => {
+jest.mock('@/QiitaPresenter')
+jest.mock('@/QiitaItems')
+
+const conf: QiitaWidgetParam = {
+  userId: 'user-id',
+  container: '.my-container',
+  filterByLikesFrom: 1,
+  perPage: 10,
+  cacheAgeMin: 5,
+  maxRequest: 2,
+  maxToShow: 5,
+  useShuffle: false,
+  sortByLike: true,
+}
+
+describe('QiitaWidget', () => {
+  const container = document.createElement('div')
 
   beforeEach(() => {
-    fetchMock.enableMocks();
-    document.body.innerHTML = `
-      <div class="js-qiita-widget">
-        <div class="js-qiita-user"></div>
-        <div class="js-subject"></div>
-        <div class="js-qiita-article"></div>
-      </div>
-      <template id="qiita-user-tpl"></template>
-      <template id="qiita-article-tpl"></template>
-    `;
-  });
+    jest.clearAllMocks()
+  })
 
-  it('can create an instance', (): void => {
-    const widget = new QiitaWidget(
-      <HTMLElement>document.querySelector('.js-qiita-widget'),
-      {}
-    );
-  });
+  describe('constructor()', () => {
+    it('should create a QiitaItems instance and a QiitaPresenter instance', () => {
+      new QiitaWidget(container, conf)
+      expect(QiitaItems).toBeCalledTimes(1)
+      expect(QiitaItems).toBeCalledWith({
+        userId: 'user-id',
+        container: '.my-container',
+        filterByLikesFrom: 1,
+        perPage: 10,
+        cacheAgeMin: 5,
+        maxRequest: 2,
+        maxToShow: 5,
+        useShuffle: false,
+        sortByLike: true,
+      })
 
-});
+      const QiitaPresenterMock = (QiitaPresenter as unknown) as jest.MockedClass<
+        typeof QiitaPresenter
+      >
+
+      expect(QiitaPresenter).toBeCalledTimes(1)
+      expect(QiitaPresenterMock.mock.calls[0][0]).toBe(container)
+      expect(QiitaPresenterMock.mock.calls[0][1]).toBeInstanceOf(QiitaItems)
+      expect(QiitaPresenterMock.mock.calls[0][2]).toEqual({
+        userId: 'user-id',
+        container: '.my-container',
+        filterByLikesFrom: 1,
+        perPage: 10,
+        cacheAgeMin: 5,
+        maxRequest: 2,
+        maxToShow: 5,
+        useShuffle: false,
+        sortByLike: true,
+      })
+    })
+  })
+
+  describe('init()', () => {
+    it('should call QiitaItems.fetch and QiitaPresenter.render', () => {
+      return new QiitaWidget(container, conf).init().then(() => {
+        /* eslint-disable @typescript-eslint/unbound-method */
+        expect(QiitaItems.prototype.fetch).toBeCalledTimes(1)
+        expect(QiitaPresenter.prototype.render).toBeCalledTimes(1)
+      })
+    })
+  })
+})
