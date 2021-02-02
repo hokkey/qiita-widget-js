@@ -1,0 +1,7 @@
+/*!
+ * qiita-widget-js | https://media-massage.net/qiita-widget-js | MIT License'
+ * This software includes lscache that is distributed in the Apache License 2.0
+ *
+ * Acknowledgements:
+ * lscache | https://www.npmjs.com/package/lscache | Apache License 2.0
+ */

@@ -20,6 +20,7 @@ module.exports = [
 
     entry: {
       iframe: './lib/iframe/iframe.ts',
+      app: './src/docs/app.ts',
     },
 
     output: {
@@ -31,7 +32,7 @@ module.exports = [
       alias: {
         '@': path.resolve(__dirname, 'lib'),
       },
-      extensions: ['.ts'],
+      extensions: ['.ts', '.js'],
       modules: ['node_modules', path.resolve(__dirname, '')],
     },
 

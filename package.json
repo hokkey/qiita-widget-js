@@ -36,8 +36,9 @@
   },
   "scripts": {
     "build": "npm run clean && npm run build:lib && npm run build:iframe && npm run sloc:lib",
-    "build:lib": "webpack && npm run fix:prettier",
+    "build:lib": "webpack && npm run fix:prettier && npm run copy",
     "build:iframe": "webpack --config ./webpack.config.iframe.js && npm run fix:prettier",
+    "copy": "cp ./dist/style.css ./docs/app.css",
     "serve": "npm run build && browser-sync start --config bs-config.js",
     "lint": "npm run lint:eslint && npm run lint:prettier",
     "lint:eslint": "eslint lib tests",
