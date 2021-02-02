@@ -1,36 +1,39 @@
-import {QiitaWidgetParam} from "../interface";
-import {isType, toBoolean} from "../util";
+import { QiitaWidgetParam } from '@/interface'
+import { toBoolean } from '@/util'
 
 export function pickDataset(el: HTMLElement): QiitaWidgetParam {
-
-  const result: QiitaWidgetParam = {};
+  const result: QiitaWidgetParam = {}
 
   // set string value
-  ['userId', 'subject'].forEach((key: string) => {
-    if (isType(el.dataset[key], 'string')) {
-      result[key] = <string>el.dataset[key];
+  ;['userId', 'subject'].forEach((key) => {
+    const data = el.dataset[key]
+    if (typeof data === 'string') {
+      result[key] = data
     }
-  });
+  })
 
-  // set boolean value
-  ['sortByLike', 'useShuffle', 'useTransition'].forEach((key: string) => {
-    if (isType(el.dataset[key], 'string')) {
-      result[key] = toBoolean(<string>el.dataset[key]);
+  // set as boolean value
+  ;['sortByLike', 'useShuffle', 'useTransition'].forEach((key) => {
+    const data = el.dataset[key]
+    if (typeof data === 'string') {
+      result[key] = toBoolean(data)
     }
-  });
+  })
 
-  // set number value
-  ['perPage', 'maxToShow', 'maxRequest', 'cacheAgeMin', 'filterByLikesFrom'].forEach((key: string) => {
-    if (isType(el.dataset[key], 'string')) {
-      const num = parseInt(<string>el.dataset[key], 10);
+  // set as number value
+  ;['perPage', 'maxToShow', 'maxRequest', 'cacheAgeMin', 'filterByLikesFrom'].forEach((key) => {
+    const data = el.dataset[key]
+
+    if (typeof data === 'string') {
+      const num = parseInt(data, 10)
 
       if (Number.isNaN(num)) {
-        throw new Error(`${key} was parsed as NaN!`);
+        throw new Error(`${key} was parsed as NaN!`)
       }
 
-      result[key] = num;
+      result[key] = num
     }
-  });
+  })
 
-  return result;
+  return result
 }

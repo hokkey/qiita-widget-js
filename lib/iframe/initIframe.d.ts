@@ -1,1 +1,1 @@
-export declare function initIframe(target: HTMLElement, id: number): void;
+export declare function initIframe(target: HTMLElement, id: number): void

@@ -19,7 +19,7 @@
     "removeComments": true,
     "baseUrl": "./lib/",
     "paths": {
-      "#/*": ["*"]
+      "@/*": ["*"]
     }
   },
   "exclude": [

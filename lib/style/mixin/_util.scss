@@ -2,7 +2,8 @@
 @mixin cf() {
   *zoom: 1;
 
-  &:before, &:after {
+  &:before,
+  &:after {
     content: ' ';
     display: table;
   }
@@ -64,8 +65,7 @@
   @return inspect($value);
 }
 
-
-@function gap($target-px, $actual-px:0 ) {
+@function gap($target-px, $actual-px: 0) {
   @if $actual-px == 0 {
     @return $target-px;
   }

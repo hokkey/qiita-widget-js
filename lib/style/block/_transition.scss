@@ -11,11 +11,10 @@
 
 .is-qiita-widget-loaded {
   $initial-delay: 0s;
-  $step-count: .2s;
+  $step-count: 0.2s;
 
   @for $i from 0 to 6 {
     .transition--s#{$i} {
-
       .transition__inner {
         animation: transition 1s ease;
         animation-delay: $initial-delay + $i * $step-count;
@@ -26,7 +25,7 @@
         @for $j from 1 to 30 {
           &:nth-of-type(#{$j}) {
             .transition__inner {
-              animation-delay: $initial-delay + $i * $step-count + $j * .13s;
+              animation-delay: $initial-delay + $i * $step-count + $j * 0.13s;
             }
           }
         }
@@ -34,7 +33,7 @@
         @for $j from 1 to 3 {
           &:nth-of-type(#{$j}) {
             .transition__inner {
-              animation-delay: $initial-delay + $i * $step-count + $j * .13s;
+              animation-delay: $initial-delay + $i * $step-count + $j * 0.13s;
             }
           }
         }
@@ -53,7 +52,6 @@
 }
 
 .is-no-transition {
-
   .transition__inner {
     transform: none;
     will-change: none;
