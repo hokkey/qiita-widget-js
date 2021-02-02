@@ -13,7 +13,7 @@ Acknowledgements:
 lscache | https://www.npmjs.com/package/lscache | Apache License 2.0`,
 }
 
-const jsPlugins = [new webpack.optimize.AggressiveMergingPlugin()]
+const jsPlugins = [new webpack.optimize.AggressiveMergingPlugin(), new webpack.ProgressPlugin()]
 
 module.exports = [
   // Library Build
@@ -119,86 +119,6 @@ module.exports = [
               loader: MiniCssExtractPlugin.loader,
             },
             'css-loader',
-            {
-              loader: 'postcss-loader',
-              options: {
-                postcssOptions: {
-                  plugins: ['autoprefixer'],
-                },
-              },
-            },
-            'sass-loader',
-          ],
-        },
-      ],
-    },
-  },
-
-  // Iframe version build
-  {
-    name: 'iframe',
-    mode: 'production',
-
-    entry: {
-      iframe: './lib/iframe/iframe.ts',
-    },
-
-    output: {
-      filename: '[name].js',
-      path: path.resolve(__dirname, 'docs'),
-    },
-
-    resolve: {
-      alias: {
-        '@': path.resolve(__dirname, 'lib'),
-      },
-      extensions: ['.ts'],
-      modules: ['node_modules', path.resolve(__dirname, '')],
-    },
-
-    plugins: jsPlugins.concat([new webpack.BannerPlugin(banner.bundled)]),
-
-    module: {
-      rules: [
-        {
-          test: /\.tsx?$/,
-          use: 'ts-loader',
-          exclude: /node_modules/,
-        },
-        {
-          test: /lib.bundled.js$/,
-          use: [
-            {
-              loader: 'raw-loader',
-              options: {
-                esModule: false,
-              },
-            },
-          ],
-          exclude: /node_modules/,
-        },
-        {
-          test: /\.html$/,
-          use: [
-            {
-              loader: 'raw-loader',
-              options: {
-                esModule: false,
-              },
-            },
-          ],
-          exclude: /node_modules/,
-        },
-        {
-          test: /\.scss$/,
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                sourceMap: false,
-                esModule: false,
-              },
-            },
             {
               loader: 'postcss-loader',
               options: {
