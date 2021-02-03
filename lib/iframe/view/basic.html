@@ -1,7 +1,8 @@
 <section class="qiita-widget js-qiita-widget">
   <header class="qiita-widget__header qiita-user js-qiita-user"></header>
   <section class="qiita-widget__articles">
-    <h2 class="qiita-widget__articles-head transition transition--s4"><span class="transition__inner js-subject"></span>
+    <h2 class="qiita-widget__articles-head transition transition--s4">
+      <span class="transition__inner js-subject"></span>
     </h2>
     <ul class="qiita-article-list js-qiita-article"></ul>
   </section>
@@ -12,10 +13,14 @@
 </div>
 
 <template id="qiita-user-tpl">
-  <p class="qiita-user__image transition transition--s1"><img class="qiita-user__img js-profile-image-url transition__inner" src="" alt="" /></p>
+  <p class="qiita-user__image transition transition--s1">
+    <img class="qiita-user__img js-profile-image-url transition__inner" alt="" />
+  </p>
 
   <div class="qiita-user__title">
-    <a class="qiita-user__url js-url transition transition--s2" target="_blank"><h1 class="qiita-user__id js-id transition__inner"></h1></a>
+    <a class="qiita-user__url js-url transition transition--s2" target="_blank"
+      ><h1 class="qiita-user__id js-id transition__inner"></h1
+    ></a>
 
     <p class="qiita-user__items transition transition--s3">
       <span class="qiita-user__items-num js-items-count transition__inner"></span>
@@ -26,7 +31,6 @@
       <span class="qiita-user__likes-num js-likes-count transition__inner"></span>
       <span class="qiita-user__likes-unit transition__inner">Contribution</span>
     </p>
-
   </div>
 </template>
 

@@ -4,7 +4,7 @@
 }
 
 @function calc-font-size-ratio($px, $base-px) {
-  @return strip-units($px)/strip-units($base-px);
+  @return strip-units($px) / strip-units($base-px);
 }
 
 @function calc-px-to-rem($px, $base-px: 16px) {

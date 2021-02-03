@@ -1,22 +1,29 @@
 {
   "compilerOptions": {
     "module": "es2015",
+    "esModuleInterop": true,
     "target": "es5",
-    "sourceMap": false,
     "allowJs": false,
-    "declaration": false,
+    "declaration": true,
     "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
     "lib": [
       "es2015",
       "es2017",
       "dom"
     ],
-    "noImplicitAny": true,
     "removeComments": true,
-    "preserveConstEnums": true,
-    "baseUrl": "."
+    "baseUrl": "./lib/",
+    "paths": {
+      "@/*": ["*"]
+    }
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "./tests"
   ]
 }

@@ -1,15 +1,18 @@
-import {initIframe} from "./initIframe"
+import { initIframe } from '@/iframe/initIframe'
 
-(() => {
-  const destinations = document.querySelectorAll('.js-qiita-widget');
+export function iframe(): void {
+  const destinations = document.querySelectorAll<HTMLElement>('.js-qiita-widget')
 
   // Do nothing
   if (destinations.length === 0) {
-    return;
+    return
   }
 
-  Array.from(destinations, (target: HTMLElement, index) => {
-    initIframe(target, index);
-  });
+  Array.from(destinations, (target, index) => {
+    initIframe(target, index)
+  })
+}
 
-})();
+;(() => {
+  iframe()
+})()

@@ -1,8 +1,9 @@
 sudo: false
 language: node_js
 node_js:
-- 'stable'
+- 12
 before_script:
   - npm i
 script:
   - npm run build
+  - npm test

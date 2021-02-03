@@ -2,3 +2,5 @@
 node_modules
 *.map
 *.log
+coverage
+src/docs/app.d.ts
