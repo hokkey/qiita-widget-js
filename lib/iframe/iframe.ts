@@ -13,6 +13,4 @@ export function iframe(): void {
   })
 }
 
-;(() => {
-  iframe()
-})()
+export default iframe()

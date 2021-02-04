@@ -179,22 +179,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h2>iframe版の使い方</h2>
         <div class="row">
           <div class="col">
-            <p><a href="https://github.com/hokkey/qiita-widget-js/blob/master/docs/iframe.js">iframe.js</a>をダウンロードし、ウィジェットを表示したい場所へ以下のコードをペーストしてください。
-            </p>
-            <pre><code>&lt;div class=&quot;js-qiita-widget&quot;
-  data-subject=&quot;人気の投稿&quot;
-  data-user-id=&quot;qiita&quot;
-  data-height=&quot;auto&quot;
-  data-use-shuffle=&quot;false&quot;
-  data-sort-by-like=&quot;true&quot;
-  data-use-transition=&quot;true&quot;
-  data-filter-by-likes-from=&quot;0&quot;
-  data-max-to-show=&quot;5&quot;
-  data-cache-age-min=&quot;15&quot;
-  data-per-page=&quot;100&quot;
-  data-max-request="10"&gt;&lt;/div&gt;
-&lt;script src=&quot;/path/to/iframe.js&quot; defer&gt;&lt;/script&gt;</code></pre>
-
+            <p><a href="https://github.com/hokkey/qiita-widget-js/blob/master/dist/iframe.js">iframe.js</a>をHTMLに配置してから、ウィジェットを表示したい場所へ以下のコードをペーストしてください。</p>
             <p data-height="390" data-theme-id="light" data-slug-hash="RLRzEE" data-default-tab="html,result" data-user="hokkey" data-embed-version="2" data-pen-title="QiitaWidgetJS" class="codepen">See the Pen <a href="https://codepen.io/hokkey/pen/RLRzEE/">QiitaWidgetJS</a> by y_hokkey (<a href="https://codepen.io/hokkey">@hokkey</a>) on <a href="https://codepen.io">CodePen</a>.</p>
           </div>
         </div>
@@ -202,8 +187,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
       <section class="mb-5">
         <h2>ライブラリ版の使い方</h2>
-        <p>1. 以下のコードをbody要素内の好きなところにペーストしてください。必要に応じ、要素の順番や有無をカスタマイズできます。</p>
-        <p class="alert alert-dismissible alert-info">template要素はJavaScriptによる初期化が完了するまで画面には表示されません。</p>
+        <p>1. 以下のコードをbody要素内の好きなところにペーストしてください。必要に応じ、要素の順番や有無はカスタマイズできます。</p>
+        <p class="alert alert-dismissible alert-success">template要素はJavaScriptによる初期化が完了するまで画面には表示されません。</p>
         <p class="alert alert-dismissible alert-danger"><strong>js-で始まるクラス名</strong>はJavaScriptとHTMLの紐付けに使われため変更できません。</p>
 
         <pre><code>&lt;!-- HTMLテンプレート --&gt;
@@ -245,7 +230,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   &lt;/section&gt;
 &lt;/section&gt;</code></pre>
 
-        <p>3. <a href="https://github.com/hokkey/qiita-widget-js/blob/master/dist/lib.bundled.js">lib.bundled.jsをダウンロードし、</a>body要素の最下部へ以下のコードをペーストしてください。
+        <p>3. <a href="https://github.com/hokkey/qiita-widget-js/blob/master/dist/lib.bundled.js">lib.bundled.js</a>をHTMLに配置してから、body要素の最下部へ以下のコードをペーストしてください。
         </p>
 
         <pre><code class="html">&lt;script src=&quot;path/to/lib.bundled.js&quot;&gt;&lt;/script&gt;
@@ -365,10 +350,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </footer>
 
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
-<script src="./iframe.js" defer></script>
-<script src="./app.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
+<script src="./app.js" defer></script>
+<!--<script src="../dist/iframe.js" defer></script>-->
 
 </body>
 </html>
