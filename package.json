@@ -49,7 +49,7 @@
     "sloc": "npm run sloc:lib && npm run sloc:test",
     "sloc:lib": "sloc lib",
     "sloc:test": "sloc tests",
-    "test": "jest && npm run lint",
+    "test": "jest",
     "test:verbose": "jest --coverage --verbose && npm run sloc:test",
     "clean": "rm -f ./dist/* && rm -f ./docs/*.js && rm -f ./docs/*.css && rm -f ./docs/*.txt"
   },

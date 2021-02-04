@@ -43,17 +43,27 @@ npm i
 # プロダクションビルド
 npm run build
 
-# ファイル監視 + 開発サーバ立ち上げ (事前にbrowser-syncのglobalインストールが必要)
-npm run serve
+# ユニットテスト
+npm run test
+
+# カバレッジ表示
+npm run test:verbose
+
 ```
 
 ## 仕様
 
 * **InternetExplorerに非対応です。**
-* 公開されている投稿の「いいね」からContributionを算出しているため、Qiitaのプロフィールページの数値と完全に一致しないことがあります。
+* 公開されている投稿の「いいね」の合計値からユーザーのContributionを算出しているため、Qiitaのプロフィールページの数値と完全に一致しないことがあります。
 
 ## Changelog
 
+- 2.1.0
+  - ユニットテスト導入
+  - Webpackをv4系からv5系に置き換え
+  - linterをtslintからeslintに置き換え
+  - prettier導入
+  - tsconfigの設定を厳格可
 - 2.0.1
   - 軽微なバグフィックス
 - 2.0.0
