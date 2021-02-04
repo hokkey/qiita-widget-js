@@ -3,7 +3,14 @@ language: node_js
 node_js:
 - 12
 before_script:
-  - npm i
+- npm i
 script:
-  - npm run build
-  - npm test
+- npm run build
+- npm test
+deploy:
+  provider: npm
+  email: hokkey@gmail.com
+  on:
+    tags: true
+  api_key:
+    secure: aon7OJPzFA2ZqplSV3BuGg94ZQ2Jj0vrxo2GOSDZlyOFt8zMLbvsW9PIQn2XcQUjnEKomedoLRAGHcTIJ2cI2QXPJV4Y+3rIV/Ok6a71HZ7FHkKsKlitD0VzKvjdn7UobZG5X5o8h8dQzFHql/iU2fJ5MAOho20z7J/O86ZDxgSTsuAhPl2tTaOedOYKEuzrjvwrEVNOpzvnJeuwwju1H//XQnadb2zH9ASWKTvy9Nu0ahMNpXP8qRHI1wNIfQ4dd+p6burjNPqoqRcNZE76QaK5pVW87naFK6eIIh/lzFzkyuxyKC5pWEmiwCekOZC5a0+Vj9kfm1NIR1JgdTmJJs3buFHJig3+wjsB90DtWl4w7unDoJM1V0wmW7nCLr1epK8OsLZ6pkjLfiuvtub8nz4aEsYt7SQojAXGiDKswphsSjIrXnHMgl7jB29l/ne7vkWdcdKNM7b5TkNiCToHeU9efab0mK3LAXiJ7z9MmAoGaFX6QCIkjqRfdYYBJz9bzNQGiMLDNoSZV5dSdP97c185UtghphQjDIng3t2+Q6GjHM3THtUqgu/5bnZoxTmWTzdIhp5UU7A3QXC4zVXA8d7hioPjsoWka/GTXhpvTh0eRVzLAcal4SFgoA93rOS8eqkXvHIvaJ946Dd0S9F3g6EpnmCle0QHClxfLCPPo4M=
