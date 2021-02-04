@@ -37,7 +37,7 @@
   "scripts": {
     "build": "npm run clean && npm run build:lib && npm run build:iframe && npm run fix && npm run sloc:lib",
     "build:lib": "webpack --env=step1",
-    "build:iframe": "npm run wait:lib && webpack --env=step2 & npm run copy",
+    "build:iframe": "npm run wait:lib && webpack --env=step2 && npm run copy",
     "wait:lib": "node scripts/wait.js dist/lib.bundled.js",
     "copy": "cp ./dist/style.css ./docs/app.css",
     "lint": "npm run lint:eslint && npm run lint:prettier",
