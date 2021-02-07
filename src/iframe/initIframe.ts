@@ -1,5 +1,5 @@
-import { insertIframe } from '@/iframe/insertIframe'
-import { setIframeHeight, watchIframeHeight } from '@/iframe/calcIframeHeight'
+import { insertIframe } from '~iframe/insertIframe'
+import { setIframeHeight, watchIframeHeight } from '~iframe/calcIframeHeight'
 
 export function initIframe(target: HTMLElement, id: number): void {
   const iframe = insertIframe(target, id)

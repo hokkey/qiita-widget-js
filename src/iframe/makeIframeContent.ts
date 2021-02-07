@@ -1,9 +1,9 @@
-import { QiitaWidgetParam } from '@/interface'
+import { QiitaWidgetParam } from '~lib/interface'
 
 // Included via raw-loader:
-import CSS from '@/style/iframe.scss'
-import HTML from '@/iframe/view/basic.html'
-import LIB from 'dist/lib.bundled.js'
+import CSS from '~style/iframe.scss'
+import HTML from '~iframe/view/basic.html'
+import LIB from '~dist/lib.bundled.js'
 
 export function makeIframeContent(data: QiitaWidgetParam, id: number): string {
   /* eslint-disable @typescript-eslint/restrict-template-expressions */

@@ -1,5 +1,5 @@
-import { pickDataset } from '@/iframe/pickDataset'
-import { QiitaWidgetParam } from '@/interface'
+import { pickDataset } from '~iframe/pickDataset'
+import { QiitaWidgetParam } from '~lib/interface'
 
 describe('pickDataset()', () => {
   let element = document.createElement('div')

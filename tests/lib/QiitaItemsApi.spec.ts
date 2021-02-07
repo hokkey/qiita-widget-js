@@ -1,8 +1,8 @@
-import { QiitaItemsApi } from '@/QiitaItemsApi'
-import { Api } from '@/Api'
-import { QiitaItemsApiConf, QiitaResponse, RequestConf } from '@/interface'
+import { QiitaItemsApi } from '~lib/QiitaItemsApi'
+import { Api } from '~lib/Api'
+import { QiitaItemsApiConf, QiitaResponse, RequestConf } from '~lib/interface'
 
-jest.mock('@/Api')
+jest.mock('~lib/Api')
 
 const conf: QiitaItemsApiConf = {
   userId: 'qiita',

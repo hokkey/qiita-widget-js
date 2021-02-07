@@ -1,10 +1,10 @@
-import { Api } from '@/Api'
+import { Api } from './Api'
 import {
   QiitaItemsApiConf,
   QiitaItemsApiParam,
   QiitaItemsApiRequestConf,
   QiitaResponse,
-} from '@/interface'
+} from './interface'
 
 export class QiitaItemsApi {
   private readonly api: Api

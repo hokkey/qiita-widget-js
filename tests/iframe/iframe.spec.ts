@@ -1,7 +1,7 @@
-import { iframe } from '@/iframe/iframe'
-import { initIframe } from '@/iframe/initIframe'
+import { iframe } from '~iframe/iframe'
+import { initIframe } from '~iframe/initIframe'
 
-jest.mock('@/iframe/initIframe', () => {
+jest.mock('~iframe/initIframe', () => {
   return {
     __esModule: true,
     initIframe: jest.fn(),

@@ -1,4 +1,4 @@
-import { makeIframeContent } from '@/iframe/makeIframeContent'
+import { makeIframeContent } from '~iframe/makeIframeContent'
 
 describe('makeIframeContent', () => {
   const id = 1

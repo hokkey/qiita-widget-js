@@ -1,6 +1,6 @@
-import * as Util from '@/util'
-import { FragmentCreator, QiitaPresenterConf, QiitaResponse, QiitaWidgetParam } from '@/interface'
-import { QiitaItems } from '@/QiitaItems'
+import * as Util from './util'
+import { FragmentCreator, QiitaPresenterConf, QiitaResponse, QiitaWidgetParam } from './interface'
+import { QiitaItems } from './QiitaItems'
 
 export class QiitaPresenter {
   private readonly items: QiitaItems

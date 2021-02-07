@@ -1,4 +1,4 @@
-import { initIframe } from '@/iframe/initIframe'
+import { initIframe } from '~iframe/initIframe'
 
 export function iframe(): void {
   const destinations = document.querySelectorAll<HTMLElement>('.js-qiita-widget')

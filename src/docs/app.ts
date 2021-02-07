@@ -1,6 +1,5 @@
-import Iframe from '@/iframe/iframe'
-import QiitaWidget from '@/QiitaWidget'
-
+import Iframe from '~iframe/iframe'
+import QiitaWidget from '~lib/QiitaWidget'
 ;(() => {
   Iframe
 

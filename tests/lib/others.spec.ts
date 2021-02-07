@@ -1,4 +1,4 @@
-import { Api } from '@/Api'
+import { Api } from '~lib/Api'
 
 describe('Fetch API fallback', () => {
   it('throws Error when Fetch API is not available', (): void => {

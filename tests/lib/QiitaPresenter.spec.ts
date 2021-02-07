@@ -1,9 +1,9 @@
-import { QiitaPresenter } from '@/QiitaPresenter'
-import { QiitaItems } from '@/QiitaItems'
-import { QiitaWidgetParam } from '@/interface'
+import { QiitaPresenter } from '~lib/QiitaPresenter'
+import { QiitaItems } from '~lib/QiitaItems'
+import { QiitaWidgetParam } from '~lib/interface'
 
-jest.mock('@/QiitaItemsApi')
-jest.mock('@/QiitaItems')
+jest.mock('~lib/QiitaItemsApi')
+jest.mock('~lib/QiitaItems')
 
 const userMock = {
   description: 'user-desc',

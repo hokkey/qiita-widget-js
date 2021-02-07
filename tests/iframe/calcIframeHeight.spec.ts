@@ -2,7 +2,7 @@ import {
   setIframeHeight,
   watchIframeHeight,
   IframeMessageEventData,
-} from '@/iframe/calcIframeHeight'
+} from '~iframe/calcIframeHeight'
 
 describe('setIframeHeight()', () => {
   let target = document.createElement('div')

@@ -1,10 +1,10 @@
-import QiitaWidget from '@/QiitaWidget'
-import { QiitaPresenter } from '@/QiitaPresenter'
-import { QiitaItems } from '@/QiitaItems'
-import { QiitaWidgetParam } from '@/interface'
+import QiitaWidget from '~lib/QiitaWidget'
+import { QiitaPresenter } from '~lib/QiitaPresenter'
+import { QiitaItems } from '~lib/QiitaItems'
+import { QiitaWidgetParam } from '~lib/interface'
 
-jest.mock('@/QiitaPresenter')
-jest.mock('@/QiitaItems')
+jest.mock('~lib/QiitaPresenter')
+jest.mock('~lib/QiitaItems')
 
 const conf: QiitaWidgetParam = {
   userId: 'user-id',

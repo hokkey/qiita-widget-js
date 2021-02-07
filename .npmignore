@@ -2,10 +2,6 @@
 __mocks__/
 coverage/
 docs/
-lib/**/*.ts
-lib/**/*.scss
-lib/**/*.html
-!lib/**/*.d.ts
 scripts/
 src/
 tests/

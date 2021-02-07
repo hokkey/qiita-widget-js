@@ -1,7 +1,7 @@
-import { insertIframe } from '@/iframe/insertIframe'
-import { makeIframeContent } from '@/iframe/makeIframeContent'
+import { insertIframe } from '~iframe/insertIframe'
+import { makeIframeContent } from '~iframe/makeIframeContent'
 
-jest.mock('@/iframe/makeIframeContent', () => {
+jest.mock('~iframe/makeIframeContent', () => {
   return {
     __esModule: true,
     makeIframeContent: jest.fn().mockReturnValue('<p>ABC</p>'),

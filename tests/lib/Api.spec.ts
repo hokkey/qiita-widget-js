@@ -1,6 +1,6 @@
-import { Api } from '@/Api'
-import { default as fetchMock } from 'jest-fetch-mock'
 import * as lscache from 'lscache'
+import { default as fetchMock } from 'jest-fetch-mock'
+import { Api } from '~lib/Api'
 
 const MOCK_REQUEST = {
   url: 'http://localhost',

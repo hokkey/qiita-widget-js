@@ -1,5 +1,5 @@
-import { makeIframeContent } from '@/iframe/makeIframeContent'
-import { pickDataset } from '@/iframe/pickDataset'
+import { makeIframeContent } from '~iframe/makeIframeContent'
+import { pickDataset } from '~iframe/pickDataset'
 
 export function insertIframe(target: HTMLElement, id: number): HTMLIFrameElement | null {
   const iframe = document.createElement('iframe')

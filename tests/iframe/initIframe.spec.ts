@@ -1,11 +1,11 @@
-import { initIframe } from '@/iframe/initIframe'
-import { setIframeHeight, watchIframeHeight } from '@/iframe/calcIframeHeight'
-import { insertIframe } from '@/iframe/insertIframe'
+import { initIframe } from '~iframe/initIframe'
+import { setIframeHeight, watchIframeHeight } from '~iframe/calcIframeHeight'
+import { insertIframe } from '~iframe/insertIframe'
 
 let target = document.createElement('div')
 let iframe = document.createElement('iframe')
 
-jest.mock('@/iframe/insertIframe', () => {
+jest.mock('~iframe/insertIframe', () => {
   return {
     __esModule: true,
     insertIframe: jest.fn(() => {
@@ -16,7 +16,7 @@ jest.mock('@/iframe/insertIframe', () => {
 
 const insertIframeMock = (insertIframe as unknown) as jest.MockedFunction<typeof insertIframe>
 
-jest.mock('@/iframe/calcIframeHeight', () => {
+jest.mock('~iframe/calcIframeHeight', () => {
   return {
     __esModule: true,
     setIframeHeight: jest.fn(),

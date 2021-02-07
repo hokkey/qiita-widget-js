@@ -1,9 +1,9 @@
-import { QiitaItems } from '@/QiitaItems'
-import { QiitaItemsConf, QiitaResponse } from '@/interface'
-import { QiitaItemsApi } from '@/QiitaItemsApi'
+import { QiitaItems } from '~lib/QiitaItems'
+import { QiitaItemsConf, QiitaResponse } from '~lib/interface'
+import { QiitaItemsApi } from '~lib/QiitaItemsApi'
 
-jest.mock('@/QiitaItemsApi')
-jest.mock('@/Api')
+jest.mock('~lib/QiitaItemsApi')
+jest.mock('~lib/Api')
 
 const conf: QiitaItemsConf = {
   maxToShow: 5,

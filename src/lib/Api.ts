@@ -1,4 +1,4 @@
-import { RequestConf } from '@/interface'
+import { RequestConf } from './interface'
 import * as lscache from 'lscache'
 
 export class Api {
