@@ -24,7 +24,13 @@ const distOutput = {
 }
 
 const resolve = {
-  alias: { '@': path.resolve(projectRoot, 'lib') },
+  alias: {
+    '~lib': path.resolve(projectRoot, 'src', 'lib'),
+    '~docs': path.resolve(projectRoot, 'src', 'docs'),
+    '~iframe': path.resolve(projectRoot, 'src', 'iframe'),
+    '~style': path.resolve(projectRoot, 'src', 'style'),
+    '~dist': path.resolve(projectRoot, 'dist'),
+  },
   extensions: ['.ts', '.json', '.js'],
   modules: ['node_modules', path.resolve(projectRoot, '')],
 }
@@ -34,6 +40,25 @@ const tsLoaderRule = {
   use: {
     loader: 'ts-loader',
   },
+}
+
+const sassLoaderRule = {
+  test: /\.scss$/,
+  use: [
+    {
+      loader: MiniCssExtractPlugin.loader,
+    },
+    'css-loader',
+    {
+      loader: 'postcss-loader',
+      options: {
+        postcssOptions: {
+          plugins: ['autoprefixer'],
+        },
+      },
+    },
+    'sass-loader',
+  ],
 }
 
 const commonPlugins = (banner) => {
@@ -62,13 +87,14 @@ const libraryBuildConfigs = [
     name: 'lib-bundled',
     mode: 'production',
     entry: {
-      'lib.bundled': path.resolve(projectRoot, 'lib', 'QiitaWidget.ts'),
+      'lib.bundled': path.resolve(projectRoot, 'src', 'lib', 'QiitaWidget.ts'),
+      css: path.resolve(projectRoot, 'src', 'style', 'style.scss'),
     },
     output: distOutput,
     resolve,
-    plugins: commonPlugins(banner.bundled),
+    plugins: [...commonPlugins(banner.bundled), ...cssPlugins()],
     module: {
-      rules: [tsLoaderRule],
+      rules: [tsLoaderRule, sassLoaderRule],
     },
   },
 ]
@@ -136,7 +162,7 @@ module.exports = function (env, argv) {
       {
         ...docsBuildConfig,
         entry: {
-          iframe: path.resolve(projectRoot, 'lib', 'iframe', 'iframe.ts'),
+          iframe: path.resolve(projectRoot, 'src', 'iframe', 'iframe.ts'),
         },
       },
       {

@@ -5,7 +5,9 @@ module.exports = {
     '\\.scss$': '<rootDir>/__mocks__/styleMock.js',
     '\\.html$': '<rootDir>/__mocks__/htmlMock.js',
     '\\.bundled.js$': '<rootDir>/__mocks__/bundleMock.js',
-    '^@/(.+)': '<rootDir>/lib/$1',
+    '^~lib/(.+)': '<rootDir>/src/lib/$1',
+    '^~iframe/(.+)': '<rootDir>/src/iframe/$1',
+    '^~docs/(.+)': '<rootDir>/src/docs/$1',
   },
   transform: {
     '^.+\\.ts$': 'ts-jest',
@@ -16,5 +18,5 @@ module.exports = {
     },
   },
   testMatch: ['**/tests/**/*.spec.ts'],
-  collectCoverageFrom: ['lib/**/*.ts', '!**/*.d.ts'],
+  collectCoverageFrom: ['src/**/*.ts', '!**/*.d.ts'],
 }

@@ -3,8 +3,8 @@
     "module": "es2015",
     "esModuleInterop": true,
     "target": "es5",
+    "moduleResolution": "Node",
     "allowJs": false,
-    "declaration": true,
     "strictNullChecks": true,
     "strictFunctionTypes": true,
     "strictBindCallApply": true,
@@ -16,15 +16,23 @@
       "es2017",
       "dom"
     ],
-    "moduleResolution": "Node",
     "removeComments": true,
-    "baseUrl": "./lib/",
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["*"]
+      "~iframe/*": ["./src/iframe/*"],
+      "~style/*": ["./src/style/*"],
+      "~docs/*": ["./src/docs/*"],
+      "~lib/*": ["./src/lib/*"],
+      "~dist/*": ["./dist/*"]
     }
   },
+  "include": [
+    "./src/**/*.ts"
+  ],
   "exclude": [
     "node_modules",
-    "./tests"
+    "dist",
+    "lib",
+    "tests"
   ]
 }
