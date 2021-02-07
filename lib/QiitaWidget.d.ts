@@ -1,4 +1,4 @@
-import { QiitaWidgetParam } from '@/interface'
+import { QiitaWidgetParam } from './interface'
 export default class QiitaWidget {
   private readonly presenter
   private readonly conf

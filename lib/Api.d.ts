@@ -1,4 +1,4 @@
-import { RequestConf } from '@/interface'
+import { RequestConf } from './interface'
 export declare class Api {
   constructor()
   fetch<T>(conf: RequestConf): Promise<T>

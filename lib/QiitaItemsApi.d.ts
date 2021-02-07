@@ -1,4 +1,4 @@
-import { QiitaItemsApiConf, QiitaItemsApiParam, QiitaResponse } from '@/interface'
+import { QiitaItemsApiConf, QiitaItemsApiParam, QiitaResponse } from './interface'
 export declare class QiitaItemsApi {
   private readonly api
   private readonly requestConf

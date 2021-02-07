@@ -1,5 +1,5 @@
-import { QiitaPresenterConf, QiitaWidgetParam } from '@/interface'
-import { QiitaItems } from '@/QiitaItems'
+import { QiitaPresenterConf, QiitaWidgetParam } from './interface'
+import { QiitaItems } from './QiitaItems'
 export declare class QiitaPresenter {
   private readonly items
   private readonly dest
