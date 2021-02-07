@@ -57,46 +57,6 @@ const cssPlugins = () => {
 }
 
 const libraryBuildConfigs = [
-  // Library Build
-  {
-    name: 'lib',
-    mode: 'production',
-    entry: {
-      lib: path.resolve(projectRoot, 'lib', 'QiitaWidget.ts'),
-      css: path.resolve(projectRoot, 'lib', 'style', 'style.scss'),
-    },
-
-    output: distOutput,
-    externals: ['lscache'],
-    resolve,
-
-    plugins: [...commonPlugins(banner.lib), ...cssPlugins()],
-
-    module: {
-      rules: [
-        {
-          test: /\.scss$/,
-          use: [
-            {
-              loader: MiniCssExtractPlugin.loader,
-            },
-            'css-loader',
-            {
-              loader: 'postcss-loader',
-              options: {
-                postcssOptions: {
-                  plugins: ['autoprefixer'],
-                },
-              },
-            },
-            'sass-loader',
-          ],
-        },
-        tsLoaderRule,
-      ],
-    },
-  },
-
   // Library Build (bundled)
   {
     name: 'lib-bundled',
