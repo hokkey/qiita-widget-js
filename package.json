@@ -1,8 +1,8 @@
 {
   "name": "qiita-widget",
   "version": "2.1.0",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "dependencies": {
     "lscache": "^1.3.0"
   },
@@ -37,8 +37,8 @@
     "webpack-remove-empty-scripts": "^0.7.1"
   },
   "scripts": {
-    "build": "npm run build:lib && npm run clean && npm run build:bundle && npm run build:iframe && npm run fix && npm run sloc:lib",
-    "build:lib": "npm run clean:lib && tsc src/lib/* --declaration --outDir ./lib",
+    "build": "npm run build:lib && npm run clean && npm run build:bundle && npm run build:iframe && npm run sloc:lib",
+    "build:lib": "npm run clean:lib && tsc src/lib/* --declaration --outDir ./lib && npm run fix:prettier",
     "build:bundle": "webpack --env=step1 && npm run wait:style && npm run copy",
     "build:iframe": "npm run wait:lib && webpack --env=step2",
     "wait:lib": "node scripts/wait.js dist/lib.bundled.js",
