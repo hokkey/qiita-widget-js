@@ -62,7 +62,7 @@ describe('watchIframeHeight()', () => {
       watchIframeHeight(iframe, target, id)
 
       const callback = addEventListenerSpy.mock.calls[0][1]
-      if (typeof callback !== 'function') return false
+      if (typeof callback !== 'function') return
 
       const event = new MessageEvent<IframeMessageEventData>('message', {
         data: {
@@ -80,7 +80,7 @@ describe('watchIframeHeight()', () => {
       watchIframeHeight(iframe, target, id)
 
       const callback = addEventListenerSpy.mock.calls[0][1]
-      if (typeof callback !== 'function') return false
+      if (typeof callback !== 'function') return
 
       const event = new MessageEvent<IframeMessageEventData>('message', {
         data: {
@@ -98,7 +98,7 @@ describe('watchIframeHeight()', () => {
       watchIframeHeight(iframe, target, id)
 
       const callback = addEventListenerSpy.mock.calls[0][1]
-      if (typeof callback !== 'function') return false
+      if (typeof callback !== 'function') return
 
       const event = new MessageEvent<IframeMessageEventData>('message', {
         data: {

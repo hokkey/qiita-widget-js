@@ -44,9 +44,9 @@ describe('insertIframe()', () => {
 
   it('should return an iframe content inserted', () => {
     const iframe = insertIframe(target, id)
-    if (iframe === null) return false
+    if (iframe === null) return
     const doc = iframe.contentDocument
-    if (doc === null) return false
+    if (doc === null) return
     expect(doc.body.classList.contains('is-iframe-loading')).toBe(true)
     expect(doc.body.innerHTML).toBe('<p>ABC</p>')
   })
