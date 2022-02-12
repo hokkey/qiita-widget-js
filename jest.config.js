@@ -17,6 +17,7 @@ module.exports = {
       tsconfig: './tsconfig.json',
     },
   },
+  testEnvironment: 'jsdom',
   testMatch: ['**/tests/**/*.spec.ts'],
   collectCoverageFrom: ['src/**/*.ts', '!**/*.d.ts'],
 }

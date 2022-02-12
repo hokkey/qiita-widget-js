@@ -121,7 +121,7 @@ const docsBuildConfig = {
         test: /\.html$/,
         loader: 'html-loader',
         options: {
-          attributes: false,
+          sources: false,
           esModule: false,
           minimize: true,
         },
