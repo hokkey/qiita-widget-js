@@ -8,7 +8,7 @@ jest.mock('~iframe/makeIframeContent', () => {
   }
 })
 
-const makeIframeContentMock = (makeIframeContent as unknown) as jest.MockedFunction<
+const makeIframeContentMock = makeIframeContent as unknown as jest.MockedFunction<
   typeof makeIframeContent
 >
 

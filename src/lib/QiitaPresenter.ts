@@ -130,7 +130,8 @@ export class QiitaPresenter {
 
   private fillContent(key: string, content: unknown, template: HTMLElement): void {
     if (Array.isArray(content)) {
-      this.fillTags(content, template)
+      const tags = content as QiitaResponse.Tag[]
+      this.fillTags(tags, template)
       return
     }
 

@@ -14,7 +14,7 @@ jest.mock('~iframe/insertIframe', () => {
   }
 })
 
-const insertIframeMock = (insertIframe as unknown) as jest.MockedFunction<typeof insertIframe>
+const insertIframeMock = insertIframe as unknown as jest.MockedFunction<typeof insertIframe>
 
 jest.mock('~iframe/calcIframeHeight', () => {
   return {
@@ -24,10 +24,10 @@ jest.mock('~iframe/calcIframeHeight', () => {
   }
 })
 
-const setIframeHeightMock = (setIframeHeight as unknown) as jest.MockedFunction<
+const setIframeHeightMock = setIframeHeight as unknown as jest.MockedFunction<
   typeof setIframeHeight
 >
-const watchIframeHeightMock = (watchIframeHeight as unknown) as jest.MockedFunction<
+const watchIframeHeightMock = watchIframeHeight as unknown as jest.MockedFunction<
   typeof watchIframeHeight
 >
 

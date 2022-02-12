@@ -41,7 +41,7 @@ describe('QiitaWidget', () => {
         sortByLike: true,
       })
 
-      const QiitaPresenterMock = (QiitaPresenter as unknown) as jest.MockedClass<
+      const QiitaPresenterMock = QiitaPresenter as unknown as jest.MockedClass<
         typeof QiitaPresenter
       >
 
