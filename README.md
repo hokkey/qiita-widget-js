@@ -6,7 +6,7 @@
 Qiita API V2に対応した、Qiitaのユーザー情報を表示するTypeScript製ブログウィジェットです。
 コピペで簡単に導入できるiframe版と、柔軟にカスタマイズできるライブラリ版があります。
 
-[ライブデモ](https://media-massage.net/qiita-widget-js/)
+[ライブデモ](https://github.media-massage.net/qiita-widget-js/)
 
 ## npm/webpackでの利用方法
 
