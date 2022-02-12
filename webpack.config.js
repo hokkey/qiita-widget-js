@@ -39,6 +39,9 @@ const tsLoaderRule = {
   test: /\.tsx?$/,
   use: {
     loader: 'ts-loader',
+    options: {
+      configFile: "webpack.tsconfig.json",
+    },
   },
 }
 

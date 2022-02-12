@@ -1,5 +1,6 @@
 {
   "extends": "./tsconfig.json",
+  "module": "commonjs",
   "include": [
     "src/**/*.ts",
     "tests/**/*.ts",

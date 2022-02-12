@@ -1,9 +1,14 @@
 {
   "compilerOptions": {
-    "module": "es2015",
+    "module": "commonjs",
     "esModuleInterop": true,
-    "target": "es5",
     "moduleResolution": "Node",
+    "target": "esnext",
+    "lib": [
+      "dom"
+    ],
+    "outDir": "./lib",
+    "declaration": true,
     "allowJs": false,
     "strictNullChecks": true,
     "strictFunctionTypes": true,
@@ -11,11 +16,6 @@
     "strictPropertyInitialization": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
-    "lib": [
-      "es2015",
-      "es2017",
-      "dom"
-    ],
     "removeComments": true,
     "baseUrl": ".",
     "paths": {
@@ -27,7 +27,7 @@
     }
   },
   "include": [
-    "./src/**/*.ts"
+    "src/lib/*.ts"
   ],
   "exclude": [
     "node_modules",
